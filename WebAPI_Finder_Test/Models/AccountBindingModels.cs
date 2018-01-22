@@ -35,6 +35,18 @@ namespace WebAPI_Finder_Test.Models
     public class RegisterBindingModel
     {
         [Required]
+        [StringLength(100)]
+        public string Firstname { get; set; }
+
+        [Required]
+        [StringLength(100)]
+        public string Lastname { get; set; }
+
+        [DataType(DataType.Date)]
+        public DateTime BirthDate { get; set; }
+
+
+        [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
 

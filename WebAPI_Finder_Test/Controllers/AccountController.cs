@@ -328,7 +328,7 @@ namespace WebAPI_Finder_Test.Controllers
                 return BadRequest(ModelState);
             }
 
-            ApplicationUser user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
+            ApplicationUser user = new ApplicationUser() { UserName = model.Email, Email = model.Email, Firstname=model.Firstname,Lastname=model.Lastname,BirthDate=model.BirthDate };
 
 
 
