@@ -1,6 +1,16 @@
 ﻿<div>
     <label>Введите email</label><br />
     <input type="email" id="email" /> <br /><br />
+
+    <label>Введите имя</label><br />
+    <input type="text" id="Firstname" /> <br /><br />
+
+    <label>Введите фамилию</label><br />
+    <input type="text" id="Lastname" /> <br /><br />
+
+    <label>Введите дату рождения</label><br />
+    <input type="date" id="BirthDate" /> <br /><br />
+
     <label>Введите пароль</label><br />
     <input type="password" id="password" /><br /><br />
     <label>Подтвердите пароль</label><br />
@@ -15,7 +25,10 @@
             var data = {
                 Email: $('#email').val(),
                 Password: $('#password').val(),
-                ConfirmPassword: $('#confirmpassword').val()
+                ConfirmPassword: $('#confirmpassword').val(),
+                Firstname: $('#Firstname').val(),
+                Lastname: $('#Lastname').val(),
+                BirthDate:$('#BirthDate').val()
             };
 
             $.ajax({

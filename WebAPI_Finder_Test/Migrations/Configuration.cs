@@ -17,8 +17,7 @@ namespace WebAPI_Finder_Test.Migrations
         {
 
            
-            ApplicationUser user = new ApplicationUser() { Email = "raot@gmail.ru", UserName = "raot@gmail.ru", PasswordHash="111111111" };
-            context.Users.Add(user);
+         
 
 
 
