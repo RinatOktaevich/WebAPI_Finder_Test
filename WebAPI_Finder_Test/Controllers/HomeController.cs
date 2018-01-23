@@ -10,14 +10,22 @@ namespace WebAPI_Finder_Test.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
+            return View("Register");
+        }
+
+
+
+
+        public ActionResult Register()
+        {
+            ViewBag.Title = "Register";
 
             return View();
         }
 
         public ActionResult Login()
         {
-            ViewBag.Title = "Home Page";
+            ViewBag.Title = "Login";
 
             return View();
         }

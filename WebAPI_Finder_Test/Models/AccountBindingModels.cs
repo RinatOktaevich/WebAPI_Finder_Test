@@ -38,11 +38,12 @@ namespace WebAPI_Finder_Test.Models
         [StringLength(100)]
         public string Firstname { get; set; }
 
+
         [Required]
         [StringLength(100)]
         public string Lastname { get; set; }
 
-        [DataType(DataType.Date)]
+        [DataType(DataType.DateTime)]
         public DateTime BirthDate { get; set; }
 
 
