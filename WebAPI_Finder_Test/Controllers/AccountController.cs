@@ -16,9 +16,11 @@ using Microsoft.Owin.Security.OAuth;
 using WebAPI_Finder_Test.Models;
 using WebAPI_Finder_Test.Providers;
 using WebAPI_Finder_Test.Results;
+using System.Web.Http.Cors;
 
 namespace WebAPI_Finder_Test.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*", SupportsCredentials = true)]
     [Authorize]
     [RoutePrefix("api/Account")]
     public class AccountController : ApiController
@@ -84,8 +86,6 @@ namespace WebAPI_Finder_Test.Controllers
 
             return Ok(user);
         }
-
-
 
 
         // POST api/Account/Logout
