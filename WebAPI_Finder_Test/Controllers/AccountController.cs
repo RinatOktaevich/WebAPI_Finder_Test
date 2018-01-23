@@ -66,6 +66,28 @@ namespace WebAPI_Finder_Test.Controllers
             };
         }
 
+
+        public IHttpActionResult GetUserInfoByID(string Id)
+        {
+            if(Id==null)
+            {
+                return BadRequest("Incorrect Id");
+            }
+
+            ApplicationUser user = UserManager.FindById(Id);
+            if(user==null)
+            {
+                return BadRequest("Id doesn`t exist");
+            }
+            
+
+
+            return Ok(user);
+        }
+
+
+
+
         // POST api/Account/Logout
         [Route("Logout")]
         public IHttpActionResult Logout()
@@ -328,7 +350,7 @@ namespace WebAPI_Finder_Test.Controllers
                 return BadRequest(ModelState);
             }
 
-            ApplicationUser user = new ApplicationUser() { UserName = model.Email, Email = model.Email, Firstname=model.Firstname,Lastname=model.Lastname,BirthDate=model.BirthDate };
+            ApplicationUser user = new ApplicationUser() { UserName = model.Email, Email = model.Email, Firstname = model.Firstname, Lastname = model.Lastname, BirthDate = model.BirthDate };
 
 
 
