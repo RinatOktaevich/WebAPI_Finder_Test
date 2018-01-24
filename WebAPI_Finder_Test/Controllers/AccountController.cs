@@ -25,6 +25,8 @@ namespace WebAPI_Finder_Test.Controllers
     [RoutePrefix("api/Account")]
     public class AccountController : ApiController
     {
+
+        #region Stuff
         private const string LocalLoginProvider = "Local";
         private ApplicationUserManager _userManager;
 
@@ -52,6 +54,40 @@ namespace WebAPI_Finder_Test.Controllers
         }
 
         public ISecureDataFormat<AuthenticationTicket> AccessTokenFormat { get; private set; }
+        #endregion
+
+        public IHttpActionResult GetUserInfoByID(string Id)
+        {
+            if (Id == null)
+            {
+                return BadRequest("Incorrect Id");
+            }
+
+            ApplicationUser user = UserManager.FindById(Id);
+            if (user == null)
+            {
+                return BadRequest("Id doesn`t exist");
+            }
+            return Ok(user);
+        }
+
+        public IHttpActionResult Get(string email)
+        {
+            if (email == null)
+                return BadRequest("Emaill is null");
+
+            var user = UserManager.FindByEmail(email);
+
+            if (user == null)
+                return BadRequest("User doesn`t exist");
+
+            return Ok(user);
+        }
+
+
+
+
+
 
         // GET api/Account/UserInfo
         [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
@@ -69,23 +105,7 @@ namespace WebAPI_Finder_Test.Controllers
         }
 
 
-        public IHttpActionResult GetUserInfoByID(string Id)
-        {
-            if(Id==null)
-            {
-                return BadRequest("Incorrect Id");
-            }
 
-            ApplicationUser user = UserManager.FindById(Id);
-            if(user==null)
-            {
-                return BadRequest("Id doesn`t exist");
-            }
-            
-
-
-            return Ok(user);
-        }
 
 
         // POST api/Account/Logout

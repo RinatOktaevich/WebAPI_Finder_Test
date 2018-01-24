@@ -19,6 +19,15 @@ namespace WebAPI_Finder_Test
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+
+          //  routes.MapRoute(
+          //    name: "User",
+          //    url: "user/{controller}",
+          //    defaults: new { controller = "Account"}
+          //);
+
+
         }
     }
 }
