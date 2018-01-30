@@ -17,12 +17,13 @@ using WebAPI_Finder_Test.Models;
 using WebAPI_Finder_Test.Providers;
 using WebAPI_Finder_Test.Results;
 using System.Web.Http.Cors;
+using System.Text.RegularExpressions;
 
-namespace WebAPI_Finder_Test.Controllers
+namespace WebAPI_Finder_Test.Controllersз
 {
     [EnableCors(origins: "*", headers: "*", methods: "*", SupportsCredentials = true)]
     [Authorize]
-    [RoutePrefix("api/Account")]
+    [RoutePrefix("api/user")]
     public class AccountController : ApiController
     {
 
@@ -71,6 +72,26 @@ namespace WebAPI_Finder_Test.Controllers
             return Ok(user);
         }
 
+        //[HttpGet]
+        //[AllowAnonymous]
+        //[Route("get")]
+        //public IHttpActionResult Get(string email)
+        //{
+        //    if (email == null)
+        //        return BadRequest("Emaill is null");
+
+        //    var user = UserManager.FindByEmail(email);
+
+        //    if (user == null)
+        //        return BadRequest("User doesn`t exist");
+
+        //    return Ok(user);
+        //}
+
+
+        [HttpGet]
+        [AllowAnonymous]
+        [Route("get")]
         public IHttpActionResult Get(string email)
         {
             if (email == null)
@@ -83,6 +104,11 @@ namespace WebAPI_Finder_Test.Controllers
 
             return Ok(user);
         }
+
+
+
+
+
 
 
 
@@ -370,17 +396,17 @@ namespace WebAPI_Finder_Test.Controllers
                 return BadRequest(ModelState);
             }
 
-            ApplicationUser user = new ApplicationUser() { UserName = model.Email, Email = model.Email, Firstname = model.Firstname, Lastname = model.Lastname, BirthDate = model.BirthDate };
-
-
+            ApplicationUser user = new ApplicationUser() { UserName = model.Email, Email = model.Email, Firstname = model.Firstname, Lastname = model.Lastname, BirthDate = model.BirthDate};
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
-
 
             if (!result.Succeeded)
             {
                 return GetErrorResult(result);
             }
+            user.Login = CreateLogin(model.Email, user.Id);
+            UserManager.Update(user);
+
 
             return Ok();
         }
@@ -430,6 +456,16 @@ namespace WebAPI_Finder_Test.Controllers
         }
 
         #region Helpers
+
+
+        private string CreateLogin(string mail, string ID)
+        {
+            Regex regex = new Regex("(?<name>.*)(@)(.*)");
+            var match = regex.Match(mail);
+
+            return match.Groups["name"].Value + ID.Substring(0, 4);
+        }
+
 
         private IAuthenticationManager Authentication
         {

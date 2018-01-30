@@ -260,6 +260,10 @@
     <Compile Include="Migrations\201801221351273_add new props to user.Designer.cs">
       <DependentUpon>201801221351273_add new props to user.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801292332035_Add login to user.cs" />
+    <Compile Include="Migrations\201801292332035_Add login to user.Designer.cs">
+      <DependentUpon>201801292332035_Add login to user.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -348,6 +352,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801221351273_add new props to user.resx">
       <DependentUpon>201801221351273_add new props to user.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801292332035_Add login to user.resx">
+      <DependentUpon>201801292332035_Add login to user.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

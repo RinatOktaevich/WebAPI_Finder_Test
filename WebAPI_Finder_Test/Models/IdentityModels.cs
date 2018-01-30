@@ -17,6 +17,9 @@ namespace WebAPI_Finder_Test.Models
 
         public DateTime BirthDate { get; set; }
 
+        public string Login { get; set; }
+
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager, string authenticationType)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
