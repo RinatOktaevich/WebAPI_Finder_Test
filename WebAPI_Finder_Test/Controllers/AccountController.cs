@@ -19,12 +19,13 @@ using WebAPI_Finder_Test.Results;
 using System.Web.Http.Cors;
 using System.Text.RegularExpressions;
 using System.Linq;
+using System.Data.Entity;
 
 namespace WebAPI_Finder_Test.Controllersз
 {
     [EnableCors(origins: "*", headers: "*", methods: "*", SupportsCredentials = true)]
     [Authorize]
-    [RoutePrefix("api/user")]
+    [RoutePrefix("api/Account")]
     public class AccountController : ApiController
     {
 
@@ -73,37 +74,39 @@ namespace WebAPI_Finder_Test.Controllersз
             return Ok(user);
         }
 
-        //[HttpGet]
-        //[AllowAnonymous]
-        //[Route("get")]
-        //public IHttpActionResult Get(string email)
-        //{
-        //    if (email == null)
-        //        return BadRequest("Emaill is null");
-
-        //    var user = UserManager.FindByEmail(email);
-
-        //    if (user == null)
-        //        return BadRequest("User doesn`t exist");
-
-        //    return Ok(user);
-        //}
-
         [HttpGet]
-        [AllowAnonymous]
         [Route("get")]
-        public IHttpActionResult Get(string login)
+        public IHttpActionResult Get(string email)
         {
-            if (login == null)
-                return BadRequest("Login is null");
+            if (email == null)
+                return BadRequest("Emaill is null");
 
-            var user = UserManager.Users.Where(u => u.Login == login).ToList();
+            // var user = UserManager.FindByEmail(email);
+            ApplicationDbContext db = new ApplicationDbContext();
+            //db.Entry(user).Collection(u => u.Claims).Load();
+            var user = db.Users.Include(u => u.Claims).First(u => u.Email == email);
 
             if (user == null)
-                return BadRequest("Login doesn`t exist");
+                return BadRequest("Email doesn`t exist");
 
             return Ok(user);
         }
+
+        //[HttpGet]
+        //[AllowAnonymous]
+        //[Route("get")]
+        //public IHttpActionResult Get(string login)
+        //{
+        //    if (login == null)
+        //        return BadRequest("Login is null");
+
+        //    var user = UserManager.Users.Where(u => u.Login == login).ToList();
+
+        //    if (user == null)
+        //        return BadRequest("Login doesn`t exist");
+
+        //    return Ok(user);
+        //}
 
 
 
