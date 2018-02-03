@@ -79,7 +79,7 @@ namespace WebAPI_Finder_Test.Controllersз
             var user = db.Users.Include(u => u.Claims).First(u => u.Email == email);
 
             if (user == null)
-                return BadRequest("Email doesn`t exist");
+                return NotFound();
 
             return Ok(user);
         }
@@ -100,7 +100,7 @@ namespace WebAPI_Finder_Test.Controllersз
             var user = UserManager.Users.Where(u => u.Login == login).ToList()[0];
 
             if (user == null)
-                return BadRequest("Login doesn`t exist");
+                return NotFound();
 
             return Ok(user);
         }
