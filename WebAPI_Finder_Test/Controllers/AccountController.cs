@@ -18,6 +18,7 @@ using WebAPI_Finder_Test.Providers;
 using WebAPI_Finder_Test.Results;
 using System.Web.Http.Cors;
 using System.Text.RegularExpressions;
+using System.Linq;
 
 namespace WebAPI_Finder_Test.Controllersз
 {
@@ -88,49 +89,57 @@ namespace WebAPI_Finder_Test.Controllersз
         //    return Ok(user);
         //}
 
-
         [HttpGet]
         [AllowAnonymous]
         [Route("get")]
-        public IHttpActionResult Get(string email)
+        public IHttpActionResult Get(string login)
         {
-            if (email == null)
-                return BadRequest("Emaill is null");
+            if (login == null)
+                return BadRequest("Login is null");
 
-            var user = UserManager.FindByEmail(email);
+            var user = UserManager.Users.Where(u => u.Login == login).ToList();
 
             if (user == null)
-                return BadRequest("User doesn`t exist");
+                return BadRequest("Login doesn`t exist");
 
             return Ok(user);
         }
 
 
 
-
-
-
-
-
-
-
-
-        // GET api/Account/UserInfo
-        [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
-        [Route("UserInfo")]
-        public UserInfoViewModel GetUserInfo()
+        [HttpGet]
+        [AllowAnonymous]
+        [Route("getAll")]
+        public IHttpActionResult GetAll()
         {
-            ExternalLoginData externalLogin = ExternalLoginData.FromIdentity(User.Identity as ClaimsIdentity);
+            List<ApplicationUser> users = new List<ApplicationUser>();
+            users = UserManager.Users.ToList();
 
-            return new UserInfoViewModel
-            {
-                Email = User.Identity.GetUserName(),
-                HasRegistered = externalLogin == null,
-                LoginProvider = externalLogin != null ? externalLogin.LoginProvider : null
-            };
+            return Ok(users);
         }
 
 
+
+
+
+
+
+        //// GET api/Account/UserInfo
+        //[HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
+        //[Route("UserInfo")]
+        //public UserInfoViewModel GetUserInfo()
+        //{
+        //    ExternalLoginData externalLogin = ExternalLoginData.FromIdentity(User.Identity as ClaimsIdentity);
+
+        //    return new UserInfoViewModel
+        //    {
+        //        Email = User.Identity.GetUserName(),
+        //        HasRegistered = externalLogin == null,
+        //        LoginProvider = externalLogin != null ? externalLogin.LoginProvider : null
+        //    };
+        //}
+
+        #region Project stuff
 
 
 
@@ -396,7 +405,7 @@ namespace WebAPI_Finder_Test.Controllersз
                 return BadRequest(ModelState);
             }
 
-            ApplicationUser user = new ApplicationUser() { UserName = model.Email, Email = model.Email, Firstname = model.Firstname, Lastname = model.Lastname, BirthDate = model.BirthDate};
+            ApplicationUser user = new ApplicationUser() { UserName = model.Email, Email = model.Email, Firstname = model.Firstname, Lastname = model.Lastname, BirthDate = model.BirthDate };
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 
@@ -454,6 +463,7 @@ namespace WebAPI_Finder_Test.Controllersз
 
             base.Dispose(disposing);
         }
+        #endregion
 
         #region Helpers
 
