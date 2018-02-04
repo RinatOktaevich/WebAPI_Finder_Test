@@ -20,6 +20,9 @@ using System.Web.Http.Cors;
 using System.Text.RegularExpressions;
 using System.Linq;
 using System.Data.Entity;
+using System.Net;
+using System.Diagnostics;
+using System.IO;
 
 namespace WebAPI_Finder_Test.Controllersз
 {
@@ -109,7 +112,6 @@ namespace WebAPI_Finder_Test.Controllersз
         //}
 
 
-
         [HttpGet]
         [AllowAnonymous]
         [Route("getAll")]
@@ -121,6 +123,27 @@ namespace WebAPI_Finder_Test.Controllersз
             return Ok(users);
         }
 
+
+        [AllowAnonymous]
+        [Route("setAvatar")]
+        public HttpResponseMessage InsertImage(string email)
+        {
+            // Check if the request contains multipart/form-data.
+            if (!Request.Content.IsMimeMultipartContent())
+            {
+                throw new HttpResponseException(HttpStatusCode.UnsupportedMediaType);
+            }
+            var file = HttpContext.Current.Request.Files[0];
+            var name = "/Images/"+Path.GetRandomFileName().Substring(0, 6) + Path.GetFileName(file.FileName);
+            string filePath = HttpContext.Current.Server.MapPath(name);
+
+            file.SaveAs(filePath);
+
+            ApplicationDbContext db = new ApplicationDbContext();
+            db.Users.First(u => u.Email == email).AvatarImage = name;
+            db.SaveChanges();
+            return new HttpResponseMessage(HttpStatusCode.Created);
+        }
 
 
 
