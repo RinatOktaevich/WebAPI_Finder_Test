@@ -26,7 +26,6 @@ using System.IO;
 
 namespace WebAPI_Finder_Test.Controllersз
 {
-    [EnableCors(origins: "*", headers: "*", methods: "*", SupportsCredentials = true)]
     [Authorize]
     [RoutePrefix("api/Account")]
     public class AccountController : ApiController
