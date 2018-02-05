@@ -30,7 +30,6 @@ namespace WebAPI_Finder_Test.Controllersз
     [RoutePrefix("api/Account")]
     public class AccountController : ApiController
     {
-
         #region Stuff
         private const string LocalLoginProvider = "Local";
         private ApplicationUserManager _userManager;
@@ -60,25 +59,18 @@ namespace WebAPI_Finder_Test.Controllersз
 
         public ISecureDataFormat<AuthenticationTicket> AccessTokenFormat { get; private set; }
         #endregion
+       
 
-        public IHttpActionResult GetUserInfoByID(string Id)
-        {
-            if (Id == null)
-            {
-                return BadRequest("Incorrect Id");
-            }
 
-            ApplicationUser user = UserManager.FindById(Id);
-            if (user == null)
-            {
-                return BadRequest("Id doesn`t exist");
-            }
-            return Ok(user);
-        }
-
+        /// <summary>
+        /// Get user by email
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
         [HttpGet]
-        [Route("get")]
-        public IHttpActionResult Get(string email)
+        [AllowAnonymous]
+        [Route("get/email")]
+        public IHttpActionResult Get_email(string email)
         {
             if (email == null)
                 return BadRequest("Emaill is null");
@@ -89,27 +81,31 @@ namespace WebAPI_Finder_Test.Controllersз
             var user = db.Users.Include(u => u.Claims).First(u => u.Email == email);
 
             if (user == null)
-                return BadRequest("Email doesn`t exist");
+                return NotFound();
 
             return Ok(user);
         }
 
-        //[HttpGet]
-        //[AllowAnonymous]
-        //[Route("get")]
-        //public IHttpActionResult Get(string login)
-        //{
-        //    if (login == null)
-        //        return BadRequest("Login is null");
+        /// <summary>
+        /// Get user by login 
+        /// </summary>
+        /// <param name="login"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [AllowAnonymous]
+        [Route("get/login")]
+        public IHttpActionResult Get_login(string login)
+        {
+            if (login == null)
+                return BadRequest("Login is null");
 
-        //    var user = UserManager.Users.Where(u => u.Login == login).ToList();
+            var user = UserManager.Users.Where(u => u.Login == login).ToList()[0];
 
-        //    if (user == null)
-        //        return BadRequest("Login doesn`t exist");
+            if (user == null)
+                return NotFound();
 
-        //    return Ok(user);
-        //}
-
+            return Ok(user);
+        }
 
         [HttpGet]
         [AllowAnonymous]
