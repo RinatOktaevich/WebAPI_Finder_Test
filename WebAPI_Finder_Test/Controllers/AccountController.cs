@@ -60,6 +60,28 @@ namespace WebAPI_Finder_Test.Controllersз
         public ISecureDataFormat<AuthenticationTicket> AccessTokenFormat { get; private set; }
         #endregion
        
+        /// <summary>
+        /// Find user by Email
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns>
+        /// If user doesn`t exist you will have NotFound Request.
+        /// If 'email' is null ,'NoContent' Request.
+        /// If user exist 'Found' request</returns>
+        [HttpGet]
+        [AllowAnonymous]
+        public HttpResponseMessage IsUserExists (string email)
+        {
+            if (email == string.Empty)
+                return new HttpResponseMessage(HttpStatusCode.NoContent);
+
+            var user = UserManager.FindByEmail(email);
+            if (user == null)
+                return new HttpResponseMessage(HttpStatusCode.NotFound);
+            return new HttpResponseMessage(HttpStatusCode.Found);
+        }
+
+
 
 
         /// <summary>
