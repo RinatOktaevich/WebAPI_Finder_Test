@@ -72,7 +72,7 @@ namespace WebAPI_Finder_Test.Controllersз
         [AllowAnonymous]
         public HttpResponseMessage IsUserExists (string email)
         {
-            if (email == string.Empty)
+            if (email == null)
                 return new HttpResponseMessage(HttpStatusCode.NoContent);
 
             var user = UserManager.FindByEmail(email);
