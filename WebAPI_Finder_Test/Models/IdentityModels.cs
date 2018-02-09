@@ -4,6 +4,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using System;
+using System.Collections.Generic;
+using System.Data.Entity;
 
 namespace WebAPI_Finder_Test.Models
 {
@@ -21,6 +23,12 @@ namespace WebAPI_Finder_Test.Models
 
         public string AvatarImage { get; set; }
 
+        public ICollection<Photo> Photos { get; set; }
+
+        public ApplicationUser()
+        {
+            Photos = new List<Photo>();
+        }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager, string authenticationType)
         {
@@ -38,9 +46,12 @@ namespace WebAPI_Finder_Test.Models
         {
         }
 
+        public virtual DbSet<Photo> Photos { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
+
     }
 }
