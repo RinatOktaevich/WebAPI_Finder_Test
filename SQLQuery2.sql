@@ -1,5 +1,4 @@
 ﻿select *
-from AspNetUsers
+from Photos
 
-select *
-from AspNetUserLogins
+delete from Photos
