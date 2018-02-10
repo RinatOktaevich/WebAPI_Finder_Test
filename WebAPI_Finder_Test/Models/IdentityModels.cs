@@ -25,9 +25,12 @@ namespace WebAPI_Finder_Test.Models
 
         public ICollection<Photo> Photos { get; set; }
 
+        public ICollection<Audio> AudioTracks { get; set; }
+
         public ApplicationUser()
         {
             Photos = new List<Photo>();
+            AudioTracks = new List<Audio>();
         }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager, string authenticationType)
@@ -47,6 +50,7 @@ namespace WebAPI_Finder_Test.Models
         }
 
         public virtual DbSet<Photo> Photos { get; set; }
+        public virtual DbSet<Audio> AudioTracks { get; set; }
 
         public static ApplicationDbContext Create()
         {

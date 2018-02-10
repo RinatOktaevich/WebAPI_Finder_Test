@@ -247,6 +247,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AudioTracksController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImageController.cs" />
     <Compile Include="Controllers\PhotoController.cs" />
@@ -274,9 +275,15 @@
     <Compile Include="Migrations\201802072049397_Photo Collection to User.Designer.cs">
       <DependentUpon>201802072049397_Photo Collection to User.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201802101311031_Audio tracks.cs" />
+    <Compile Include="Migrations\201802101311031_Audio tracks.Designer.cs">
+      <DependentUpon>201802101311031_Audio tracks.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Audio.cs" />
+    <Compile Include="Models\Helpers\FileSaver.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Photo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -349,8 +356,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Audio\" />
     <Folder Include="Images\" />
     <Folder Include="Photos\" />
+    <Folder Include="Views\AudioTracks\" />
     <Folder Include="Views\Photo\" />
   </ItemGroup>
   <ItemGroup>
@@ -376,6 +385,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201802072049397_Photo Collection to User.resx">
       <DependentUpon>201802072049397_Photo Collection to User.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802101311031_Audio tracks.resx">
+      <DependentUpon>201802101311031_Audio tracks.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
