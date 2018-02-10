@@ -56,7 +56,7 @@ namespace WebAPI_Finder_Test.Controllersз
 
         public ISecureDataFormat<AuthenticationTicket> AccessTokenFormat { get; private set; }
         #endregion
-       
+
         /// <summary>
         /// Find user by Email
         /// </summary>
@@ -67,7 +67,7 @@ namespace WebAPI_Finder_Test.Controllersз
         /// If user exist 'Found' request</returns>
         [HttpGet]
         [AllowAnonymous]
-        public HttpResponseMessage IsUserExists (string email)
+        public HttpResponseMessage IsUserExists(string email)
         {
             if (email == null)
                 return new HttpResponseMessage(HttpStatusCode.NoContent);
@@ -78,6 +78,41 @@ namespace WebAPI_Finder_Test.Controllersз
             return new HttpResponseMessage(HttpStatusCode.Found);
         }
 
+        [HttpPost]
+        [AllowAnonymous]
+        [Route("delete")]
+        public async Task<HttpResponseMessage> Delete(string email)
+        {
+            if (email == null)
+            {
+                return new HttpResponseMessage(HttpStatusCode.NoContent);
+            }
+            var user = UserManager.FindByName(email);
+
+            if (user == null)
+            {
+                return new HttpResponseMessage(HttpStatusCode.NotFound);
+            }
+
+
+            var Server = HttpContext.Current.Server;
+            ApplicationDbContext db = new ApplicationDbContext();
+
+            File.Delete(Server.MapPath(user.AvatarImage));
+
+            foreach (var item in db.Entry(user).Entity.Photos.ToList())
+            {
+                File.Delete(Server.MapPath(item.Url));
+            }
+            user.Photos.Clear();
+            await UserManager.DeleteAsync(user);
+
+
+            db.Entry(user).State = EntityState.Deleted;
+            await db.SaveChangesAsync();
+
+            return new HttpResponseMessage(HttpStatusCode.OK);
+        }
 
 
 
@@ -403,7 +438,7 @@ namespace WebAPI_Finder_Test.Controllersз
                 return BadRequest(ModelState);
             }
 
-            ApplicationUser user = new ApplicationUser() { UserName = model.Email, Email = model.Email, Firstname = model.Firstname, Lastname = model.Lastname, BirthDate = model.BirthDate, AvatarImage="/Images/defaultImg.jpg" };
+            ApplicationUser user = new ApplicationUser() { UserName = model.Email, Email = model.Email, Firstname = model.Firstname, Lastname = model.Lastname, BirthDate = model.BirthDate, AvatarImage = "/Images/defaultImg.jpg" };
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 
