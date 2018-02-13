@@ -23,7 +23,7 @@ namespace WebAPI_Finder_Test.Models
 
         public string AvatarImage { get; set; }
 
-        public ICollection<Photo> Photos { get; set; }
+        public virtual ICollection<Photo> Photos { get; set; }
 
         public ApplicationUser()
         {
@@ -52,6 +52,8 @@ namespace WebAPI_Finder_Test.Models
         {
             return new ApplicationDbContext();
         }
+
+      
 
     }
 }

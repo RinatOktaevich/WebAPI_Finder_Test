@@ -274,6 +274,10 @@
     <Compile Include="Migrations\201802072049397_Photo Collection to User.Designer.cs">
       <DependentUpon>201802072049397_Photo Collection to User.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201802132159089_FK to photo.cs" />
+    <Compile Include="Migrations\201802132159089_FK to photo.Designer.cs">
+      <DependentUpon>201802132159089_FK to photo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -376,6 +380,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201802072049397_Photo Collection to User.resx">
       <DependentUpon>201802072049397_Photo Collection to User.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802132159089_FK to photo.resx">
+      <DependentUpon>201802132159089_FK to photo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

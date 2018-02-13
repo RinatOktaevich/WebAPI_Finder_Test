@@ -87,28 +87,28 @@ namespace WebAPI_Finder_Test.Controllersз
             {
                 return new HttpResponseMessage(HttpStatusCode.NoContent);
             }
-            var user = UserManager.FindByName(email);
+
+            ApplicationDbContext db = new ApplicationDbContext();
+            var user = db.Users.FirstOrDefault(u => u.UserName == email);
 
             if (user == null)
             {
                 return new HttpResponseMessage(HttpStatusCode.NotFound);
             }
 
-
             var Server = HttpContext.Current.Server;
-            ApplicationDbContext db = new ApplicationDbContext();
 
             File.Delete(Server.MapPath(user.AvatarImage));
 
-            foreach (var item in db.Entry(user).Entity.Photos.ToList())
+            foreach (var item in user.Photos.ToList())
             {
                 File.Delete(Server.MapPath(item.Url));
             }
-            user.Photos.Clear();
-            await UserManager.DeleteAsync(user);
 
+            db.Photos.RemoveRange(user.Photos);
 
-            db.Entry(user).State = EntityState.Deleted;
+            db.Users.Remove(user);
+            
             await db.SaveChangesAsync();
 
             return new HttpResponseMessage(HttpStatusCode.OK);
