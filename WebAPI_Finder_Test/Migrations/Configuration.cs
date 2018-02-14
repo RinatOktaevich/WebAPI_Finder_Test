@@ -10,7 +10,7 @@ namespace WebAPI_Finder_Test.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
             AutomaticMigrationDataLossAllowed = true;
         }
 

@@ -45,7 +45,7 @@ namespace WebAPI_Finder_Test.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("DtConnection", throwIfV1Schema: false)
         {
         }
 

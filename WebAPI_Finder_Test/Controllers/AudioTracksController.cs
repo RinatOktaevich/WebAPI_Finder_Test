@@ -31,14 +31,7 @@ namespace WebAPI_Finder_Test.Controllers
                     return new HttpResponseMessage(HttpStatusCode.UnsupportedMediaType);
                 }
 
-                #region Changed
                 soundtrack = FileSaver.SaveImage("/Audio/");
-                #endregion
-
-                #region Original
-                //image = SaveImage("/Images/");
-                #endregion
-
             }
             catch (Exception)
             {
