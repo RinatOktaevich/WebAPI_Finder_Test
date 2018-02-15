@@ -7,13 +7,13 @@ namespace WebAPI_Finder_Test.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class Addlogintouser : IMigrationMetadata
+    public sealed partial class seed : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Addlogintouser));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(seed));
         
         string IMigrationMetadata.Id
         {
-            get { return "201801292332035_Add login to user"; }
+            get { return "201802151756109_seed"; }
         }
         
         string IMigrationMetadata.Source
