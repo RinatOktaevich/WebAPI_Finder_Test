@@ -14,7 +14,14 @@ namespace WebAPI_Finder_Test.Models
         [DataType(DataType.Url)]
         public string Url { get; set; }
 
-        public ApplicationUser User { get; set; }
+        public string ApplicationUserId { get; set; }
+
+        public virtual ApplicationUser User { get; set; }
+
+        public Photo()
+        {
+
+        }
 
         public Photo(string url)
         {

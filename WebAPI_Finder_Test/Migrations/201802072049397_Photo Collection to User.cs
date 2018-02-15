@@ -10,11 +10,11 @@ namespace WebAPI_Finder_Test.Migrations
             CreateTable(
                 "dbo.Photos",
                 c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Url = c.String(nullable: false),
-                        User_Id = c.String(maxLength: 128),
-                    })
+                {
+                    Id = c.Int(nullable: false, identity: true),
+                    Url = c.String(nullable: false),
+                    User_Id = c.String(maxLength: 128),
+                })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.AspNetUsers", t => t.User_Id)
                 .Index(t => t.User_Id);

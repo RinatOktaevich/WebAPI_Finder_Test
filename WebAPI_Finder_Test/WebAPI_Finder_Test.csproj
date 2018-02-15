@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
@@ -275,6 +275,7 @@
     <Compile Include="Migrations\201802072049397_Photo Collection to User.Designer.cs">
       <DependentUpon>201802072049397_Photo Collection to User.cs</DependentUpon>
     </Compile>
+
     <Compile Include="Migrations\201802101311031_Audio tracks.cs" />
     <Compile Include="Migrations\201802101311031_Audio tracks.Designer.cs">
       <DependentUpon>201802101311031_Audio tracks.cs</DependentUpon>
@@ -286,7 +287,13 @@
     <Compile Include="Migrations\201802151507064_Likes.cs" />
     <Compile Include="Migrations\201802151507064_Likes.Designer.cs">
       <DependentUpon>201802151507064_Likes.cs</DependentUpon>
+      </Compile>
+
+    <Compile Include="Migrations\201802132159089_FK to photo.cs" />
+    <Compile Include="Migrations\201802132159089_FK to photo.Designer.cs">
+      <DependentUpon>201802132159089_FK to photo.cs</DependentUpon>
     </Compile>
+    
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -398,6 +405,7 @@
     <EmbeddedResource Include="Migrations\201802072049397_Photo Collection to User.resx">
       <DependentUpon>201802072049397_Photo Collection to User.cs</DependentUpon>
     </EmbeddedResource>
+    
     <EmbeddedResource Include="Migrations\201802101311031_Audio tracks.resx">
       <DependentUpon>201802101311031_Audio tracks.cs</DependentUpon>
     </EmbeddedResource>
@@ -406,6 +414,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201802151507064_Likes.resx">
       <DependentUpon>201802151507064_Likes.cs</DependentUpon>
+       </EmbeddedResource>
+
+    <EmbeddedResource Include="Migrations\201802132159089_FK to photo.resx">
+      <DependentUpon>201802132159089_FK to photo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
