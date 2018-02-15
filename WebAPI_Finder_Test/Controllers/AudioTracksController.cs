@@ -41,7 +41,7 @@ namespace WebAPI_Finder_Test.Controllers
             }
 
             ApplicationDbContext db = new ApplicationDbContext();
-            var user = db.Users.First(u => u.UserName == email);//.AudioTracks.Add(new Audio(_url: soundtrack, _pr: performer, _ttl: tittle));
+            var user = db.Users.First(u => u.UserName == email);
 
             user.AudioTracks.Add(new Audio(_url: soundtrack, _pr: performer, _ttl: tittle,authLogin:user.Login));
 
