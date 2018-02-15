@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Web;
 using System.Web.Http;
 using WebAPI_Finder_Test.Models;
+using WebAPI_Finder_Test.Models.Helpers;
 
 namespace WebAPI_Finder_Test.Controllers
 {
@@ -33,7 +34,13 @@ namespace WebAPI_Finder_Test.Controllers
                     return new HttpResponseMessage(HttpStatusCode.UnsupportedMediaType);
                 }
 
-                image = SaveImage("/Photos/");
+                #region Changed
+                image = FileSaver.SaveImage("/Photos/");
+                #endregion
+
+                #region Original
+                //image = SaveImage("/Images/");
+                #endregion
 
             }
             catch (Exception)
@@ -45,7 +52,7 @@ namespace WebAPI_Finder_Test.Controllers
             db.Users.First(u => u.Email == email).Photos.Add(new Photo(image));
             db.SaveChanges();
 
-            return new HttpResponseMessage(HttpStatusCode.Created);
+            return new HttpResponseMessage(HttpStatusCode.OK);
         }
 
 
@@ -64,13 +71,20 @@ namespace WebAPI_Finder_Test.Controllers
                     return new HttpResponseMessage(HttpStatusCode.UnsupportedMediaType);
                 }
 
-                image = SaveImage("/Images/");
+                #region Changed
+                image = FileSaver.SaveImage("/Images/");
+                #endregion
+
+                #region Original
+                //image = SaveImage("/Images/");
+                #endregion
+
             }
             catch (Exception)
             {
                 return new HttpResponseMessage(HttpStatusCode.NoContent);
             }
-           
+
             ApplicationDbContext db = new ApplicationDbContext();
             var user = db.Users.First(u => u.Email == email);
             if (user.AvatarImage != null)
@@ -80,7 +94,7 @@ namespace WebAPI_Finder_Test.Controllers
             user.AvatarImage = image;
             db.Entry(user).State = System.Data.Entity.EntityState.Modified;
             db.SaveChanges();
-            return new HttpResponseMessage(HttpStatusCode.Created);
+            return new HttpResponseMessage(HttpStatusCode.OK);
         }
 
         #region Helpers

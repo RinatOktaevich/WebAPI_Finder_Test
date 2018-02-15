@@ -25,9 +25,12 @@ namespace WebAPI_Finder_Test.Models
 
         public virtual ICollection<Photo> Photos { get; set; }
 
+        public virtual ICollection<Audio> AudioTracks { get; set; }
+
         public ApplicationUser()
         {
             Photos = new List<Photo>();
+            AudioTracks = new List<Audio>();
         }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager, string authenticationType)
@@ -42,11 +45,14 @@ namespace WebAPI_Finder_Test.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("DtConnect", throwIfV1Schema: false)
         {
         }
 
         public virtual DbSet<Photo> Photos { get; set; }
+        public virtual DbSet<Audio> AudioTracks { get; set; }
+
+        public virtual DbSet<Like> Likes { get; set; }
 
         public static ApplicationDbContext Create()
         {
