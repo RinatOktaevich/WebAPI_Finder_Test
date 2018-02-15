@@ -45,12 +45,14 @@ namespace WebAPI_Finder_Test.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DtConnection", throwIfV1Schema: false)
+            : base("DtConnect", throwIfV1Schema: false)
         {
         }
 
         public virtual DbSet<Photo> Photos { get; set; }
         public virtual DbSet<Audio> AudioTracks { get; set; }
+
+        public virtual DbSet<Like> Likes { get; set; }
 
         public static ApplicationDbContext Create()
         {

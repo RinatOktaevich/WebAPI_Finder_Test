@@ -283,12 +283,17 @@
     <Compile Include="Migrations\201802150027120_Virtual prop.Designer.cs">
       <DependentUpon>201802150027120_Virtual prop.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201802151507064_Likes.cs" />
+    <Compile Include="Migrations\201802151507064_Likes.Designer.cs">
+      <DependentUpon>201802151507064_Likes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Audio.cs" />
     <Compile Include="Models\Helpers\FileSaver.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Like.cs" />
     <Compile Include="Models\Photo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
@@ -362,6 +367,9 @@
     <Folder Include="App_Data\" />
     <Folder Include="Audio\" />
     <Folder Include="Images\" />
+    <Folder Include="Migrations\201802151405553_CoverMe LoginAuthor Likes\" />
+    <Folder Include="Migrations\201802151406443_CoverMe LoginAuthor Likes\" />
+    <Folder Include="Migrations\201802151407410_CoverMe LoginAuthor Likes\" />
     <Folder Include="Photos\" />
     <Folder Include="Views\AudioTracks\" />
     <Folder Include="Views\Photo\" />
@@ -395,6 +403,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201802150027120_Virtual prop.resx">
       <DependentUpon>201802150027120_Virtual prop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802151507064_Likes.resx">
+      <DependentUpon>201802151507064_Likes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
@@ -57,12 +58,12 @@ namespace WebAPI_Finder_Test.Controllers
             Audio track;
             try
             {
-                track = db.AudioTracks.First(tr => tr.Id == idTrack);
+                track = db.AudioTracks.Find(idTrack);
 
             }
             catch (Exception ex)
             {
-                if(ex.HResult == -2146233079)
+                if (ex.HResult == -2146233079)
                 {
                     return Request.CreateResponse(HttpStatusCode.NotFound, "Track wasn`t found");
                 }
@@ -78,6 +79,34 @@ namespace WebAPI_Finder_Test.Controllers
 
             return Request.CreateResponse(HttpStatusCode.OK);
         }
+
+
+
+        [AllowAnonymous]
+        [HttpPost]
+        [Route("Like")]
+        public async Task<HttpResponseMessage> LikeTrack(string idUser, int idTrack)
+        {
+            ApplicationDbContext db = new ApplicationDbContext();
+            Like like = new Like(idTrack, idUser);
+
+            var Likes = db.Likes.Where(lk => lk.AudioId == idTrack && lk.ApplicationUserId == idUser).ToList();
+
+            if (Likes.Count() == 0)
+            {
+                db.Likes.Add(new Like(idTrack, idUser));
+            }
+            else
+            {
+                db.Likes.Remove(Likes[0]);
+            }
+
+            await db.SaveChangesAsync();
+
+            return Request.CreateResponse(HttpStatusCode.OK);
+        }
+
+
 
 
     }
