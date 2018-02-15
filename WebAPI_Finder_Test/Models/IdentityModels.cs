@@ -25,7 +25,7 @@ namespace WebAPI_Finder_Test.Models
 
         public ICollection<Photo> Photos { get; set; }
 
-        public ICollection<Audio> AudioTracks { get; set; }
+        public virtual ICollection<Audio> AudioTracks { get; set; }
 
         public ApplicationUser()
         {

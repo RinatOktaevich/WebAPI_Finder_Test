@@ -24,13 +24,20 @@ namespace WebAPI_Finder_Test.Models
         [StringLength(50)]
         public string Title { get; set; }
 
-        public  ApplicationUser User { get; set; }
+        public string ApplicationUserId { get; set; }
+
+        public virtual  ApplicationUser User { get; set; }
 
         public Audio(string _url,string _pr,string _ttl)
         {
             Url = _url;
             Performer = _pr;
             Title = _ttl;
+        }
+
+        public Audio()
+        {
+
         }
 
     }

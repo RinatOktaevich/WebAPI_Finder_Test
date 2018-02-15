@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -44,5 +45,40 @@ namespace WebAPI_Finder_Test.Controllers
             await db.SaveChangesAsync();
             return new HttpResponseMessage(HttpStatusCode.OK);
         }
+
+
+        [AllowAnonymous]
+        [HttpPost]
+        [Route("Delete")]
+        public async Task<HttpResponseMessage> DeleteTrack(int idTrack)
+        {
+
+            ApplicationDbContext db = new ApplicationDbContext();
+            Audio track;
+            try
+            {
+                track = db.AudioTracks.First(tr => tr.Id == idTrack);
+
+            }
+            catch (Exception ex)
+            {
+                if(ex.HResult == -2146233079)
+                {
+                    return Request.CreateResponse(HttpStatusCode.NotFound, "Track wasn`t found");
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+                }
+            }
+
+            File.Delete(HttpContext.Current.Server.MapPath(track.Url));
+            db.AudioTracks.Remove(track);
+            await db.SaveChangesAsync();
+
+            return Request.CreateResponse(HttpStatusCode.OK);
+        }
+
+
     }
 }

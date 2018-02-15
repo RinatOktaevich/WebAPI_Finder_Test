@@ -279,6 +279,10 @@
     <Compile Include="Migrations\201802101311031_Audio tracks.Designer.cs">
       <DependentUpon>201802101311031_Audio tracks.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201802150027120_Virtual prop.cs" />
+    <Compile Include="Migrations\201802150027120_Virtual prop.Designer.cs">
+      <DependentUpon>201802150027120_Virtual prop.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -388,6 +392,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201802101311031_Audio tracks.resx">
       <DependentUpon>201802101311031_Audio tracks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802150027120_Virtual prop.resx">
+      <DependentUpon>201802150027120_Virtual prop.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
