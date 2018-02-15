@@ -30,11 +30,12 @@ namespace WebAPI_Finder_Test.Models
 
         public virtual ApplicationUser User { get; set; }
 
-        public Audio(string _url, string _pr, string _ttl)
+        public Audio(string _url, string _pr, string _ttl,string authLogin)
         {
             Url = _url;
             Performer = _pr;
             Title = _ttl;
+            AuthorLogin = authLogin;
         }
 
         public Audio()
