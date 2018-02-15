@@ -109,6 +109,23 @@ namespace WebAPI_Finder_Test.Controllers
         }
 
 
+        [AllowAnonymous]
+        [HttpPost]
+        [Route("AudioList")]
+        public IHttpActionResult GetAudios(string iduser)
+        {
+            ApplicationDbContext db = new ApplicationDbContext();
+            var user = db.Users.Find(iduser);
+            if(user==null)
+            {
+                return BadRequest("User doesn`t found");
+            }
+
+            var audios = db.AudioTracks.Where(tr => tr.ApplicationUserId == iduser).ToList();
+            
+            return Ok(audios);
+        }
+
 
 
     }

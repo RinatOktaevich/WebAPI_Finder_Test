@@ -8,14 +8,13 @@ using Newtonsoft.Json.Serialization;
 using Microsoft.Owin.Cors;
 using System.Web.Http.Cors;
 
+
 namespace WebAPI_Finder_Test
 {
     public static class WebApiConfig
     {
         public static void Register(HttpConfiguration config)
         {
-
-            config.EnableCors(new  EnableCorsAttribute(origins:"*",headers:"*",methods:"*"));
 
             // Web API configuration and services
             // Configure Web API to use only bearer token authentication.
@@ -24,6 +23,9 @@ namespace WebAPI_Finder_Test
 
             // Web API routes
             config.MapHttpAttributeRoutes();
+
+            var corsAttr = new EnableCorsAttribute("*", "*", "*");
+            config.EnableCors(corsAttr);
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
