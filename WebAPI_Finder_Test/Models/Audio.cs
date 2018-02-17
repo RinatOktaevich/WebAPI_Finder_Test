@@ -30,12 +30,14 @@ namespace WebAPI_Finder_Test.Models
 
         public  ApplicationUser User { get; set; }
 
+
         public Audio(string _url, string _pr, string _ttl,string authLogin)
         {
             Url = _url;
             Performer = _pr;
             Title = _ttl;
             AuthorLogin = authLogin;
+            CountLikes = 0;
         }
 
         public Audio()
@@ -54,7 +56,10 @@ namespace WebAPI_Finder_Test.Models
         [DataType(DataType.Url)]
         public string ImageCover { get; set; }
 
-        public virtual ICollection<Like> Likes { get; set; }
+        public int? CountLikes { get; set; }
+
+        
+        public ICollection<Like> Likes { get; set; }
 
     }
 }

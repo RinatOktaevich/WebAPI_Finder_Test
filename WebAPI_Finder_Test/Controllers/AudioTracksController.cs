@@ -43,7 +43,7 @@ namespace WebAPI_Finder_Test.Controllers
             ApplicationDbContext db = new ApplicationDbContext();
             var user = db.Users.First(u => u.UserName == email);
 
-            user.AudioTracks.Add(new Audio(_url: soundtrack, _pr: performer, _ttl: tittle,authLogin:user.Login));
+            user.AudioTracks.Add(new Audio(_url: soundtrack, _pr: performer, _ttl: tittle, authLogin: user.Login));
 
             await db.SaveChangesAsync();
             return new HttpResponseMessage(HttpStatusCode.OK);
@@ -93,14 +93,17 @@ namespace WebAPI_Finder_Test.Controllers
             Like like = new Like(idTrack, idUser);
 
             var Likes = db.Likes.Where(lk => lk.AudioId == idTrack && lk.ApplicationUserId == idUser).ToList();
+            var track = db.AudioTracks.Find(idTrack);
 
             if (Likes.Count() == 0)
             {
                 db.Likes.Add(new Like(idTrack, idUser));
+                track.CountLikes += 1;
             }
             else
             {
                 db.Likes.Remove(Likes[0]);
+                track.CountLikes -= 1;
             }
 
             await db.SaveChangesAsync();
@@ -116,12 +119,15 @@ namespace WebAPI_Finder_Test.Controllers
         {
             ApplicationDbContext db = new ApplicationDbContext();
             var user = db.Users.Find(iduser);
-            if(user==null)
+            if (user == null)
             {
                 return BadRequest("User doesn`t found");
             }
 
             var audios = db.AudioTracks.Where(tr => tr.ApplicationUserId == iduser).ToList();
+
+
+
 
             return Ok(audios);
         }
