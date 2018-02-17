@@ -28,7 +28,7 @@ namespace WebAPI_Finder_Test.Models
 
         public string ApplicationUserId { get; set; }
 
-        public virtual ApplicationUser User { get; set; }
+        public  ApplicationUser User { get; set; }
 
         public Audio(string _url, string _pr, string _ttl,string authLogin)
         {

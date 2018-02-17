@@ -16,7 +16,7 @@ namespace WebAPI_Finder_Test.Models
 
         public string ApplicationUserId { get; set; }
 
-        public virtual ApplicationUser User { get; set; }
+        public  ApplicationUser User { get; set; }
 
         public Photo()
         {

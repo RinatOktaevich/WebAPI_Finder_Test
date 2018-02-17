@@ -166,8 +166,9 @@ namespace WebAPI_Finder_Test.Controllersз
         [Route("getAll")]
         public IHttpActionResult GetAll()
         {
-            List<ApplicationUser> users = new List<ApplicationUser>();
-            users = UserManager.Users.ToList();
+            // List<ApplicationUser> users = new List<ApplicationUser>();
+            ApplicationDbContext db = new ApplicationDbContext();
+            var users = db.Users.ToList();
 
             return Ok(users);
         }
