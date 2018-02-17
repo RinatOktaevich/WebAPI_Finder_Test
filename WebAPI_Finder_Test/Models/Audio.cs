@@ -60,7 +60,7 @@ namespace WebAPI_Finder_Test.Models
         public int? CountLikes { get; set; }
 
         [NotMapped]
-        public bool IsLicked { get; set; }
+        public bool IsLiked { get; set; }
 
 
         public  ICollection<Like> Likes { get; set; }

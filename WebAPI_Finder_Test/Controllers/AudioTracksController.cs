@@ -157,11 +157,11 @@ namespace WebAPI_Finder_Test.Controllers
 
                 if (res.Count()!= 0)
                 {
-                    item.IsLicked = true;
+                    item.IsLiked = true;
                 }
                 else
                 {
-                    item.IsLicked = false;
+                    item.IsLiked = false;
                 }
                 item.Likes = null;
             }
