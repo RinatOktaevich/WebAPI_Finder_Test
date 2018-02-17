@@ -89,7 +89,7 @@ namespace WebAPI_Finder_Test.Controllersз
             }
 
             ApplicationDbContext db = new ApplicationDbContext();
-            var user = db.Users.FirstOrDefault(u => u.UserName == email);
+            var user = db.Users.Include(xr=>xr.Photos).Include(xr=>xr.AudioTracks).FirstOrDefault(u => u.UserName == email);
 
             if (user == null)
             {
@@ -98,14 +98,27 @@ namespace WebAPI_Finder_Test.Controllersз
 
             var Server = HttpContext.Current.Server;
 
+            //Delete avatar image
             File.Delete(Server.MapPath(user.AvatarImage));
 
-            foreach (var item in user.Photos.ToList())
+            //Delete all user`s photos
+            foreach (var item in user.Photos)
             {
                 File.Delete(Server.MapPath(item.Url));
             }
-
             db.Photos.RemoveRange(user.Photos);
+
+            //Delete all user`s audio tracks
+            foreach (var item in user.AudioTracks)
+            {
+                File.Delete(Server.MapPath(item.Url));
+            }
+            db.AudioTracks.RemoveRange(user.AudioTracks);
+
+
+            //Delete all user`s likes he ever liked
+            var userLikes = db.Likes.Where(xr => xr.ApplicationUserId == user.Id);
+            db.Likes.RemoveRange(userLikes);
 
             db.Users.Remove(user);
             
@@ -113,8 +126,6 @@ namespace WebAPI_Finder_Test.Controllersз
 
             return new HttpResponseMessage(HttpStatusCode.OK);
         }
-
-
 
         /// <summary>
         /// Get user by email
