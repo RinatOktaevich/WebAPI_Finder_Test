@@ -13,7 +13,7 @@ namespace WebAPI_Finder_Test.Models
 
         [Required]
         public int AudioId { get; set; }
-        public virtual Audio Audio { get; set; }
+        public  Audio Audio { get; set; }
 
         [Required]
         public string ApplicationUserId { get; set; }

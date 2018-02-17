@@ -132,6 +132,42 @@ namespace WebAPI_Finder_Test.Controllers
             return Ok(audios);
         }
 
+        [AllowAnonymous]
+        [HttpPost]
+        [Route("AudioListAuth")]
+        public IHttpActionResult GetAudios(string iduser, string idAuth)
+        {
+            ApplicationDbContext db = new ApplicationDbContext();
+            var user = db.Users.Find(iduser);
+            var auth = db.Users.Find(idAuth);
+            if (user == null || auth == null)
+            {
+                return BadRequest("User doesn`t found");
+            }
+
+            var audios = user.AudioTracks.ToList();    //Select(x=>new {x.ApplicationUserId,x.AuthorLogin,x.CountLikes,x.Description,x.Id,x.ImageCover,x.IsLicked,x.Performer,x.Title,x.Url });
+
+            foreach (var item in audios)
+            {
+                var likes = db.Likes.Where(xr => xr.AudioId == item.Id).ToList();
+
+                IEnumerable<object> res = (from l in likes
+                                        where l.ApplicationUserId == idAuth
+                                        select new { l.ApplicationUserId, l.AudioId });
+
+                if (res.Count()!= 0)
+                {
+                    item.IsLicked = true;
+                }
+                else
+                {
+                    item.IsLicked = false;
+                }
+                item.Likes = null;
+            }
+
+            return Ok(audios);
+        }
 
 
     }

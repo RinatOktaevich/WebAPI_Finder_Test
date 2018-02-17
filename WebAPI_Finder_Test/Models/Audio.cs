@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -28,7 +29,7 @@ namespace WebAPI_Finder_Test.Models
 
         public string ApplicationUserId { get; set; }
 
-        public  ApplicationUser User { get; set; }
+        //public  ApplicationUser User { get; set; }
 
 
         public Audio(string _url, string _pr, string _ttl,string authLogin)
@@ -42,7 +43,7 @@ namespace WebAPI_Finder_Test.Models
 
         public Audio()
         {
-            Likes = new List<Like>();
+           // Likes = new List<Like>();
         }
 
         #endregion
@@ -58,8 +59,11 @@ namespace WebAPI_Finder_Test.Models
 
         public int? CountLikes { get; set; }
 
-        
-        public ICollection<Like> Likes { get; set; }
+        [NotMapped]
+        public bool IsLicked { get; set; }
+
+
+        public  ICollection<Like> Likes { get; set; }
 
     }
 }
