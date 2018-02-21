@@ -15,6 +15,7 @@ namespace WebAPI_Finder_Test
     {
         public static void Register(HttpConfiguration config)
         {
+            config.EnableCors();
 
             // Web API configuration and services
             // Configure Web API to use only bearer token authentication.
@@ -23,9 +24,6 @@ namespace WebAPI_Finder_Test
 
             // Web API routes
             config.MapHttpAttributeRoutes();
-
-            //var corsAttr = new EnableCorsAttribute("*", "*", "*");
-            //config.EnableCors(corsAttr);
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

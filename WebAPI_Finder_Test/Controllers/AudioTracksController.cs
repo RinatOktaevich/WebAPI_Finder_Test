@@ -132,7 +132,7 @@ namespace WebAPI_Finder_Test.Controllers
             return Ok(audios);
         }
 
-        [AllowAnonymous]
+        
         [HttpPost]
         [Route("AudioListAuth")]
         public IHttpActionResult GetAudios(string iduser, string idAuth)

@@ -173,7 +173,6 @@ namespace WebAPI_Finder_Test.Controllersз
         }
 
         [HttpGet]
-        [AllowAnonymous]
         [Route("getAll")]
         public IHttpActionResult GetAll()
         {
