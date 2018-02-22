@@ -6,6 +6,7 @@ using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.ComponentModel.DataAnnotations;
 
 namespace WebAPI_Finder_Test.Models
 {
@@ -22,6 +23,10 @@ namespace WebAPI_Finder_Test.Models
         public string Login { get; set; }
 
         public string AvatarImage { get; set; }
+
+        [StringLength(500)]
+        public string About { get; set; }
+
 
         public virtual  ICollection<Audio> AudioTracks { get; set; }
 

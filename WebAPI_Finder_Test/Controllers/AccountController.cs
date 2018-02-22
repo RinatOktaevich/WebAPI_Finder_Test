@@ -31,6 +31,8 @@ namespace WebAPI_Finder_Test.Controllersз
         #region Stuff
         private const string LocalLoginProvider = "Local";
         private ApplicationUserManager _userManager;
+        private ApplicationDbContext db = new ApplicationDbContext();
+
 
         public AccountController()
         {
@@ -57,6 +59,31 @@ namespace WebAPI_Finder_Test.Controllersз
 
         public ISecureDataFormat<AuthenticationTicket> AccessTokenFormat { get; private set; }
         #endregion
+
+        [HttpPost]
+        public async Task<HttpResponseMessage> SetAbout(string iduser,string about)
+        {
+            if(iduser==string.Empty || about==null)
+            {
+                return new HttpResponseMessage(HttpStatusCode.NoContent);
+            }
+
+            var user = db.Users.Find(iduser);
+            if(user==null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound, "User doesn`t exist");
+            }
+
+            user.About = about;
+
+            this.db.Entry(user).State = EntityState.Modified;
+
+            await db.SaveChangesAsync();
+
+            return new HttpResponseMessage(HttpStatusCode.OK);
+        }
+
+
 
         /// <summary>
         /// Find user by Email
