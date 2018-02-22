@@ -20,6 +20,7 @@ using System.Linq;
 using System.Data.Entity;
 using System.Net;
 using System.IO;
+using WebAPI_Finder_Test.Models.Helpers;
 
 namespace WebAPI_Finder_Test.Controllersз
 {
@@ -89,7 +90,7 @@ namespace WebAPI_Finder_Test.Controllersз
             }
 
             ApplicationDbContext db = new ApplicationDbContext();
-            var user = db.Users.Include(xr=>xr.Photos).Include(xr=>xr.AudioTracks).FirstOrDefault(u => u.UserName == email);
+            var user = db.Users.Include(xr => xr.AudioTracks).FirstOrDefault(u => u.UserName == email);
 
             if (user == null)
             {
@@ -101,12 +102,6 @@ namespace WebAPI_Finder_Test.Controllersз
             //Delete avatar image
             File.Delete(Server.MapPath(user.AvatarImage));
 
-            //Delete all user`s photos
-            foreach (var item in user.Photos)
-            {
-                File.Delete(Server.MapPath(item.Url));
-            }
-            db.Photos.RemoveRange(user.Photos);
 
             //Delete all user`s audio tracks
             foreach (var item in user.AudioTracks)
@@ -121,7 +116,7 @@ namespace WebAPI_Finder_Test.Controllersз
             db.Likes.RemoveRange(userLikes);
 
             db.Users.Remove(user);
-            
+
             await db.SaveChangesAsync();
 
             return new HttpResponseMessage(HttpStatusCode.OK);
@@ -182,6 +177,40 @@ namespace WebAPI_Finder_Test.Controllersз
 
             return Ok(users);
         }
+
+        [HttpPost]
+        [Route("setAvatar")]
+        public HttpResponseMessage InsertAvatar(string email)
+        {
+            string image;
+            try
+            {
+                // Check if the request contains multipart/form-data.
+                if (!Request.Content.IsMimeMultipartContent())
+                {
+                    return new HttpResponseMessage(HttpStatusCode.UnsupportedMediaType);
+                }
+
+                image = FileSaver.SaveImage("/Images/");
+            }
+            catch (Exception)
+            {
+                return new HttpResponseMessage(HttpStatusCode.NoContent);
+            }
+
+            ApplicationDbContext db = new ApplicationDbContext();
+            var user = db.Users.First(u => u.Email == email);
+            if (user.AvatarImage != null)
+            {
+                File.Delete(HttpContext.Current.Server.MapPath(user.AvatarImage));
+            }
+            user.AvatarImage = image;
+            db.Entry(user).State = System.Data.Entity.EntityState.Modified;
+            db.SaveChanges();
+            return new HttpResponseMessage(HttpStatusCode.OK);
+        }
+
+
 
         #region Project stuff
 

@@ -23,13 +23,10 @@ namespace WebAPI_Finder_Test.Models
 
         public string AvatarImage { get; set; }
 
-        public virtual  ICollection<Photo> Photos { get; set; }
-
         public virtual  ICollection<Audio> AudioTracks { get; set; }
 
         public ApplicationUser()
         {
-            Photos = new List<Photo>();
             AudioTracks = new List<Audio>();
         }
 
@@ -42,6 +39,11 @@ namespace WebAPI_Finder_Test.Models
         }
     }
 
+
+
+
+
+
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
@@ -49,7 +51,6 @@ namespace WebAPI_Finder_Test.Models
         {
         }
 
-        public virtual DbSet<Photo> Photos { get; set; }
         public virtual DbSet<Audio> AudioTracks { get; set; }
 
         public virtual DbSet<Like> Likes { get; set; }
@@ -58,8 +59,5 @@ namespace WebAPI_Finder_Test.Models
         {
             return new ApplicationDbContext();
         }
-
-      
-
     }
 }

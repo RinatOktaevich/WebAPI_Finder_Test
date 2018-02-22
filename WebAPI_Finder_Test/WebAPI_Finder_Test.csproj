@@ -252,7 +252,6 @@
     <Compile Include="Controllers\AudioTracksController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImageController.cs" />
-    <Compile Include="Controllers\PhotoController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -265,6 +264,10 @@
     <Compile Include="Migrations\201802171349360_Count Likes.Designer.cs">
       <DependentUpon>201802171349360_Count Likes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201802221945213_Delete Photos.cs" />
+    <Compile Include="Migrations\201802221945213_Delete Photos.Designer.cs">
+      <DependentUpon>201802221945213_Delete Photos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -272,7 +275,6 @@
     <Compile Include="Models\Helpers\FileSaver.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Like.cs" />
-    <Compile Include="Models\Photo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
@@ -345,7 +347,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Audio\" />
     <Folder Include="Images\" />
-    <Folder Include="Photos\" />
     <Folder Include="Views\AudioTracks\" />
     <Folder Include="Views\Photo\" />
   </ItemGroup>
@@ -363,6 +364,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201802171349360_Count Likes.resx">
       <DependentUpon>201802171349360_Count Likes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802221945213_Delete Photos.resx">
+      <DependentUpon>201802221945213_Delete Photos.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
