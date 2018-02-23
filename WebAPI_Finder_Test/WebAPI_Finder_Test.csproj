@@ -250,6 +250,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AudioTracksController.cs" />
+    <Compile Include="Controllers\CountryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImageController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
@@ -272,10 +273,16 @@
     <Compile Include="Migrations\201802222003073_Add %27About%27 to user.Designer.cs">
       <DependentUpon>201802222003073_Add %27About%27 to user.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201802231254332_Add Country,City,Registration date to user.cs" />
+    <Compile Include="Migrations\201802231254332_Add Country,City,Registration date to user.Designer.cs">
+      <DependentUpon>201802231254332_Add Country,City,Registration date to user.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Audio.cs" />
+    <Compile Include="Models\City.cs" />
+    <Compile Include="Models\Country.cs" />
     <Compile Include="Models\Helpers\FileSaver.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Like.cs" />
@@ -374,6 +381,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201802222003073_Add %27About%27 to user.resx">
       <DependentUpon>201802222003073_Add %27About%27 to user.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802231254332_Add Country,City,Registration date to user.resx">
+      <DependentUpon>201802231254332_Add Country,City,Registration date to user.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

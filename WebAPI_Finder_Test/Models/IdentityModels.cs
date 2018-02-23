@@ -27,8 +27,15 @@ namespace WebAPI_Finder_Test.Models
         [StringLength(500)]
         public string About { get; set; }
 
+        public virtual ICollection<Audio> AudioTracks { get; set; }
 
-        public virtual  ICollection<Audio> AudioTracks { get; set; }
+        public int CityId { get; set; }
+
+        public City City { get; set; }
+
+        public DateTime RegistrationDate { get; set; }
+
+
 
         public ApplicationUser()
         {
@@ -43,11 +50,9 @@ namespace WebAPI_Finder_Test.Models
             return userIdentity;
         }
     }
-
-
-
-
-
+    /// <summary>
+    /// //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// </summary>
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
@@ -60,9 +65,17 @@ namespace WebAPI_Finder_Test.Models
 
         public virtual DbSet<Like> Likes { get; set; }
 
+        public virtual DbSet<City> Cities { get; set; }
+
+        public virtual DbSet<Country> Countries { get; set; }
+
+
+
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
+
     }
 }
