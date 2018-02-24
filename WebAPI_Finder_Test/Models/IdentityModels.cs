@@ -29,17 +29,20 @@ namespace WebAPI_Finder_Test.Models
 
         public virtual ICollection<Audio> AudioTracks { get; set; }
 
-        public int CityId { get; set; }
+        public int? CityId { get; set; }
 
         public City City { get; set; }
 
         public DateTime RegistrationDate { get; set; }
+
+        public ICollection<Category> Categories { get; set; }
 
 
 
         public ApplicationUser()
         {
             AudioTracks = new List<Audio>();
+            Categories = new List<Category>();
         }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager, string authenticationType)
@@ -68,6 +71,9 @@ namespace WebAPI_Finder_Test.Models
         public virtual DbSet<City> Cities { get; set; }
 
         public virtual DbSet<Country> Countries { get; set; }
+
+        public virtual DbSet<Category> Categories { get; set; }
+
 
 
 

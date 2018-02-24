@@ -1,5 +1,7 @@
 namespace WebAPI_Finder_Test.Migrations
 {
+    using Microsoft.AspNet.Identity.EntityFramework;
+    using Microsoft.Owin;
     using Models;
     using System;
     using System.Data.Entity;
@@ -16,12 +18,6 @@ namespace WebAPI_Finder_Test.Migrations
 
         protected override void Seed(WebAPI_Finder_Test.Models.ApplicationDbContext context)
         {
-
-
-
-
-
-
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 

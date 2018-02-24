@@ -250,6 +250,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AudioTracksController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\CityController.cs" />
     <Compile Include="Controllers\CountryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -278,10 +279,19 @@
     <Compile Include="Migrations\201802231254332_Add Country,City,Registration date to user.Designer.cs">
       <DependentUpon>201802231254332_Add Country,City,Registration date to user.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201802241919082_add categories to model.cs" />
+    <Compile Include="Migrations\201802241919082_add categories to model.Designer.cs">
+      <DependentUpon>201802241919082_add categories to model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802242122536_City nullable.cs" />
+    <Compile Include="Migrations\201802242122536_City nullable.Designer.cs">
+      <DependentUpon>201802242122536_City nullable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Audio.cs" />
+    <Compile Include="Models\Category.cs" />
     <Compile Include="Models\City.cs" />
     <Compile Include="Models\Country.cs" />
     <Compile Include="Models\Helpers\FileSaver.cs" />
@@ -385,6 +395,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201802231254332_Add Country,City,Registration date to user.resx">
       <DependentUpon>201802231254332_Add Country,City,Registration date to user.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802241919082_add categories to model.resx">
+      <DependentUpon>201802241919082_add categories to model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802242122536_City nullable.resx">
+      <DependentUpon>201802242122536_City nullable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
