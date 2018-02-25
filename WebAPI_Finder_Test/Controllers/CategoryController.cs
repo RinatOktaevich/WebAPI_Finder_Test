@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -19,14 +21,25 @@ namespace WebAPI_Finder_Test.Controllers
         [Route("Add")]
         public async Task<HttpResponseMessage> AddCategory(string name)
         {
-            if(name==null)
+            if (name == null)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Name is null");
             }
 
+            try
+            {
+                db.Categories.Add(new Category() { Name = name });
+                await db.SaveChangesAsync();
+            }
+            catch (System.Exception ex)
+            {
+                if (ex.HResult == -2146233087)
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, "Category with name " + name + " already exist");
+                }
 
-            db.Categories.Add(new Category() { Name = name });
-            await db.SaveChangesAsync();
+            }
+
 
             return new HttpResponseMessage(HttpStatusCode.OK);
         }
@@ -45,7 +58,7 @@ namespace WebAPI_Finder_Test.Controllers
             }
 
             db.Categories.Remove(cat);
-            db.Entry(cat).State = System.Data.Entity.EntityState.Deleted;
+            db.Entry(cat).State = EntityState.Deleted;
             await db.SaveChangesAsync();
 
             return new HttpResponseMessage(HttpStatusCode.OK);
@@ -70,7 +83,7 @@ namespace WebAPI_Finder_Test.Controllers
             }
 
             cat.Name = name;
-            db.Entry(cat).State = System.Data.Entity.EntityState.Modified;
+            db.Entry(cat).State = EntityState.Modified;
 
             await db.SaveChangesAsync();
             return new HttpResponseMessage(HttpStatusCode.OK);
@@ -82,7 +95,7 @@ namespace WebAPI_Finder_Test.Controllers
         [Route("ToList")]
         public IHttpActionResult GetCategories()
         {
-            var cats = db.Categories.ToList();
+            var cats = db.Categories.Select(x => new {x.Id,x.Name }).ToList();
             return Ok(cats);
         }
 
@@ -97,7 +110,7 @@ namespace WebAPI_Finder_Test.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("BindUser")]
-        public async Task<HttpResponseMessage> RenameCategory(string iduser, [ModelBinder] int[] categories)
+        public async Task<HttpResponseMessage> BindCategory(string iduser, [ModelBinder] int[] categories)
         {
             List<Category> cats = db.Categories.ToList();
             var user = db.Users.Find(iduser);
@@ -109,7 +122,49 @@ namespace WebAPI_Finder_Test.Controllers
                 user.Categories.Add(temp);
             }
 
-            db.Entry(user).State = System.Data.Entity.EntityState.Modified;
+            try
+            {
+                db.Entry(user).State = EntityState.Modified;
+                await db.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                if (ex.InnerException == null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+                }
+
+                Exception innEx = ex.InnerException;
+
+                while (innEx.InnerException != null)
+                {
+                    innEx = innEx.InnerException;
+                }
+
+                return Request.CreateResponse(HttpStatusCode.BadRequest, innEx.Message);
+            }
+
+            return new HttpResponseMessage(HttpStatusCode.OK);
+        }
+
+
+
+        [HttpPost]
+        [Route("UnBindUser")]
+        public async Task<HttpResponseMessage> UnBindCategory(string iduser, [ModelBinder] int[] categories)
+        {
+            List<Category> cats = db.Categories.ToList();
+            var user = db.Users.Include(xr => xr.Categories).First(x => x.Id == iduser);
+            Category temp = null;
+
+            foreach (var item in categories)
+            {
+                temp = user.Categories.First(x => x.Id == item);
+
+                user.Categories.Remove(temp);
+            }
+
+            db.Entry(user).State = EntityState.Modified;
             await db.SaveChangesAsync();
             return new HttpResponseMessage(HttpStatusCode.OK);
         }

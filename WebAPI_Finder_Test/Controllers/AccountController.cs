@@ -200,7 +200,7 @@ namespace WebAPI_Finder_Test.Controllersз
         {
             // List<ApplicationUser> users = new List<ApplicationUser>();
             ApplicationDbContext db = new ApplicationDbContext();
-            var users = db.Users.ToList();
+            var users = db.Users.Include(xr=>xr.Categories).ToList();
 
             return Ok(users);
         }
