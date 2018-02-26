@@ -29,24 +29,7 @@ namespace WebAPI_Finder_Test.Models
 
         public string ApplicationUserId { get; set; }
 
-        //public  ApplicationUser User { get; set; }
-
-
-        public Audio(string _url, string _pr, string _ttl,string authLogin)
-        {
-            Url = _url;
-            Performer = _pr;
-            Title = _ttl;
-            AuthorLogin = authLogin;
-            CountLikes = 0;
-        }
-
-        public Audio()
-        {
-           // Likes = new List<Like>();
-        }
-
-        #endregion
+     
 
         [StringLength(100)]
         public string Description { get; set; }
@@ -62,8 +45,28 @@ namespace WebAPI_Finder_Test.Models
         [NotMapped]
         public bool IsLicked { get; set; }
 
-
         public  ICollection<Like> Likes { get; set; }
+
+        #endregion
+
+
+        public Audio(string _url, string _pr, string _ttl, string authLogin,int idcat)
+        {
+            Url = _url;
+            Performer = _pr;
+            Title = _ttl;
+            AuthorLogin = authLogin;
+            CountLikes = 0;
+            CategoryId = idcat;
+        }
+
+        public Audio()
+        {
+        }
+
+
+
+        public int CategoryId { get; set; }
 
     }
 }

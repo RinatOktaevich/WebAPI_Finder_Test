@@ -287,6 +287,10 @@
     <Compile Include="Migrations\201802242122536_City nullable.Designer.cs">
       <DependentUpon>201802242122536_City nullable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201802261644088_Collapse audio and category.cs" />
+    <Compile Include="Migrations\201802261644088_Collapse audio and category.Designer.cs">
+      <DependentUpon>201802261644088_Collapse audio and category.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -401,6 +405,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201802242122536_City nullable.resx">
       <DependentUpon>201802242122536_City nullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802261644088_Collapse audio and category.resx">
+      <DependentUpon>201802261644088_Collapse audio and category.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

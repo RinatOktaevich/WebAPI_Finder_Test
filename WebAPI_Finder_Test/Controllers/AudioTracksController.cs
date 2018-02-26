@@ -21,7 +21,7 @@ namespace WebAPI_Finder_Test.Controllers
         [AllowAnonymous]
         [HttpPost]
         [Route("Add")]
-        public async Task<HttpResponseMessage> AddTrack(string email, string performer, string tittle)
+        public async Task<HttpResponseMessage> AddTrack(string email,int idcat, string performer, string tittle)
         {
 
             string soundtrack;
@@ -43,7 +43,7 @@ namespace WebAPI_Finder_Test.Controllers
             ApplicationDbContext db = new ApplicationDbContext();
             var user = db.Users.First(u => u.UserName == email);
 
-            user.AudioTracks.Add(new Audio(_url: soundtrack, _pr: performer, _ttl: tittle, authLogin: user.Login));
+            user.AudioTracks.Add(new Audio(_url: soundtrack, _pr: performer, _ttl: tittle, authLogin: user.Login,idcat:idcat));
 
             await db.SaveChangesAsync();
             return new HttpResponseMessage(HttpStatusCode.OK);
@@ -123,11 +123,21 @@ namespace WebAPI_Finder_Test.Controllers
             {
                 return BadRequest("User doesn`t found");
             }
+            #region Changed
+            var categories = db.Categories.ToList();
 
-            var audios = db.AudioTracks.Where(tr => tr.ApplicationUserId == iduser).ToList();
 
 
 
+
+            #endregion
+
+
+
+
+            #region Origin
+            //var audios = db.AudioTracks.Where(tr => tr.ApplicationUserId == iduser).ToList();
+            #endregion
 
             return Ok(audios);
         }
