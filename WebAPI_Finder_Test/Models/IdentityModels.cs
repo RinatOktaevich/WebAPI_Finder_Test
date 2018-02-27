@@ -37,6 +37,8 @@ namespace WebAPI_Finder_Test.Models
 
         public ICollection<Category> Categories { get; set; }
 
+        public virtual SocialNetworks SocNetworks { get; set; }
+
 
 
         public ApplicationUser()

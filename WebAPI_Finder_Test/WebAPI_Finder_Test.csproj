@@ -291,6 +291,10 @@
     <Compile Include="Migrations\201802261644088_Collapse audio and category.Designer.cs">
       <DependentUpon>201802261644088_Collapse audio and category.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201802272204273_Social network links.cs" />
+    <Compile Include="Migrations\201802272204273_Social network links.Designer.cs">
+      <DependentUpon>201802272204273_Social network links.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -301,6 +305,7 @@
     <Compile Include="Models\Helpers\FileSaver.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Like.cs" />
+    <Compile Include="Models\SocialNetworks.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
@@ -408,6 +413,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201802261644088_Collapse audio and category.resx">
       <DependentUpon>201802261644088_Collapse audio and category.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802272204273_Social network links.resx">
+      <DependentUpon>201802272204273_Social network links.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
