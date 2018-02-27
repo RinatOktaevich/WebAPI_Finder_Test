@@ -18,12 +18,12 @@ namespace WebAPI_Finder_Test.Controllers
     [RoutePrefix("api/Tracks")]
     public class AudioTracksController : ApiController
     {
-        [AllowAnonymous]
+        ApplicationDbContext db = new ApplicationDbContext();
+
         [HttpPost]
         [Route("Add")]
-        public async Task<HttpResponseMessage> AddTrack(string email,int idcat, string performer, string tittle)
+        public async Task<HttpResponseMessage> AddTrack(string email, int idcat, string performer, string tittle)
         {
-
             string soundtrack;
             try
             {
@@ -40,23 +40,18 @@ namespace WebAPI_Finder_Test.Controllers
                 return new HttpResponseMessage(HttpStatusCode.NoContent);
             }
 
-            ApplicationDbContext db = new ApplicationDbContext();
             var user = db.Users.First(u => u.UserName == email);
 
-            user.AudioTracks.Add(new Audio(_url: soundtrack, _pr: performer, _ttl: tittle, authLogin: user.Login,idcat:idcat));
+            user.AudioTracks.Add(new Audio(_url: soundtrack, _pr: performer, _ttl: tittle, authLogin: user.Login, idcat: idcat));
 
             await db.SaveChangesAsync();
             return new HttpResponseMessage(HttpStatusCode.OK);
         }
 
-
-        [AllowAnonymous]
         [HttpPost]
         [Route("Delete")]
         public async Task<HttpResponseMessage> DeleteTrack(int idTrack)
         {
-
-            ApplicationDbContext db = new ApplicationDbContext();
             Audio track;
             try
             {
@@ -82,16 +77,10 @@ namespace WebAPI_Finder_Test.Controllers
             return Request.CreateResponse(HttpStatusCode.OK);
         }
 
-
-
-        [AllowAnonymous]
         [HttpPost]
         [Route("Like")]
         public async Task<HttpResponseMessage> LikeTrack(string idUser, int idTrack)
         {
-            ApplicationDbContext db = new ApplicationDbContext();
-            Like like = new Like(idTrack, idUser);
-
             var Likes = db.Likes.Where(lk => lk.AudioId == idTrack && lk.ApplicationUserId == idUser).ToList();
             var track = db.AudioTracks.Find(idTrack);
 
@@ -111,29 +100,25 @@ namespace WebAPI_Finder_Test.Controllers
             return Request.CreateResponse(HttpStatusCode.OK);
         }
 
-
         [AllowAnonymous]
         [HttpPost]
         [Route("AudioList")]
         public IHttpActionResult GetAudios(string iduser)
         {
-            ApplicationDbContext db = new ApplicationDbContext();
             var user = db.Users.Find(iduser);
             if (user == null)
             {
                 return BadRequest("User doesn`t found");
             }
             #region Changed
-            var categories = db.Categories.ToList();
+            var audios = db.Categories.ToList();
 
-
-
-
+            foreach (var item in audios)
+            {
+                item.Audios = user.AudioTracks.Where(xr => xr.CategoryId == item.Id).ToList();
+            }
 
             #endregion
-
-
-
 
             #region Origin
             //var audios = db.AudioTracks.Where(tr => tr.ApplicationUserId == iduser).ToList();
@@ -142,12 +127,16 @@ namespace WebAPI_Finder_Test.Controllers
             return Ok(audios);
         }
 
-        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="iduser">Id User`s owner tracks</param>
+        /// <param name="idAuth">Id User who watch a page</param>
+        /// <returns>Return Audios with checked track witch was liked by idAuth user</returns>
         [HttpPost]
         [Route("AudioListAuth")]
         public IHttpActionResult GetAudios(string iduser, string idAuth)
         {
-            ApplicationDbContext db = new ApplicationDbContext();
             var user = db.Users.Find(iduser);
             var auth = db.Users.Find(idAuth);
             if (user == null || auth == null)
@@ -155,30 +144,65 @@ namespace WebAPI_Finder_Test.Controllers
                 return BadRequest("User doesn`t found");
             }
 
-            var audios = user.AudioTracks.ToList();    //Select(x=>new {x.ApplicationUserId,x.AuthorLogin,x.CountLikes,x.Description,x.Id,x.ImageCover,x.IsLicked,x.Performer,x.Title,x.Url });
+            #region Changed
+            var audios = db.Categories.ToList();
 
             foreach (var item in audios)
             {
-                var likes = db.Likes.Where(xr => xr.AudioId == item.Id).ToList();
-
-                IEnumerable<object> res = (from l in likes
-                                        where l.ApplicationUserId == idAuth
-                                        select new { l.ApplicationUserId, l.AudioId });
-
-                if (res.Count()!= 0)
-                {
-                    item.IsLicked = true;
-                }
-                else
-                {
-                    item.IsLicked = false;
-                }
-                item.Likes = null;
+                item.Audios = user.AudioTracks.Where(xr => xr.CategoryId == item.Id).ToList();
             }
+            //Run on category
+            foreach (var cat in audios)
+            {
+
+
+                //Run on audios in category concrete user and stamp like if it does
+                foreach (var item in cat.Audios)
+                {
+                    var likes = db.Likes.Where(xr => xr.AudioId == item.Id).ToList();
+
+                    IEnumerable<object> res = (from l in likes
+                                               where l.ApplicationUserId == idAuth
+                                               select new { l.ApplicationUserId, l.AudioId });
+
+                    if (res.Count() != 0)
+                    {
+                        item.IsLicked = true;
+                    }
+                    else
+                    {
+                        item.IsLicked = false;
+                    }
+                    item.Likes = null;
+                }
+            }
+            #endregion
+
+            #region Origin
+            //var audios = user.AudioTracks.ToList();
+
+            //foreach (var item in audios)
+            //{
+            //    var likes = db.Likes.Where(xr => xr.AudioId == item.Id).ToList();
+
+            //    IEnumerable<object> res = (from l in likes
+            //                               where l.ApplicationUserId == idAuth
+            //                               select new { l.ApplicationUserId, l.AudioId });
+
+            //    if (res.Count() != 0)
+            //    {
+            //        item.IsLicked = true;
+            //    }
+            //    else
+            //    {
+            //        item.IsLicked = false;
+            //    }
+            //    item.Likes = null;
+            //}
+            #endregion
 
             return Ok(audios);
         }
-
 
     }
 }

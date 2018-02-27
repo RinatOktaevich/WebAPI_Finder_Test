@@ -239,9 +239,7 @@ namespace WebAPI_Finder_Test.Controllersз
 
 
 
-        #region Project stuff
-
-
+        #region Project Stuff
 
         // POST api/Account/Logout
         [Route("Logout")]
