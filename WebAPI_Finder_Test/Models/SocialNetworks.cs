@@ -9,13 +9,13 @@ namespace WebAPI_Finder_Test.Models
 {
     public class SocialNetworks
     {
-        [Key,ForeignKey("ApplicationUser")]
+        [Key, ForeignKey("ApplicationUser")]
         public string ApplicationUserId { get; set; }
-
 
         public ApplicationUser ApplicationUser { get; set; }
 
-        [RegularExpression(@"https://www.instagram.com/.{3,}")]
+
+
         [DataType(DataType.Url)]
         public string Instagram { get; set; }
 
