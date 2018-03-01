@@ -61,15 +61,15 @@ namespace WebAPI_Finder_Test.Controllersз
         #endregion
 
         [HttpPost]
-        public async Task<HttpResponseMessage> SetAbout(string iduser,string about)
+        public async Task<HttpResponseMessage> SetAbout(string iduser, string about)
         {
-            if(iduser==string.Empty || about==null)
+            if (iduser == string.Empty || about == null)
             {
                 return new HttpResponseMessage(HttpStatusCode.NoContent);
             }
 
             var user = db.Users.Find(iduser);
-            if(user==null)
+            if (user == null)
             {
                 return Request.CreateResponse(HttpStatusCode.NotFound, "User doesn`t exist");
             }
@@ -200,7 +200,7 @@ namespace WebAPI_Finder_Test.Controllersз
         {
             // List<ApplicationUser> users = new List<ApplicationUser>();
             ApplicationDbContext db = new ApplicationDbContext();
-            var users = db.Users.Include(xr=>xr.Categories).ToList();
+            var users = db.Users.Include(xr => xr.Categories).ToList();
 
             return Ok(users);
         }
@@ -210,6 +210,8 @@ namespace WebAPI_Finder_Test.Controllersз
         public HttpResponseMessage InsertAvatar(string email)
         {
             string image;
+            var user = db.Users.First(u => u.Email == email);
+            var Server = HttpContext.Current.Server;
             try
             {
                 // Check if the request contains multipart/form-data.
@@ -218,15 +220,22 @@ namespace WebAPI_Finder_Test.Controllersз
                     return new HttpResponseMessage(HttpStatusCode.UnsupportedMediaType);
                 }
 
-                image = FileSaver.SaveImage("/Images/");
+                string virtualPath = "/Data/" + user.Login + "/";
+                string realPath =Server.MapPath("/Data/" + user.Login+"/");
+
+                var info = Directory.CreateDirectory(realPath);
+
+                var info2 = Directory.CreateDirectory(realPath + "Audios");
+                var info3 = Directory.CreateDirectory(realPath + "Videos");
+
+
+                image = FileSaver.SaveImage(virtualPath);
             }
             catch (Exception)
             {
                 return new HttpResponseMessage(HttpStatusCode.NoContent);
             }
 
-            ApplicationDbContext db = new ApplicationDbContext();
-            var user = db.Users.First(u => u.Email == email);
             if (user.AvatarImage != null)
             {
                 File.Delete(HttpContext.Current.Server.MapPath(user.AvatarImage));
@@ -503,14 +512,14 @@ namespace WebAPI_Finder_Test.Controllersз
                 return BadRequest(ModelState);
             }
 
-            
-            ApplicationUser user = new ApplicationUser() { UserName = model.Email, Email = model.Email, Firstname = model.Firstname, Lastname = model.Lastname, BirthDate = model.BirthDate, AvatarImage = "/Images/defaultImg.jpg",RegistrationDate=DateTime.Now };
+
+            ApplicationUser user = new ApplicationUser() { UserName = model.Email, Email = model.Email, Firstname = model.Firstname, Lastname = model.Lastname, BirthDate = model.BirthDate, AvatarImage = "/Images/defaultImg.jpg", RegistrationDate = DateTime.Now };
 
 
             IdentityResult result = null;
             try
             {
-             result = await UserManager.CreateAsync(user, model.Password);
+                result = await UserManager.CreateAsync(user, model.Password);
 
             }
             catch (Exception ex)
