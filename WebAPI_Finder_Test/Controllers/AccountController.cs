@@ -83,8 +83,6 @@ namespace WebAPI_Finder_Test.Controllersз
             return new HttpResponseMessage(HttpStatusCode.OK);
         }
 
-
-
         /// <summary>
         /// Find user by Email
         /// </summary>
@@ -107,7 +105,6 @@ namespace WebAPI_Finder_Test.Controllersз
         }
 
         [HttpPost]
-        [AllowAnonymous]
         [Route("delete")]
         public async Task<HttpResponseMessage> Delete(string email)
         {
@@ -127,14 +124,14 @@ namespace WebAPI_Finder_Test.Controllersз
             var Server = HttpContext.Current.Server;
 
             //Delete avatar image
-            File.Delete(Server.MapPath(user.AvatarImage));
+            //File.Delete(Server.MapPath(user.AvatarImage));
 
 
             //Delete all user`s audio tracks
-            foreach (var item in user.AudioTracks)
-            {
-                File.Delete(Server.MapPath(item.Url));
-            }
+            //foreach (var item in user.AudioTracks)
+            //{
+            //    File.Delete(Server.MapPath(item.Url));
+            //}
             db.AudioTracks.RemoveRange(user.AudioTracks);
 
 
@@ -143,6 +140,9 @@ namespace WebAPI_Finder_Test.Controllersз
             db.Likes.RemoveRange(userLikes);
 
             db.Users.Remove(user);
+
+            var userDir = "/Data/" + user.Login;
+            Directory.Delete(Server.MapPath(userDir),true);
 
             await db.SaveChangesAsync();
 
@@ -221,12 +221,12 @@ namespace WebAPI_Finder_Test.Controllersз
                 }
 
                 string virtualPath = "/Data/" + user.Login + "/";
-                string realPath =Server.MapPath("/Data/" + user.Login+"/");
+                //string realPath =Server.MapPath("/Data/" + user.Login+"/");
 
-                var info = Directory.CreateDirectory(realPath);
+                //var info = Directory.CreateDirectory(realPath);
 
-                var info2 = Directory.CreateDirectory(realPath + "Audios");
-                var info3 = Directory.CreateDirectory(realPath + "Videos");
+                //var info2 = Directory.CreateDirectory(realPath + "Audios");
+                //var info3 = Directory.CreateDirectory(realPath + "Videos");
 
 
                 image = FileSaver.SaveImage(virtualPath);
@@ -249,6 +249,55 @@ namespace WebAPI_Finder_Test.Controllersз
 
 
         #region Project Stuff
+        // POST api/Account/Register
+        [AllowAnonymous]
+        [Route("Register")]
+        public async Task<IHttpActionResult> Register(RegisterBindingModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+
+            ApplicationUser user = new ApplicationUser() { UserName = model.Email, Email = model.Email, Firstname = model.Firstname, Lastname = model.Lastname, BirthDate = model.BirthDate, AvatarImage = "/Images/defaultImg.jpg", RegistrationDate = DateTime.Now };
+
+
+            IdentityResult result = null;
+            try
+            {
+                result = await UserManager.CreateAsync(user, model.Password);
+
+            }
+            catch (Exception ex)
+            {
+
+                return GetErrorResult(result);
+            }
+
+
+            if (!result.Succeeded)
+            {
+                return GetErrorResult(result);
+            }
+            user.Login = CreateLogin(model.Email, user.Id);
+
+
+            string userDirectory = HttpContext.Current.Server.MapPath("/Data/" + user.Login + "/");
+
+            var info = Directory.CreateDirectory(userDirectory);
+
+            var info2 = Directory.CreateDirectory(userDirectory + "Audios");
+            var info3 = Directory.CreateDirectory(userDirectory + "Videos");
+
+            UserManager.Update(user);
+
+            return Ok();
+        }
+
+
+
+
 
         // POST api/Account/Logout
         [Route("Logout")]
@@ -502,43 +551,7 @@ namespace WebAPI_Finder_Test.Controllersз
             return logins;
         }
 
-        // POST api/Account/Register
-        [AllowAnonymous]
-        [Route("Register")]
-        public async Task<IHttpActionResult> Register(RegisterBindingModel model)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-
-            ApplicationUser user = new ApplicationUser() { UserName = model.Email, Email = model.Email, Firstname = model.Firstname, Lastname = model.Lastname, BirthDate = model.BirthDate, AvatarImage = "/Images/defaultImg.jpg", RegistrationDate = DateTime.Now };
-
-
-            IdentityResult result = null;
-            try
-            {
-                result = await UserManager.CreateAsync(user, model.Password);
-
-            }
-            catch (Exception ex)
-            {
-
-                return GetErrorResult(result);
-            }
-
-
-            if (!result.Succeeded)
-            {
-                return GetErrorResult(result);
-            }
-            user.Login = CreateLogin(model.Email, user.Id);
-            UserManager.Update(user);
-
-
-            return Ok();
-        }
+   
 
         // POST api/Account/RegisterExternal
         [OverrideAuthentication]

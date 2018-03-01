@@ -25,6 +25,9 @@ namespace WebAPI_Finder_Test.Controllers
         public async Task<HttpResponseMessage> AddTrack(string email, int idcat, string performer, string tittle)
         {
             string soundtrack;
+            var user = db.Users.First(u => u.UserName == email);
+            var Server = HttpContext.Current.Server;
+
             try
             {
                 // Check if the request contains multipart/form-data.
@@ -33,14 +36,15 @@ namespace WebAPI_Finder_Test.Controllers
                     return new HttpResponseMessage(HttpStatusCode.UnsupportedMediaType);
                 }
 
-                soundtrack = FileSaver.SaveImage("/Audio/");
+
+                soundtrack = FileSaver.SaveImage("/Data/" + user.Login+"/Audios/");
             }
-            catch (Exception)
+            catch (Exception ex )
             {
+
                 return new HttpResponseMessage(HttpStatusCode.NoContent);
             }
 
-            var user = db.Users.First(u => u.UserName == email);
 
             user.AudioTracks.Add(new Audio(_url: soundtrack, _pr: performer, _ttl: tittle, authLogin: user.Login, idcat: idcat));
 

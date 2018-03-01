@@ -19,7 +19,7 @@ namespace WebAPI_Finder_Test.Migrations
                         Twitter = c.String(),
                     })
                 .PrimaryKey(t => t.ApplicationUserId)
-                .ForeignKey("dbo.AspNetUsers", t => t.ApplicationUserId)
+                .ForeignKey("dbo.AspNetUsers", t => t.ApplicationUserId,cascadeDelete:true)
                 .Index(t => t.ApplicationUserId);
             
         }
