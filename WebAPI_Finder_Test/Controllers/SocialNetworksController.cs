@@ -15,7 +15,10 @@ namespace WebAPI_Finder_Test.Controllers
     public class SocialNetworksController : ApiController
     {
         ApplicationDbContext db = new ApplicationDbContext();
-
+        /// <summary>
+        /// Здесь для того чтобы установить значение нужно просто передать нужный параметр,не обязательно передавать все параметры.
+        //Но что бы удалить один из параметров нужно передать значение 'null'
+        /// </summary>
         [HttpPost]
         [Route("Set")]
         public async Task<HttpResponseMessage> SetUrl(string iduser, string insta = "", string vk = "", string fcBook = "", string youtb = "", string twitter = "")
@@ -37,14 +40,21 @@ namespace WebAPI_Finder_Test.Controllers
             //Instargram
             if (insta != "")
             {
-                Regex reg = new Regex(@"https://www.instagram.com/.{3,}");
-                if (reg.IsMatch(insta))
+                if (insta != "null")
                 {
-                    soc.Instagram = insta;
+                    Regex reg = new Regex(@"https://www.instagram.com/.{3,}");
+                    if (reg.IsMatch(insta))
+                    {
+                        soc.Instagram = insta;
+                    }
+                    else
+                    {
+                        return Request.CreateResponse(HttpStatusCode.InternalServerError, "Instagram Url isn`t valid");
+                    }
                 }
                 else
                 {
-                    return Request.CreateResponse(HttpStatusCode.InternalServerError, "Instagram Url isn`t valid");
+                    soc.Instagram = null;
                 }
             }
 
@@ -52,14 +62,21 @@ namespace WebAPI_Finder_Test.Controllers
             //Vk
             if (vk != "")
             {
-                Regex reg = new Regex(@"https://vk.com/.{3,}");
-                if (reg.IsMatch(vk))
+                if (vk != "null")
                 {
-                    soc.Vk = vk;
+                    Regex reg = new Regex(@"https://vk.com/.{3,}");
+                    if (reg.IsMatch(vk))
+                    {
+                        soc.Vk = vk;
+                    }
+                    else
+                    {
+                        return Request.CreateResponse(HttpStatusCode.InternalServerError, "Vk Url isn`t valid");
+                    }
                 }
                 else
                 {
-                    return Request.CreateResponse(HttpStatusCode.InternalServerError, "Vk Url isn`t valid");
+                    soc.Vk = null;
                 }
             }
 
@@ -68,14 +85,21 @@ namespace WebAPI_Finder_Test.Controllers
             //facebook
             if (fcBook != "")
             {
-                Regex reg = new Regex(@"https://www.facebook.com/.{3,}");
-                if (reg.IsMatch(fcBook))
+                if (fcBook != "null")
                 {
-                    soc.FaceBook = fcBook;
+                    Regex reg = new Regex(@"https://www.facebook.com/.{3,}");
+                    if (reg.IsMatch(fcBook))
+                    {
+                        soc.FaceBook = fcBook;
+                    }
+                    else
+                    {
+                        return Request.CreateResponse(HttpStatusCode.InternalServerError, "facebook Url isn`t valid");
+                    }
                 }
                 else
                 {
-                    return Request.CreateResponse(HttpStatusCode.InternalServerError, "facebook Url isn`t valid");
+                    soc.FaceBook = null;
                 }
             }
 
@@ -84,14 +108,21 @@ namespace WebAPI_Finder_Test.Controllers
             //YouTube
             if (youtb != "")
             {
-                Regex reg = new Regex(@"https://www.youtube.com/channel/.{3,}");
-                if (reg.IsMatch(youtb))
+                if (youtb != "null")
                 {
-                    soc.YouTube = youtb;
+                    Regex reg = new Regex(@"https://www.youtube.com/channel/.{3,}");
+                    if (reg.IsMatch(youtb))
+                    {
+                        soc.YouTube = youtb;
+                    }
+                    else
+                    {
+                        return Request.CreateResponse(HttpStatusCode.InternalServerError, "YouTube Url isn`t valid");
+                    }
                 }
                 else
                 {
-                    return Request.CreateResponse(HttpStatusCode.InternalServerError, "YouTube Url isn`t valid");
+                    soc.YouTube = null;
                 }
             }
 
@@ -100,19 +131,23 @@ namespace WebAPI_Finder_Test.Controllers
             //Twitter
             if (twitter != "")
             {
-                Regex reg = new Regex(@"https://twitter.com/.{3,}");
-                if (reg.IsMatch(twitter))
+                if (twitter != "null")
                 {
-                    soc.Twitter = twitter;
+                    Regex reg = new Regex(@"https://twitter.com/.{3,}");
+                    if (reg.IsMatch(twitter))
+                    {
+                        soc.Twitter = twitter;
+                    }
+                    else
+                    {
+                        return Request.CreateResponse(HttpStatusCode.InternalServerError, "Twitter Url isn`t valid");
+                    }
                 }
                 else
                 {
-                    return Request.CreateResponse(HttpStatusCode.InternalServerError, "Twitter Url isn`t valid");
+                    soc.Twitter = null;
                 }
             }
-
-
-       
 
             user.SocNetworks = soc;
 
