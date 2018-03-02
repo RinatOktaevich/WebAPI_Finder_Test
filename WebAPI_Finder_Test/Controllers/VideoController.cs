@@ -47,9 +47,6 @@ namespace WebAPI_Finder_Test.Controllers
             return new HttpResponseMessage(HttpStatusCode.OK);
         }
 
-
-
-
         [HttpPost]
         [Route("Delete")]
         public async Task<HttpResponseMessage> Delete(int idvideo)
@@ -78,9 +75,6 @@ namespace WebAPI_Finder_Test.Controllers
 
             return Request.CreateResponse(HttpStatusCode.OK);
         }
-
-
-
 
         [HttpGet]
         [Route("Tolist")]

@@ -122,18 +122,8 @@ namespace WebAPI_Finder_Test.Controllersз
             }
 
             var Server = HttpContext.Current.Server;
-
-            //Delete avatar image
-            //File.Delete(Server.MapPath(user.AvatarImage));
-
-
-            //Delete all user`s audio tracks
-            //foreach (var item in user.AudioTracks)
-            //{
-            //    File.Delete(Server.MapPath(item.Url));
-            //}
+          
             db.AudioTracks.RemoveRange(user.AudioTracks);
-
 
             //Delete all user`s likes he ever liked
             var userLikes = db.Likes.Where(xr => xr.ApplicationUserId == user.Id);
