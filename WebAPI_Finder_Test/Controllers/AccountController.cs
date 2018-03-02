@@ -269,7 +269,7 @@ namespace WebAPI_Finder_Test.Controllersз
                 result = await UserManager.CreateAsync(user, model.Password);
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
                 return GetErrorResult(result);

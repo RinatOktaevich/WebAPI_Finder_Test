@@ -39,12 +39,14 @@ namespace WebAPI_Finder_Test.Models
 
         public virtual SocialNetworks SocNetworks { get; set; }
 
+        public ICollection<Video> Videos { get; set; }
 
 
         public ApplicationUser()
         {
             AudioTracks = new List<Audio>();
             Categories = new List<Category>();
+            Videos = new List<Video>();
         }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager, string authenticationType)
@@ -75,6 +77,9 @@ namespace WebAPI_Finder_Test.Models
         public virtual DbSet<Country> Countries { get; set; }
 
         public virtual DbSet<Category> Categories { get; set; }
+
+        public virtual DbSet<Video> Videos { get; set; }
+
 
 
 
