@@ -300,6 +300,10 @@
     <Compile Include="Migrations\201803021449060_Videos.Designer.cs">
       <DependentUpon>201803021449060_Videos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803041908597_Index on Login.cs" />
+    <Compile Include="Migrations\201803041908597_Index on Login.Designer.cs">
+      <DependentUpon>201803041908597_Index on Login.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -425,6 +429,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803021449060_Videos.resx">
       <DependentUpon>201803021449060_Videos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803041908597_Index on Login.resx">
+      <DependentUpon>201803041908597_Index on Login.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
