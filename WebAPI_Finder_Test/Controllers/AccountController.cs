@@ -60,6 +60,28 @@ namespace WebAPI_Finder_Test.Controllersз
         public ISecureDataFormat<AuthenticationTicket> AccessTokenFormat { get; private set; }
         #endregion
 
+
+        [HttpPost]
+        public IHttpActionResult Find(Filters filters)
+        {
+            IEnumerable<ApplicationUser> users = db.Users;
+            users = filters.Check(users).ToList();
+
+            return Ok(users);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
         [HttpPost]
         public async Task<HttpResponseMessage> SetAbout(string iduser, string about)
         {
@@ -122,7 +144,7 @@ namespace WebAPI_Finder_Test.Controllersз
             }
 
             var Server = HttpContext.Current.Server;
-          
+
             db.AudioTracks.RemoveRange(user.AudioTracks);
 
             //Delete all user`s likes he ever liked
@@ -132,7 +154,7 @@ namespace WebAPI_Finder_Test.Controllersз
             db.Users.Remove(user);
 
             var userDir = "/Data/" + user.Login;
-            Directory.Delete(Server.MapPath(userDir),true);
+            Directory.Delete(Server.MapPath(userDir), true);
 
             await db.SaveChangesAsync();
 
@@ -541,7 +563,7 @@ namespace WebAPI_Finder_Test.Controllersз
             return logins;
         }
 
-   
+
 
         // POST api/Account/RegisterExternal
         [OverrideAuthentication]
