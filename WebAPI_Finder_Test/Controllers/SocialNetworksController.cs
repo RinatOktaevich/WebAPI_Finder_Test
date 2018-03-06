@@ -9,6 +9,12 @@ using System.Web.Http;
 using WebAPI_Finder_Test.Models;
 using WebAPI_Finder_Test.Models.SocialLinks;
 
+#region Errors
+//Список кодов ошибок 
+//Code:1    Message:User doesn`t exict
+//Code:2    Message:Url  isn`t valid
+#endregion
+
 namespace WebAPI_Finder_Test.Controllers
 {
     [Authorize]
@@ -165,8 +171,35 @@ namespace WebAPI_Finder_Test.Controllers
         public async Task<HttpResponseMessage> Insta(string iduser,string value)
         {
             InstagramLink insta = new InstagramLink(Request);
-            return await insta.Algorythm(iduser, value);
+            return await insta.Insert(iduser, value);
         }
+
+        [HttpPost]
+        [Route("Drop/Instagram")]
+        public async Task<HttpResponseMessage> Insta(string iduser)
+        {
+            InstagramLink insta = new InstagramLink(Request);
+            return await insta.Delete(iduser);
+        }
+
+
+
+        [HttpPost]
+        [Route("Set/Vk")]
+        public async Task<HttpResponseMessage> Vk(string iduser, string value)
+        {
+            VkLink vk = new VkLink(Request);
+            return await vk.Insert(iduser, value);
+        }
+
+        [HttpPost]
+        [Route("Drop/Vk")]
+        public async Task<HttpResponseMessage> Vk(string iduser)
+        {
+            InstagramLink insta = new InstagramLink(Request);
+            return await insta.Delete(iduser);
+        }
+
 
     }
 }

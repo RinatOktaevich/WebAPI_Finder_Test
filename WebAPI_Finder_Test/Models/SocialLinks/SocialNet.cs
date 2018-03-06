@@ -9,6 +9,11 @@ using System.Web;
 
 namespace WebAPI_Finder_Test.Models.SocialLinks
 {
+    //Список кодов ошибок 
+    //Code:1    Message:User doesn`t exict
+    //Code:2    Message:Url  isn`t valid
+
+
     public abstract class SocialNet
     {
         ApplicationUser user;
@@ -23,7 +28,7 @@ namespace WebAPI_Finder_Test.Models.SocialLinks
             Request = _request;
         }
 
-        public async Task<HttpResponseMessage> Algorythm(string iduser, string value)
+        public async Task<HttpResponseMessage> Insert(string iduser, string value)
         {
             var resp = Checks(iduser);
             if (resp.StatusCode != HttpStatusCode.OK)
@@ -33,19 +38,32 @@ namespace WebAPI_Finder_Test.Models.SocialLinks
             if (resp.StatusCode != HttpStatusCode.OK)
                 return resp;
 
-
             return await SaveChanges();
-
         }
 
+        public async Task<HttpResponseMessage> Delete(string iduser)
+        {
+            var resp = Checks(iduser);
+            if (resp.StatusCode != HttpStatusCode.OK)
+                return resp;
+            DeleteValue();
+            return await SaveChanges();
+        }
+
+        //Удаление ссылки
+        protected abstract void DeleteValue();
+        //Установить ссылку
+        protected abstract HttpResponseMessage SetValue(string value);
+
+
         //Предварительная проверка на различные данные
-        public HttpResponseMessage Checks(string iduser)
+        protected HttpResponseMessage Checks(string iduser)
         {
             user = db.Users.Find(iduser);
 
             if (user == null)
             {
-                return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Code = 1, Message = "you asshole" });  // Request.CreateResponse(HttpStatusCode.BadRequest, "User doesn`t exict");
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Code = 1, Message = "User doesn`t exict" });
             }
 
             soc = user.SocNetworks;
@@ -57,9 +75,8 @@ namespace WebAPI_Finder_Test.Models.SocialLinks
 
             return Request.CreateResponse(HttpStatusCode.OK);
         }
-
         //Сохранение результата
-        public async Task<HttpResponseMessage> SaveChanges()
+        protected async Task<HttpResponseMessage> SaveChanges()
         {
             user.SocNetworks = soc;
             db.Entry(user).State = System.Data.Entity.EntityState.Modified;
@@ -67,8 +84,6 @@ namespace WebAPI_Finder_Test.Models.SocialLinks
 
             return new HttpResponseMessage(HttpStatusCode.OK);
         }
-
-        public abstract HttpResponseMessage SetValue(string value);
 
     }
 
@@ -79,7 +94,12 @@ namespace WebAPI_Finder_Test.Models.SocialLinks
         {
         }
 
-        public override HttpResponseMessage SetValue(string value)
+        protected override void DeleteValue()
+        {
+            soc.Instagram = null;
+        }
+
+        protected override HttpResponseMessage SetValue(string value)
         {
             if (value != "")
             {
@@ -90,7 +110,8 @@ namespace WebAPI_Finder_Test.Models.SocialLinks
                 }
                 else
                 {
-                    return Request.CreateResponse(HttpStatusCode.InternalServerError, "Instagram Url isn`t valid");
+                    //Code 2
+                    return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Code = 2, Message = "Instagram Url isn`t valid" } );
                 }
             }
             else
@@ -109,6 +130,11 @@ namespace WebAPI_Finder_Test.Models.SocialLinks
         {
         }
 
+        public override void DeleteValue()
+        {
+            soc.Vk = null;
+        }
+
         public override HttpResponseMessage SetValue(string value)
         {
             if (value != "")
@@ -120,7 +146,7 @@ namespace WebAPI_Finder_Test.Models.SocialLinks
                 }
                 else
                 {
-                    return Request.CreateResponse(HttpStatusCode.InternalServerError, "Vk Url isn`t valid");
+                    return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Code = 2, Message = "Vk Url isn`t valid" });
                 }
             }
             else
