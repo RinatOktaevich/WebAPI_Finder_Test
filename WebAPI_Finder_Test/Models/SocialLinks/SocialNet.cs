@@ -101,22 +101,16 @@ namespace WebAPI_Finder_Test.Models.SocialLinks
 
         protected override HttpResponseMessage SetValue(string value)
         {
-            if (value != "")
+
+            Regex reg = new Regex(@"https://www.instagram.com/.{3,}");
+            if (reg.IsMatch(value))
             {
-                Regex reg = new Regex(@"https://www.instagram.com/.{3,}");
-                if (reg.IsMatch(value))
-                {
-                    soc.Instagram = value;
-                }
-                else
-                {
-                    //Code 2
-                    return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Code = 2, Message = "Instagram Url isn`t valid" } );
-                }
+                soc.Instagram = value;
             }
             else
             {
-                soc.Instagram = null;
+                //Code 2
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Code = 2, Message = "Instagram Url isn`t valid" });
             }
 
             return new HttpResponseMessage(HttpStatusCode.OK);
@@ -130,61 +124,51 @@ namespace WebAPI_Finder_Test.Models.SocialLinks
         {
         }
 
-        public override void DeleteValue()
+        protected override void DeleteValue()
         {
             soc.Vk = null;
         }
 
-        public override HttpResponseMessage SetValue(string value)
+        protected override HttpResponseMessage SetValue(string value)
         {
-            if (value != "")
+            Regex reg = new Regex(@"https://vk.com/.{3,}");
+            if (reg.IsMatch(value))
             {
-                Regex reg = new Regex(@"https://vk.com/.{3,}");
-                if (reg.IsMatch(value))
-                {
-                    soc.Vk = value;
-                }
-                else
-                {
-                    return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Code = 2, Message = "Vk Url isn`t valid" });
-                }
+                soc.Vk = value;
             }
             else
             {
-                soc.Vk = null;
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Code = 2, Message = "Vk Url isn`t valid" });
             }
 
             return new HttpResponseMessage(HttpStatusCode.OK);
         }
     }
 
-    public class facebookLink : SocialNet
+    public class FacebookLink : SocialNet
     {
-        public facebookLink(HttpRequestMessage _request) : base(_request)
+        public FacebookLink(HttpRequestMessage _request) : base(_request)
         {
         }
 
-        public override HttpResponseMessage SetValue(string value)
+        protected override void DeleteValue()
         {
-            if (value != "")
+            soc.FaceBook = null;
+        }
+
+        protected override HttpResponseMessage SetValue(string value)
+        {
+            Regex reg = new Regex(@"https://www.facebook.com/.{3,}");
+            if (reg.IsMatch(value))
             {
-                Regex reg = new Regex(@"https://www.facebook.com/.{3,}");
-                if (reg.IsMatch(value))
-                {
-                    soc.FaceBook = value;
-                }
-                else
-                {
-                    return Request.CreateResponse(HttpStatusCode.InternalServerError, "facebook Url isn`t valid");
-                }
+                soc.FaceBook = value;
             }
             else
             {
-                soc.FaceBook = null;
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Code = 2, Message = "Facebook Url isn`t valid" });
             }
 
             return new HttpResponseMessage(HttpStatusCode.OK);
-
         }
     }
 
@@ -194,53 +178,50 @@ namespace WebAPI_Finder_Test.Models.SocialLinks
         {
         }
 
-        public override HttpResponseMessage SetValue(string value)
+        protected override void DeleteValue()
         {
-            if (value != "")
+            soc.YouTube = null;
+        }
+
+        protected override HttpResponseMessage SetValue(string value)
+        {
+            Regex reg = new Regex(@"https://www.youtube.com/channel/.{3,}");
+            if (reg.IsMatch(value))
             {
-                Regex reg = new Regex(@"https://www.youtube.com/channel/.{3,}");
-                if (reg.IsMatch(value))
-                {
-                    soc.YouTube = value;
-                }
-                else
-                {
-                    return Request.CreateResponse(HttpStatusCode.InternalServerError, "YouTube Url isn`t valid");
-                }
+                soc.YouTube = value;
             }
             else
             {
-                soc.YouTube = null;
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Code = 2, Message = "YouTube Url isn`t valid" });
             }
 
             return new HttpResponseMessage(HttpStatusCode.OK);
         }
     }
 
-    public class Twitter : SocialNet
+    public class TwitterLink : SocialNet
     {
-        public Twitter(HttpRequestMessage _request) : base(_request)
+        public TwitterLink(HttpRequestMessage _request) : base(_request)
         {
         }
 
-        public override HttpResponseMessage SetValue(string value)
+        protected override void DeleteValue()
         {
-            if (value != "")
+            soc.Twitter = null;
+        }
+
+        protected override HttpResponseMessage SetValue(string value)
+        {
+            Regex reg = new Regex(@"https://twitter.com/.{3,}");
+            if (reg.IsMatch(value))
             {
-                Regex reg = new Regex(@"https://twitter.com/.{3,}");
-                if (reg.IsMatch(value))
-                {
-                    soc.Twitter = value;
-                }
-                else
-                {
-                    return Request.CreateResponse(HttpStatusCode.InternalServerError, "Twitter Url isn`t valid");
-                }
+                soc.Twitter = value;
             }
             else
             {
-                soc.Twitter = null;
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Code = 2, Message = "Twitter Url isn`t valid" });
             }
+
             return new HttpResponseMessage(HttpStatusCode.OK);
         }
 

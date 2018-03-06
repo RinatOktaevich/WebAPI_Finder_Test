@@ -21,154 +21,9 @@ namespace WebAPI_Finder_Test.Controllers
     [RoutePrefix("api/SocialNetworks")]
     public class SocialNetworksController : ApiController
     {
-        /// <summary>
-        /// Здесь для того чтобы установить значение нужно просто передать нужный параметр,не обязательно передавать все параметры.
-        //Но что бы удалить один из параметров нужно передать значение 'null'
-        /// </summary>
-        //[HttpPost]
-        //[Route("Set")]
-        //public async Task<HttpResponseMessage> SetUrl(string iduser, string insta = "", string vk = "", string fcBook = "", string youtb = "", string twitter = "")
-       // {
-            //var user = db.Users.Find(iduser);
-
-            //if (user == null)
-            //{
-            //    return Request.CreateResponse(HttpStatusCode.BadRequest, "User doesn`t exict");
-            //}
-
-            //var soc = user.SocNetworks;
-
-            //if (user.SocNetworks == null)
-            //{
-            //    soc = new SocialNetworks();
-            //}
-
-            //Instargram
-            //if (insta != "")
-            //{
-            //    if (insta != "null")
-            //    {
-            //        Regex reg = new Regex(@"https://www.instagram.com/.{3,}");
-            //        if (reg.IsMatch(insta))
-            //        {
-            //            soc.Instagram = insta;
-            //        }
-            //        else
-            //        {
-            //            return Request.CreateResponse(HttpStatusCode.InternalServerError, "Instagram Url isn`t valid");
-            //        }
-            //    }
-            //    else
-            //    {
-            //        soc.Instagram = null;
-            //    }
-            //}
-
-
-            //Vk
-            //if (vk != "")
-            //{
-            //    if (vk != "null")
-            //    {
-            //        Regex reg = new Regex(@"https://vk.com/.{3,}");
-            //        if (reg.IsMatch(vk))
-            //        {
-            //            soc.Vk = vk;
-            //        }
-            //        else
-            //        {
-            //            return Request.CreateResponse(HttpStatusCode.InternalServerError, "Vk Url isn`t valid");
-            //        }
-            //    }
-            //    else
-            //    {
-            //        soc.Vk = null;
-            //    }
-            //}
-
-
-
-            //facebook
-            //if (fcBook != "")
-            //{
-            //    if (fcBook != "null")
-            //    {
-            //        Regex reg = new Regex(@"https://www.facebook.com/.{3,}");
-            //        if (reg.IsMatch(fcBook))
-            //        {
-            //            soc.FaceBook = fcBook;
-            //        }
-            //        else
-            //        {
-            //            return Request.CreateResponse(HttpStatusCode.InternalServerError, "facebook Url isn`t valid");
-            //        }
-            //    }
-            //    else
-            //    {
-            //        soc.FaceBook = null;
-            //    }
-            //}
-
-
-
-            //YouTube
-            //if (youtb != "")
-            //{
-            //    if (youtb != "null")
-            //    {
-            //        Regex reg = new Regex(@"https://www.youtube.com/channel/.{3,}");
-            //        if (reg.IsMatch(youtb))
-            //        {
-            //            soc.YouTube = youtb;
-            //        }
-            //        else
-            //        {
-            //            return Request.CreateResponse(HttpStatusCode.InternalServerError, "YouTube Url isn`t valid");
-            //        }
-            //    }
-            //    else
-            //    {
-            //        soc.YouTube = null;
-            //    }
-            //}
-
-
-
-            //Twitter
-            //if (twitter != "")
-            //{
-            //    if (twitter != "null")
-            //    {
-            //        Regex reg = new Regex(@"https://twitter.com/.{3,}");
-            //        if (reg.IsMatch(twitter))
-            //        {
-            //            soc.Twitter = twitter;
-            //        }
-            //        else
-            //        {
-            //            return Request.CreateResponse(HttpStatusCode.InternalServerError, "Twitter Url isn`t valid");
-            //        }
-            //    }
-            //    else
-            //    {
-            //        soc.Twitter = null;
-            //    }
-            //}
-
-            //user.SocNetworks = soc;
-
-            //db.Entry(user).State = System.Data.Entity.EntityState.Modified;
-
-            //await db.SaveChangesAsync();
-
-            //return new HttpResponseMessage(HttpStatusCode.OK);
-       // }
-
-
-
         [HttpPost]
         [Route("Set/Instagram")]
-        public async Task<HttpResponseMessage> Insta(string iduser,string value)
+        public async Task<HttpResponseMessage> Insta(string iduser, string value)
         {
             InstagramLink insta = new InstagramLink(Request);
             return await insta.Insert(iduser, value);
@@ -196,9 +51,65 @@ namespace WebAPI_Finder_Test.Controllers
         [Route("Drop/Vk")]
         public async Task<HttpResponseMessage> Vk(string iduser)
         {
-            InstagramLink insta = new InstagramLink(Request);
-            return await insta.Delete(iduser);
+            VkLink vk = new VkLink(Request);
+            return await vk.Delete(iduser);
         }
+
+
+
+        [HttpPost]
+        [Route("Set/Facebook")]
+        public async Task<HttpResponseMessage> Facebook(string iduser, string value)
+        {
+            FacebookLink fc = new FacebookLink(Request);
+            return await fc.Insert(iduser, value);
+        }
+
+        [HttpPost]
+        [Route("Drop/Facebook")]
+        public async Task<HttpResponseMessage> Facebook(string iduser)
+        {
+            FacebookLink fc = new FacebookLink(Request);
+            return await fc.Delete(iduser);
+        }
+
+
+
+        [HttpPost]
+        [Route("Set/YouTube")]
+        public async Task<HttpResponseMessage> YouTube(string iduser, string value)
+        {
+            YouTubeLink youtube = new YouTubeLink(Request);
+            return await youtube.Insert(iduser, value);
+        }
+
+        [HttpPost]
+        [Route("Drop/YouTube")]
+        public async Task<HttpResponseMessage> YouTube(string iduser)
+        {
+            YouTubeLink youtube = new YouTubeLink(Request);
+            return await youtube.Delete(iduser);
+        }
+
+        
+
+        [HttpPost]
+        [Route("Set/Twitter")]
+        public async Task<HttpResponseMessage> Twitter(string iduser, string value)
+        {
+            TwitterLink twitter = new TwitterLink(Request);
+            return await twitter.Insert(iduser, value);
+        }
+
+        [HttpPost]
+        [Route("Drop/Twitter")]
+        public async Task<HttpResponseMessage> Twitter(string iduser)
+        {
+            TwitterLink twitter = new TwitterLink(Request);
+            return await twitter.Delete(iduser);
+        }
+
+
 
 
     }
