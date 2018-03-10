@@ -21,6 +21,7 @@ using System.Data.Entity;
 using System.Net;
 using System.IO;
 using WebAPI_Finder_Test.Models.Helpers;
+using System.Web.Http.ModelBinding;
 
 namespace WebAPI_Finder_Test.Controllersз
 {
@@ -60,15 +61,22 @@ namespace WebAPI_Finder_Test.Controllersз
         public ISecureDataFormat<AuthenticationTicket> AccessTokenFormat { get; private set; }
         #endregion
 
-
+        [AllowAnonymous]
+        [Route("Searcher")]
         [HttpPost]
-        public IHttpActionResult Find(Filters filters)
+        public IHttpActionResult Find([ModelBinder]Filters filters)
         {
+
             IEnumerable<ApplicationUser> users = db.Users;
-            users = filters.Check(users).ToList();
+            users = filters.Check(users).Skip(0).Take(20).ToList();
 
             return Ok(users);
         }
+
+
+
+
+
 
 
 

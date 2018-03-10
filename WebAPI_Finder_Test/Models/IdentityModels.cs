@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.IO;
 
 namespace WebAPI_Finder_Test.Models
 {
@@ -69,6 +70,11 @@ namespace WebAPI_Finder_Test.Models
         public ApplicationDbContext()
             : base("DtConnnect", throwIfV1Schema: false)
         {
+          
+
+
+
+
         }
 
         public virtual DbSet<Audio> AudioTracks { get; set; }
