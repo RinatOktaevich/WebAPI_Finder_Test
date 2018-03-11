@@ -69,11 +69,35 @@ namespace WebAPI_Finder_Test.Providers
             minAge = _minAge;
             maxAge = _maxAge;
         }
+        public override IEnumerable<ApplicationUser> Check(IEnumerable<ApplicationUser> _users)
+        {
+            IEnumerable<ApplicationUser> users = _users.Where(xr => (Now - xr.BirthDate).Days / 365 >= minAge).Where(xr => (Now - xr.BirthDate).Days / 365 <= maxAge);
+
+            //преходим к следующему звену
+            if (NextChain != null)
+            {
+                return NextChain.Check(users);
+            }
+            return users;
+        }
+    }
+
+    public class CategoryFilter : Filters
+    {
+        string[] categories;
+
+        public string[] Categories {
+            set
+            {
+                categories = value;
+            }
+        }
 
 
         public override IEnumerable<ApplicationUser> Check(IEnumerable<ApplicationUser> _users)
         {
-            IEnumerable<ApplicationUser> users = _users.Where(xr => (Now - xr.BirthDate).Days / 365 >= minAge).Where(xr => (Now - xr.BirthDate).Days / 365 <= maxAge);
+            ApplicationDbContext db = new ApplicationDbContext();
+            IEnumerable<ApplicationUser> users =db.Database.SqlQuery<ApplicationUser>("Select * from AspNetUsers where ");
 
             //преходим к следующему звену
             if (NextChain != null)

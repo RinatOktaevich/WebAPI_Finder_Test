@@ -78,6 +78,7 @@ namespace WebAPI_Finder_Test.Providers
 
 
 
+
             if (IsTrue)
                 bindingContext.Model = filter;
 

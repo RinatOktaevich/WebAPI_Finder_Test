@@ -64,9 +64,8 @@ namespace WebAPI_Finder_Test.Controllersз
         [AllowAnonymous]
         [Route("Searcher")]
         [HttpPost]
-        public IHttpActionResult Find([ModelBinder]Filters filters)
+        public IHttpActionResult Find([ModelBinder]Filters filters, [ModelBinder] string[] categoryid)
         {
-
             IEnumerable<ApplicationUser> users = db.Users;
             users = filters.Check(users).Skip(0).Take(20).ToList();
 
