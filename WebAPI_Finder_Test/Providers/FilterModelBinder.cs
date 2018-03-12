@@ -68,8 +68,13 @@ namespace WebAPI_Finder_Test.Providers
             }
 
 
-
-
+            //вот как делать params  и не ннадо никаких сторонних ни библиотек ни че го
+            var cats = HttpContext.Current.Request.Params.GetValues("categoryid");
+            if(cats.Length!=0)
+            {
+                filter.Chain = new CategoryFilter(ref cats);
+                IsTrue = true;
+            }
 
 
 

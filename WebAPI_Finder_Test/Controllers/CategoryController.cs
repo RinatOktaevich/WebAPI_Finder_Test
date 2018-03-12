@@ -112,6 +112,10 @@ namespace WebAPI_Finder_Test.Controllers
         [Route("BindUser")]
         public async Task<HttpResponseMessage> BindCategory(string iduser, [ModelBinder] int[] categories)
         {
+            var sd = Request;
+
+
+
             List<Category> cats = db.Categories.ToList();
             var user = db.Users.Find(iduser);
             Category temp = null;

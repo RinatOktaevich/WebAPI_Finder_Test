@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -84,27 +85,47 @@ namespace WebAPI_Finder_Test.Providers
 
     public class CategoryFilter : Filters
     {
-        string[] categories;
+        List<string> categories = new List<string>();
 
-        public string[] Categories {
-            set
-            {
-                categories = value;
-            }
+        public CategoryFilter(ref string[] cats)
+        {
+            categories.AddRange(cats);
         }
 
 
         public override IEnumerable<ApplicationUser> Check(IEnumerable<ApplicationUser> _users)
         {
-            ApplicationDbContext db = new ApplicationDbContext();
-            IEnumerable<ApplicationUser> users =db.Database.SqlQuery<ApplicationUser>("Select * from AspNetUsers where ");
+            //Здесь физически все юзеры
+            _users = _users.ToList();
+            Category tmp = new Category();
+
+            //Result collection
+            ICollection<ApplicationUser> Users = new List<ApplicationUser>();
+
+
+            foreach (var UserItem in _users)
+            {
+                foreach (var CatItem in categories)
+                {
+                    var id = Convert.ToInt16(CatItem);
+                    var cat = UserItem.Categories.Any(xr => xr.Id == id);
+                    if (cat == true)
+                    {
+                        Users.Add(UserItem);
+                        break;
+                    }
+                }
+            }
+
+
+
 
             //преходим к следующему звену
             if (NextChain != null)
             {
-                return NextChain.Check(users);
+                return NextChain.Check(Users);
             }
-            return users;
+            return Users;
         }
     }
 

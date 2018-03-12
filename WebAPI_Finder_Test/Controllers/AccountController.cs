@@ -61,12 +61,13 @@ namespace WebAPI_Finder_Test.Controllersз
         public ISecureDataFormat<AuthenticationTicket> AccessTokenFormat { get; private set; }
         #endregion
 
+
         [AllowAnonymous]
         [Route("Searcher")]
         [HttpPost]
-        public IHttpActionResult Find([ModelBinder]Filters filters, [ModelBinder] string[] categoryid)
+        public IHttpActionResult Find([ModelBinder]Filters filters)
         {
-            IEnumerable<ApplicationUser> users = db.Users;
+            IEnumerable<ApplicationUser> users = db.Users.Include(xr => xr.Categories).AsNoTracking();
             users = filters.Check(users).Skip(0).Take(20).ToList();
 
             return Ok(users);
