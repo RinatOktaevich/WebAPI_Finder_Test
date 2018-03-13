@@ -17,7 +17,7 @@ namespace WebAPI_Finder_Test.Providers
         public ValueProviderResult GetValue(string key)
         {
             var minAge = HttpContext.Current.Request.QueryString["minAge"];
-            if (minAge == string.Empty)
+            if (string.IsNullOrEmpty(minAge))
             {
                 return null;
             }

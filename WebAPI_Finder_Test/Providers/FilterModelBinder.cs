@@ -18,7 +18,7 @@ namespace WebAPI_Finder_Test.Providers
         public bool BindModel(HttpActionContext actionContext, ModelBindingContext bindingContext)
         {
             bool IsTrue = false;
-            Filters filter = null;
+            Filters Filter = null;
 
             if (bindingContext.ModelType != typeof(Filters))
             {
@@ -38,7 +38,7 @@ namespace WebAPI_Finder_Test.Providers
                     return false;
                 }
 
-                filter = new CityFilter(key);
+                Filter = new CityFilter(key);
                 IsTrue = true;
             }
 
@@ -60,32 +60,43 @@ namespace WebAPI_Finder_Test.Providers
                 if (valMax != null)
                     maxAge = Convert.ToInt16(valMax.RawValue);
 
-                if (filter != null)
-                    filter.Chain = new AgeFilter(minAge, maxAge);
+                if (Filter != null)
+                    Filter.Chain = new AgeFilter(minAge, maxAge);
                 else
-                    filter = new AgeFilter(minAge, maxAge);
+                    Filter = new AgeFilter(minAge, maxAge);
                 IsTrue = true;
             }
 
 
-            //вот как делать params  и не ннадо никаких сторонних ни библиотек ни че го
+            //Берём категории 
             var cats = HttpContext.Current.Request.Params.GetValues("categoryid");
-            if(cats.Length!=0)
+            if (cats != null)
             {
-                filter.Chain = new CategoryFilter(ref cats);
+                if (Filter != null)
+                    Filter.Chain = new CategoryFilter(ref cats);
+                else
+                    Filter = new CategoryFilter(ref cats);
                 IsTrue = true;
             }
 
 
+            //Берём имя 
+            ValueProviderResult fullname = bindingContext.ValueProvider.GetValue("fullname");
+            if (fullname != null)
+            {
+                if (Filter != null)
+                    Filter.Chain = new FullNameFilter(fullname.RawValue.ToString());
+                else
+                    Filter = new FullNameFilter(fullname.RawValue.ToString());
 
-
-
+                IsTrue = true;
+            }
 
 
 
 
             if (IsTrue)
-                bindingContext.Model = filter;
+                bindingContext.Model = Filter;
 
             return IsTrue;
         }

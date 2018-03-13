@@ -16,7 +16,11 @@ namespace WebAPI_Finder_Test.Providers
 
         public ValueProviderResult GetValue(string key)
         {
-           var cityid=HttpContext.Current.Request.QueryString["cityid"];
+            var cityid = HttpContext.Current.Request.QueryString["cityid"];
+            if (String.IsNullOrEmpty(cityid))
+            {
+                return null;
+            }
 
             return ContainsPrefix(key) ? new ValueProviderResult(cityid, null,
             CultureInfo.InvariantCulture) : null;

@@ -304,6 +304,10 @@
     <Compile Include="Migrations\201803041908597_Index on Login.Designer.cs">
       <DependentUpon>201803041908597_Index on Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803131836337_add FullName to User.cs" />
+    <Compile Include="Migrations\201803131836337_add FullName to User.Designer.cs">
+      <DependentUpon>201803131836337_add FullName to User.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -321,6 +325,7 @@
     <Compile Include="Providers\CityValueProvider.cs" />
     <Compile Include="Providers\FilterModelBinder.cs" />
     <Compile Include="Providers\Filters.cs" />
+    <Compile Include="Providers\FullNameValueProvider.cs" />
     <Compile Include="Providers\MaxAgeValueProvider.cs" />
     <Compile Include="Providers\MinAgeValueProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
@@ -438,6 +443,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803041908597_Index on Login.resx">
       <DependentUpon>201803041908597_Index on Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803131836337_add FullName to User.resx">
+      <DependentUpon>201803131836337_add FullName to User.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
