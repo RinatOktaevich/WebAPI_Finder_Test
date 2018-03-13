@@ -21,6 +21,7 @@ using System.Data.Entity;
 using System.Net;
 using System.IO;
 using WebAPI_Finder_Test.Models.Helpers;
+using System.Web.Http.ModelBinding;
 
 namespace WebAPI_Finder_Test.Controllersз
 {
@@ -59,6 +60,22 @@ namespace WebAPI_Finder_Test.Controllersз
 
         public ISecureDataFormat<AuthenticationTicket> AccessTokenFormat { get; private set; }
         #endregion
+
+
+        [AllowAnonymous]
+        [Route("Searcher")]
+        [HttpPost]
+        public IHttpActionResult Find([ModelBinder]Filters filters)
+        {
+            //Для поиска используються такие ключи
+           //
+
+            IEnumerable<ApplicationUser> users = db.Users.Include(xr => xr.Categories).AsNoTracking();
+            users = filters.Check(users).Skip(0).Take(20).ToList();
+
+            return Ok(users);
+        }
+
 
         [HttpPost]
         public async Task<HttpResponseMessage> SetAbout(string iduser, string about)
@@ -122,7 +139,7 @@ namespace WebAPI_Finder_Test.Controllersз
             }
 
             var Server = HttpContext.Current.Server;
-          
+
             db.AudioTracks.RemoveRange(user.AudioTracks);
 
             //Delete all user`s likes he ever liked
@@ -132,7 +149,7 @@ namespace WebAPI_Finder_Test.Controllersз
             db.Users.Remove(user);
 
             var userDir = "/Data/" + user.Login;
-            Directory.Delete(Server.MapPath(userDir),true);
+            Directory.Delete(Server.MapPath(userDir), true);
 
             await db.SaveChangesAsync();
 
@@ -250,7 +267,7 @@ namespace WebAPI_Finder_Test.Controllersз
             }
 
 
-            ApplicationUser user = new ApplicationUser() { UserName = model.Email, Email = model.Email, Firstname = model.Firstname, Lastname = model.Lastname, BirthDate = model.BirthDate, AvatarImage = "/Images/defaultImg.jpg", RegistrationDate = DateTime.Now };
+            ApplicationUser user = new ApplicationUser() { UserName = model.Email, Email = model.Email, Firstname = model.Firstname, Lastname = model.Lastname, BirthDate = model.BirthDate, AvatarImage = "/Images/defaultImg.jpg", RegistrationDate = DateTime.Now,FullName=model.Firstname.ToLower()+" "+model.Lastname.ToLower() };
 
 
             IdentityResult result = null;
@@ -541,7 +558,7 @@ namespace WebAPI_Finder_Test.Controllersз
             return logins;
         }
 
-   
+
 
         // POST api/Account/RegisterExternal
         [OverrideAuthentication]

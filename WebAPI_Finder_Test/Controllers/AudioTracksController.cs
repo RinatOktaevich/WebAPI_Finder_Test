@@ -39,7 +39,7 @@ namespace WebAPI_Finder_Test.Controllers
 
                 soundtrack = FileSaver.SaveImage("/Data/" + user.Login+"/Audios/");
             }
-            catch (Exception ex )
+            catch (Exception)
             {
 
                 return new HttpResponseMessage(HttpStatusCode.NoContent);
