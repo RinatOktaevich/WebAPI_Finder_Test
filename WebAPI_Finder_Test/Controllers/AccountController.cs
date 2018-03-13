@@ -67,27 +67,14 @@ namespace WebAPI_Finder_Test.Controllersз
         [HttpPost]
         public IHttpActionResult Find([ModelBinder]Filters filters)
         {
+            //Для поиска используються такие ключи
+           //
+
             IEnumerable<ApplicationUser> users = db.Users.Include(xr => xr.Categories).AsNoTracking();
             users = filters.Check(users).Skip(0).Take(20).ToList();
 
             return Ok(users);
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         [HttpPost]
@@ -280,7 +267,7 @@ namespace WebAPI_Finder_Test.Controllersз
             }
 
 
-            ApplicationUser user = new ApplicationUser() { UserName = model.Email, Email = model.Email, Firstname = model.Firstname, Lastname = model.Lastname, BirthDate = model.BirthDate, AvatarImage = "/Images/defaultImg.jpg", RegistrationDate = DateTime.Now };
+            ApplicationUser user = new ApplicationUser() { UserName = model.Email, Email = model.Email, Firstname = model.Firstname, Lastname = model.Lastname, BirthDate = model.BirthDate, AvatarImage = "/Images/defaultImg.jpg", RegistrationDate = DateTime.Now,FullName=model.Firstname.ToLower()+" "+model.Lastname.ToLower() };
 
 
             IdentityResult result = null;

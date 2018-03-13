@@ -5116,3 +5116,1846 @@ SELECT
 -- Completed in 1 ms with result: SqlDataReader
 
 Closed connection at 13.03.2018 21:58:20 +02:00
+Opened connection at 13.03.2018 22:07:06 +02:00
+select cast(serverproperty('EngineEdition') as int)
+-- Executing at 13.03.2018 22:07:06 +02:00
+-- Completed in 0 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:07:06 +02:00
+Opened connection at 13.03.2018 22:07:06 +02:00
+IF db_id(N'DtConnnect') IS NOT NULL SELECT 1 ELSE SELECT Count(*) FROM sys.databases WHERE [name]=N'DtConnnect'
+-- Executing at 13.03.2018 22:07:06 +02:00
+-- Completed in 0 ms with result: 1
+
+Closed connection at 13.03.2018 22:07:06 +02:00
+Opened connection at 13.03.2018 22:07:06 +02:00
+IF db_id(N'DtConnnect') IS NOT NULL SELECT 1 ELSE SELECT Count(*) FROM sys.databases WHERE [name]=N'DtConnnect'
+-- Executing at 13.03.2018 22:07:06 +02:00
+-- Completed in 0 ms with result: 1
+
+Closed connection at 13.03.2018 22:07:06 +02:00
+Opened connection at 13.03.2018 22:07:06 +02:00
+SELECT 
+    [GroupBy1].[A1] AS [C1]
+    FROM ( SELECT 
+        COUNT(1) AS [A1]
+        FROM [dbo].[__MigrationHistory] AS [Extent1]
+        WHERE [Extent1].[ContextKey] = @p__linq__0
+    )  AS [GroupBy1]
+-- p__linq__0: 'WebAPI_Finder_Test.Migrations.Configuration' (Type = String, Size = 4000)
+-- Executing at 13.03.2018 22:07:06 +02:00
+-- Completed in 0 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:07:06 +02:00
+Opened connection at 13.03.2018 22:07:06 +02:00
+SELECT TOP (1) 
+    [c].[CreatedOn] AS [CreatedOn]
+    FROM [dbo].[__MigrationHistory] AS [c]
+-- Executing at 13.03.2018 22:07:06 +02:00
+-- Failed in 0 ms with error: Invalid column name 'CreatedOn'.
+
+Closed connection at 13.03.2018 22:07:06 +02:00
+Opened connection at 13.03.2018 22:07:06 +02:00
+SELECT 
+    [Extent1].[MigrationId] AS [MigrationId]
+    FROM [dbo].[__MigrationHistory] AS [Extent1]
+    WHERE [Extent1].[ContextKey] = @p__linq__0
+-- p__linq__0: 'WebAPI_Finder_Test.Migrations.Configuration' (Type = String, Size = 4000)
+-- Executing at 13.03.2018 22:07:06 +02:00
+-- Completed in 0 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:07:06 +02:00
+Opened connection at 13.03.2018 22:07:06 +02:00
+SELECT TOP (1) 
+    [Project1].[C1] AS [C1], 
+    [Project1].[MigrationId] AS [MigrationId], 
+    [Project1].[Model] AS [Model], 
+    [Project1].[ProductVersion] AS [ProductVersion]
+    FROM ( SELECT 
+        [Extent1].[MigrationId] AS [MigrationId], 
+        [Extent1].[Model] AS [Model], 
+        [Extent1].[ProductVersion] AS [ProductVersion], 
+        1 AS [C1]
+        FROM [dbo].[__MigrationHistory] AS [Extent1]
+        WHERE [Extent1].[ContextKey] = @p__linq__0
+    )  AS [Project1]
+    ORDER BY [Project1].[MigrationId] DESC
+-- p__linq__0: 'WebAPI_Finder_Test.Migrations.Configuration' (Type = String, Size = 4000)
+-- Executing at 13.03.2018 22:07:06 +02:00
+-- Completed in 0 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:07:06 +02:00
+Opened connection at 13.03.2018 22:07:06 +02:00
+SELECT TOP (1) 
+    [Project1].[C1] AS [C1], 
+    [Project1].[MigrationId] AS [MigrationId], 
+    [Project1].[Model] AS [Model], 
+    [Project1].[ProductVersion] AS [ProductVersion]
+    FROM ( SELECT 
+        [Extent1].[MigrationId] AS [MigrationId], 
+        [Extent1].[Model] AS [Model], 
+        [Extent1].[ProductVersion] AS [ProductVersion], 
+        1 AS [C1]
+        FROM [dbo].[__MigrationHistory] AS [Extent1]
+        WHERE [Extent1].[ContextKey] = @p__linq__0
+    )  AS [Project1]
+    ORDER BY [Project1].[MigrationId] DESC
+-- p__linq__0: 'WebAPI_Finder_Test.Migrations.Configuration' (Type = String, Size = 4000)
+-- Executing at 13.03.2018 22:07:06 +02:00
+-- Completed in 0 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:07:06 +02:00
+Opened connection at 13.03.2018 22:07:06 +02:00
+SELECT 
+    [Extent1].[Id] AS [Id], 
+    [Extent1].[FullName] AS [FullName], 
+    [Extent1].[Firstname] AS [Firstname], 
+    [Extent1].[Lastname] AS [Lastname], 
+    [Extent1].[BirthDate] AS [BirthDate], 
+    [Extent1].[Login] AS [Login], 
+    [Extent1].[AvatarImage] AS [AvatarImage], 
+    [Extent1].[About] AS [About], 
+    [Extent1].[CityId] AS [CityId], 
+    [Extent1].[RegistrationDate] AS [RegistrationDate], 
+    [Extent1].[Email] AS [Email], 
+    [Extent1].[EmailConfirmed] AS [EmailConfirmed], 
+    [Extent1].[PasswordHash] AS [PasswordHash], 
+    [Extent1].[SecurityStamp] AS [SecurityStamp], 
+    [Extent1].[PhoneNumber] AS [PhoneNumber], 
+    [Extent1].[PhoneNumberConfirmed] AS [PhoneNumberConfirmed], 
+    [Extent1].[TwoFactorEnabled] AS [TwoFactorEnabled], 
+    [Extent1].[LockoutEndDateUtc] AS [LockoutEndDateUtc], 
+    [Extent1].[LockoutEnabled] AS [LockoutEnabled], 
+    [Extent1].[AccessFailedCount] AS [AccessFailedCount], 
+    [Extent1].[UserName] AS [UserName]
+    FROM [dbo].[AspNetUsers] AS [Extent1]
+-- Executing at 13.03.2018 22:07:06 +02:00
+-- Completed in 0 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:07:06 +02:00
+Opened connection at 13.03.2018 22:07:06 +02:00
+Started transaction at 13.03.2018 22:07:06 +02:00
+UPDATE [dbo].[AspNetUsers]
+SET [FullName] = @0
+WHERE ([Id] = @1)
+-- @0: 'rinat3 okjjafjljd3' (Type = String, Size = -1)
+-- @1: '094b97ae-d7fa-4aeb-9b1c-37fbd6d9eb4e' (Type = String, Size = 128)
+-- Executing at 13.03.2018 22:07:06 +02:00
+-- Completed in 0 ms with result: 1
+
+UPDATE [dbo].[AspNetUsers]
+SET [FullName] = @0
+WHERE ([Id] = @1)
+-- @0: 'rinat8 okjjafjljd8' (Type = String, Size = -1)
+-- @1: '200d5c7b-23f7-4fe7-a49a-7be506684f28' (Type = String, Size = 128)
+-- Executing at 13.03.2018 22:07:06 +02:00
+-- Completed in 0 ms with result: 1
+
+UPDATE [dbo].[AspNetUsers]
+SET [FullName] = @0
+WHERE ([Id] = @1)
+-- @0: 'rinat4 okjjafjljd5' (Type = String, Size = -1)
+-- @1: '224b53b4-ed89-4ca3-a66d-6ce819f6a367' (Type = String, Size = 128)
+-- Executing at 13.03.2018 22:07:06 +02:00
+-- Completed in 0 ms with result: 1
+
+UPDATE [dbo].[AspNetUsers]
+SET [FullName] = @0
+WHERE ([Id] = @1)
+-- @0: 'rinat2 okjjafjljdf' (Type = String, Size = -1)
+-- @1: '320e2230-3747-4400-a5e6-4f9653746ee9' (Type = String, Size = 128)
+-- Executing at 13.03.2018 22:07:06 +02:00
+-- Completed in 0 ms with result: 1
+
+UPDATE [dbo].[AspNetUsers]
+SET [FullName] = @0
+WHERE ([Id] = @1)
+-- @0: 'rinat7 okjjafjljd7' (Type = String, Size = -1)
+-- @1: '3665a231-3ff0-4e1b-8702-75cd980a3908' (Type = String, Size = 128)
+-- Executing at 13.03.2018 22:07:06 +02:00
+-- Completed in 0 ms with result: 1
+
+UPDATE [dbo].[AspNetUsers]
+SET [FullName] = @0
+WHERE ([Id] = @1)
+-- @0: 'rinat5 okjjafjljd5' (Type = String, Size = -1)
+-- @1: '47866024-97bd-43b2-9c82-9a743dcc8090' (Type = String, Size = 128)
+-- Executing at 13.03.2018 22:07:06 +02:00
+-- Completed in 0 ms with result: 1
+
+UPDATE [dbo].[AspNetUsers]
+SET [FullName] = @0
+WHERE ([Id] = @1)
+-- @0: 'rinat  oktaevich ' (Type = String, Size = -1)
+-- @1: '823d15a8-a853-4013-829a-351902063410' (Type = String, Size = 128)
+-- Executing at 13.03.2018 22:07:06 +02:00
+-- Completed in 0 ms with result: 1
+
+UPDATE [dbo].[AspNetUsers]
+SET [FullName] = @0
+WHERE ([Id] = @1)
+-- @0: 'rinat6 okjjafjljd6' (Type = String, Size = -1)
+-- @1: 'adf51d42-339b-45f1-a59f-a320ee671fa1' (Type = String, Size = 128)
+-- Executing at 13.03.2018 22:07:06 +02:00
+-- Completed in 0 ms with result: 1
+
+Committed transaction at 13.03.2018 22:07:06 +02:00
+Closed connection at 13.03.2018 22:07:06 +02:00
+Opened connection at 13.03.2018 22:11:15 +02:00
+select cast(serverproperty('EngineEdition') as int)
+-- Executing at 13.03.2018 22:11:15 +02:00
+-- Completed in 12 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:15 +02:00
+Opened connection at 13.03.2018 22:11:15 +02:00
+IF db_id(N'DtConnnect') IS NOT NULL SELECT 1 ELSE SELECT Count(*) FROM sys.databases WHERE [name]=N'DtConnnect'
+-- Executing at 13.03.2018 22:11:15 +02:00
+-- Completed in 1 ms with result: 1
+
+Closed connection at 13.03.2018 22:11:15 +02:00
+Opened connection at 13.03.2018 22:11:15 +02:00
+
+SELECT Count(*)
+FROM INFORMATION_SCHEMA.TABLES AS t
+WHERE t.TABLE_SCHEMA + '.' + t.TABLE_NAME IN ('dbo.Audios','dbo.Likes','dbo.AspNetUsers','dbo.Categories','dbo.Cities','dbo.Countries','dbo.AspNetUserClaims','dbo.AspNetUserLogins','dbo.AspNetUserRoles','dbo.SocialNetworks','dbo.Videos','dbo.AspNetRoles','dbo.CategoryApplicationUsers')
+    OR t.TABLE_NAME = 'EdmMetadata'
+-- Executing at 13.03.2018 22:11:15 +02:00
+-- Completed in 4 ms with result: 13
+
+Closed connection at 13.03.2018 22:11:15 +02:00
+Opened connection at 13.03.2018 22:11:15 +02:00
+SELECT 
+    [GroupBy1].[A1] AS [C1]
+    FROM ( SELECT 
+        COUNT(1) AS [A1]
+        FROM [dbo].[__MigrationHistory] AS [Extent1]
+        WHERE [Extent1].[ContextKey] = @p__linq__0
+    )  AS [GroupBy1]
+-- p__linq__0: 'WebAPI_Finder_Test.Migrations.Configuration' (Type = String, Size = 4000)
+-- Executing at 13.03.2018 22:11:15 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:15 +02:00
+Opened connection at 13.03.2018 22:11:15 +02:00
+SELECT TOP (1) 
+    [Project1].[C1] AS [C1], 
+    [Project1].[MigrationId] AS [MigrationId], 
+    [Project1].[Model] AS [Model], 
+    [Project1].[ProductVersion] AS [ProductVersion]
+    FROM ( SELECT 
+        [Extent1].[MigrationId] AS [MigrationId], 
+        [Extent1].[Model] AS [Model], 
+        [Extent1].[ProductVersion] AS [ProductVersion], 
+        1 AS [C1]
+        FROM [dbo].[__MigrationHistory] AS [Extent1]
+        WHERE [Extent1].[ContextKey] = @p__linq__0
+    )  AS [Project1]
+    ORDER BY [Project1].[MigrationId] DESC
+-- p__linq__0: 'WebAPI_Finder_Test.Migrations.Configuration' (Type = String, Size = 4000)
+-- Executing at 13.03.2018 22:11:15 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:15 +02:00
+Opened connection asynchronously at 13.03.2018 22:11:16 +02:00
+SELECT TOP (1) 
+    [Extent1].[Id] AS [Id], 
+    [Extent1].[FullName] AS [FullName], 
+    [Extent1].[Firstname] AS [Firstname], 
+    [Extent1].[Lastname] AS [Lastname], 
+    [Extent1].[BirthDate] AS [BirthDate], 
+    [Extent1].[Login] AS [Login], 
+    [Extent1].[AvatarImage] AS [AvatarImage], 
+    [Extent1].[About] AS [About], 
+    [Extent1].[CityId] AS [CityId], 
+    [Extent1].[RegistrationDate] AS [RegistrationDate], 
+    [Extent1].[Email] AS [Email], 
+    [Extent1].[EmailConfirmed] AS [EmailConfirmed], 
+    [Extent1].[PasswordHash] AS [PasswordHash], 
+    [Extent1].[SecurityStamp] AS [SecurityStamp], 
+    [Extent1].[PhoneNumber] AS [PhoneNumber], 
+    [Extent1].[PhoneNumberConfirmed] AS [PhoneNumberConfirmed], 
+    [Extent1].[TwoFactorEnabled] AS [TwoFactorEnabled], 
+    [Extent1].[LockoutEndDateUtc] AS [LockoutEndDateUtc], 
+    [Extent1].[LockoutEnabled] AS [LockoutEnabled], 
+    [Extent1].[AccessFailedCount] AS [AccessFailedCount], 
+    [Extent1].[UserName] AS [UserName]
+    FROM [dbo].[AspNetUsers] AS [Extent1]
+    WHERE ((UPPER([Extent1].[UserName])) = (UPPER(@p__linq__0))) OR ((UPPER([Extent1].[UserName]) IS NULL) AND (UPPER(@p__linq__0) IS NULL))
+-- p__linq__0: 'rinatoktaevich@gmail.com' (Type = String, Size = 4000)
+-- Executing asynchronously at 13.03.2018 22:11:16 +02:00
+-- Completed in 17 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:16 +02:00
+Opened connection asynchronously at 13.03.2018 22:11:16 +02:00
+SELECT TOP (1) 
+    [Extent1].[Id] AS [Id], 
+    [Extent1].[FullName] AS [FullName], 
+    [Extent1].[Firstname] AS [Firstname], 
+    [Extent1].[Lastname] AS [Lastname], 
+    [Extent1].[BirthDate] AS [BirthDate], 
+    [Extent1].[Login] AS [Login], 
+    [Extent1].[AvatarImage] AS [AvatarImage], 
+    [Extent1].[About] AS [About], 
+    [Extent1].[CityId] AS [CityId], 
+    [Extent1].[RegistrationDate] AS [RegistrationDate], 
+    [Extent1].[Email] AS [Email], 
+    [Extent1].[EmailConfirmed] AS [EmailConfirmed], 
+    [Extent1].[PasswordHash] AS [PasswordHash], 
+    [Extent1].[SecurityStamp] AS [SecurityStamp], 
+    [Extent1].[PhoneNumber] AS [PhoneNumber], 
+    [Extent1].[PhoneNumberConfirmed] AS [PhoneNumberConfirmed], 
+    [Extent1].[TwoFactorEnabled] AS [TwoFactorEnabled], 
+    [Extent1].[LockoutEndDateUtc] AS [LockoutEndDateUtc], 
+    [Extent1].[LockoutEnabled] AS [LockoutEnabled], 
+    [Extent1].[AccessFailedCount] AS [AccessFailedCount], 
+    [Extent1].[UserName] AS [UserName]
+    FROM [dbo].[AspNetUsers] AS [Extent1]
+    WHERE ((UPPER([Extent1].[Email])) = (UPPER(@p__linq__0))) OR ((UPPER([Extent1].[Email]) IS NULL) AND (UPPER(@p__linq__0) IS NULL))
+-- p__linq__0: 'rinatoktaevich@gmail.com' (Type = String, Size = 4000)
+-- Executing asynchronously at 13.03.2018 22:11:16 +02:00
+-- Completed in 4 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:16 +02:00
+Opened connection at 13.03.2018 22:11:16 +02:00
+SELECT 
+    CASE WHEN ( EXISTS (SELECT 
+        1 AS [C1]
+        FROM [dbo].[AspNetUsers] AS [Extent1]
+        WHERE [Extent1].[UserName] = @p__linq__0
+    )) THEN cast(1 as bit) ELSE cast(0 as bit) END AS [C1]
+    FROM  ( SELECT 1 AS X ) AS [SingleRowTable1]
+-- p__linq__0: 'rinatoktaevich@gmail.com' (Type = String, Size = 4000)
+-- Executing at 13.03.2018 22:11:16 +02:00
+-- Completed in 4 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:16 +02:00
+Opened connection asynchronously at 13.03.2018 22:11:16 +02:00
+Started transaction at 13.03.2018 22:11:16 +02:00
+INSERT [dbo].[AspNetUsers]([Id], [FullName], [Firstname], [Lastname], [BirthDate], [Login], [AvatarImage], [About], [CityId], [RegistrationDate], [Email], [EmailConfirmed], [PasswordHash], [SecurityStamp], [PhoneNumber], [PhoneNumberConfirmed], [TwoFactorEnabled], [LockoutEndDateUtc], [LockoutEnabled], [AccessFailedCount], [UserName])
+VALUES (@0, @1, @2, @3, @4, NULL, @5, NULL, NULL, @6, @7, @8, @9, @10, NULL, @11, @12, NULL, @13, @14, @15)
+-- @0: '2d718115-ddc9-44ed-a4ec-cd674f39b4be' (Type = String, Size = 128)
+-- @1: 'rinat raot' (Type = String, Size = -1)
+-- @2: 'Rinat' (Type = String, Size = -1)
+-- @3: 'Raot' (Type = String, Size = -1)
+-- @4: '15.03.2018 0:00:00' (Type = DateTime2)
+-- @5: '/Images/defaultImg.jpg' (Type = String, Size = -1)
+-- @6: '13.03.2018 22:11:15' (Type = DateTime2)
+-- @7: 'rinatoktaevich@gmail.com' (Type = String, Size = 256)
+-- @8: 'False' (Type = Boolean)
+-- @9: 'AJnI+wLxp7eq4LZzV1JlBow3PqSSmdMw/TqTCzk5awQIB57eJBBt2axIHVXOSi7Cyg==' (Type = String, Size = -1)
+-- @10: '8a5a705a-6638-40af-8aba-60d390a2c780' (Type = String, Size = -1)
+-- @11: 'False' (Type = Boolean)
+-- @12: 'False' (Type = Boolean)
+-- @13: 'False' (Type = Boolean)
+-- @14: '0' (Type = Int32)
+-- @15: 'rinatoktaevich@gmail.com' (Type = String, Size = 256)
+-- Executing asynchronously at 13.03.2018 22:11:16 +02:00
+-- Completed in 4 ms with result: 1
+
+Committed transaction at 13.03.2018 22:11:16 +02:00
+Closed connection at 13.03.2018 22:11:16 +02:00
+Opened connection asynchronously at 13.03.2018 22:11:16 +02:00
+SELECT TOP (1) 
+    [Extent1].[Id] AS [Id], 
+    [Extent1].[FullName] AS [FullName], 
+    [Extent1].[Firstname] AS [Firstname], 
+    [Extent1].[Lastname] AS [Lastname], 
+    [Extent1].[BirthDate] AS [BirthDate], 
+    [Extent1].[Login] AS [Login], 
+    [Extent1].[AvatarImage] AS [AvatarImage], 
+    [Extent1].[About] AS [About], 
+    [Extent1].[CityId] AS [CityId], 
+    [Extent1].[RegistrationDate] AS [RegistrationDate], 
+    [Extent1].[Email] AS [Email], 
+    [Extent1].[EmailConfirmed] AS [EmailConfirmed], 
+    [Extent1].[PasswordHash] AS [PasswordHash], 
+    [Extent1].[SecurityStamp] AS [SecurityStamp], 
+    [Extent1].[PhoneNumber] AS [PhoneNumber], 
+    [Extent1].[PhoneNumberConfirmed] AS [PhoneNumberConfirmed], 
+    [Extent1].[TwoFactorEnabled] AS [TwoFactorEnabled], 
+    [Extent1].[LockoutEndDateUtc] AS [LockoutEndDateUtc], 
+    [Extent1].[LockoutEnabled] AS [LockoutEnabled], 
+    [Extent1].[AccessFailedCount] AS [AccessFailedCount], 
+    [Extent1].[UserName] AS [UserName]
+    FROM [dbo].[AspNetUsers] AS [Extent1]
+    WHERE ((UPPER([Extent1].[UserName])) = (UPPER(@p__linq__0))) OR ((UPPER([Extent1].[UserName]) IS NULL) AND (UPPER(@p__linq__0) IS NULL))
+-- p__linq__0: 'rinatoktaevich@gmail.com' (Type = String, Size = 4000)
+-- Executing asynchronously at 13.03.2018 22:11:16 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:16 +02:00
+Opened connection asynchronously at 13.03.2018 22:11:16 +02:00
+SELECT 
+    [Extent1].[Id] AS [Id], 
+    [Extent1].[UserId] AS [UserId], 
+    [Extent1].[ClaimType] AS [ClaimType], 
+    [Extent1].[ClaimValue] AS [ClaimValue]
+    FROM [dbo].[AspNetUserClaims] AS [Extent1]
+    WHERE [Extent1].[UserId] = @p__linq__0
+-- p__linq__0: '2d718115-ddc9-44ed-a4ec-cd674f39b4be' (Type = String, Size = 4000)
+-- Executing asynchronously at 13.03.2018 22:11:16 +02:00
+-- Completed in 4 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:16 +02:00
+Opened connection asynchronously at 13.03.2018 22:11:16 +02:00
+SELECT 
+    [Extent1].[LoginProvider] AS [LoginProvider], 
+    [Extent1].[ProviderKey] AS [ProviderKey], 
+    [Extent1].[UserId] AS [UserId]
+    FROM [dbo].[AspNetUserLogins] AS [Extent1]
+    WHERE [Extent1].[UserId] = @p__linq__0
+-- p__linq__0: '2d718115-ddc9-44ed-a4ec-cd674f39b4be' (Type = String, Size = 4000)
+-- Executing asynchronously at 13.03.2018 22:11:16 +02:00
+-- Completed in 2 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:16 +02:00
+Opened connection asynchronously at 13.03.2018 22:11:16 +02:00
+SELECT 
+    [Extent1].[UserId] AS [UserId], 
+    [Extent1].[RoleId] AS [RoleId]
+    FROM [dbo].[AspNetUserRoles] AS [Extent1]
+    WHERE [Extent1].[UserId] = @p__linq__0
+-- p__linq__0: '2d718115-ddc9-44ed-a4ec-cd674f39b4be' (Type = String, Size = 4000)
+-- Executing asynchronously at 13.03.2018 22:11:16 +02:00
+-- Completed in 2 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:16 +02:00
+Opened connection asynchronously at 13.03.2018 22:11:16 +02:00
+SELECT TOP (1) 
+    [Extent1].[Id] AS [Id], 
+    [Extent1].[FullName] AS [FullName], 
+    [Extent1].[Firstname] AS [Firstname], 
+    [Extent1].[Lastname] AS [Lastname], 
+    [Extent1].[BirthDate] AS [BirthDate], 
+    [Extent1].[Login] AS [Login], 
+    [Extent1].[AvatarImage] AS [AvatarImage], 
+    [Extent1].[About] AS [About], 
+    [Extent1].[CityId] AS [CityId], 
+    [Extent1].[RegistrationDate] AS [RegistrationDate], 
+    [Extent1].[Email] AS [Email], 
+    [Extent1].[EmailConfirmed] AS [EmailConfirmed], 
+    [Extent1].[PasswordHash] AS [PasswordHash], 
+    [Extent1].[SecurityStamp] AS [SecurityStamp], 
+    [Extent1].[PhoneNumber] AS [PhoneNumber], 
+    [Extent1].[PhoneNumberConfirmed] AS [PhoneNumberConfirmed], 
+    [Extent1].[TwoFactorEnabled] AS [TwoFactorEnabled], 
+    [Extent1].[LockoutEndDateUtc] AS [LockoutEndDateUtc], 
+    [Extent1].[LockoutEnabled] AS [LockoutEnabled], 
+    [Extent1].[AccessFailedCount] AS [AccessFailedCount], 
+    [Extent1].[UserName] AS [UserName]
+    FROM [dbo].[AspNetUsers] AS [Extent1]
+    WHERE ((UPPER([Extent1].[Email])) = (UPPER(@p__linq__0))) OR ((UPPER([Extent1].[Email]) IS NULL) AND (UPPER(@p__linq__0) IS NULL))
+-- p__linq__0: 'rinatoktaevich@gmail.com' (Type = String, Size = 4000)
+-- Executing asynchronously at 13.03.2018 22:11:16 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:16 +02:00
+Opened connection asynchronously at 13.03.2018 22:11:16 +02:00
+Started transaction at 13.03.2018 22:11:16 +02:00
+UPDATE [dbo].[AspNetUsers]
+SET [FullName] = @0, [Firstname] = @1, [Lastname] = @2, [BirthDate] = @3, [Login] = @4, [AvatarImage] = @5, [About] = NULL, [CityId] = NULL, [RegistrationDate] = @6, [Email] = @7, [EmailConfirmed] = @8, [PasswordHash] = @9, [SecurityStamp] = @10, [PhoneNumber] = NULL, [PhoneNumberConfirmed] = @11, [TwoFactorEnabled] = @12, [LockoutEndDateUtc] = NULL, [LockoutEnabled] = @13, [AccessFailedCount] = @14, [UserName] = @15
+WHERE ([Id] = @16)
+-- @0: 'rinat raot' (Type = String, Size = -1)
+-- @1: 'Rinat' (Type = String, Size = -1)
+-- @2: 'Raot' (Type = String, Size = -1)
+-- @3: '15.03.2018 0:00:00' (Type = DateTime2)
+-- @4: 'rinatoktaevich2d71' (Type = String, Size = 300)
+-- @5: '/Images/defaultImg.jpg' (Type = String, Size = -1)
+-- @6: '13.03.2018 22:11:15' (Type = DateTime2)
+-- @7: 'rinatoktaevich@gmail.com' (Type = String, Size = 256)
+-- @8: 'False' (Type = Boolean)
+-- @9: 'AJnI+wLxp7eq4LZzV1JlBow3PqSSmdMw/TqTCzk5awQIB57eJBBt2axIHVXOSi7Cyg==' (Type = String, Size = -1)
+-- @10: '8a5a705a-6638-40af-8aba-60d390a2c780' (Type = String, Size = -1)
+-- @11: 'False' (Type = Boolean)
+-- @12: 'False' (Type = Boolean)
+-- @13: 'False' (Type = Boolean)
+-- @14: '0' (Type = Int32)
+-- @15: 'rinatoktaevich@gmail.com' (Type = String, Size = 256)
+-- @16: '2d718115-ddc9-44ed-a4ec-cd674f39b4be' (Type = String, Size = 128)
+-- Executing asynchronously at 13.03.2018 22:11:16 +02:00
+-- Completed in 5 ms with result: 1
+
+Committed transaction at 13.03.2018 22:11:16 +02:00
+Closed connection at 13.03.2018 22:11:16 +02:00
+Opened connection at 13.03.2018 22:11:28 +02:00
+SELECT 
+    [Project1].[AccessFailedCount] AS [AccessFailedCount], 
+    [Project1].[Id] AS [Id], 
+    [Project1].[FullName] AS [FullName], 
+    [Project1].[Firstname] AS [Firstname], 
+    [Project1].[Lastname] AS [Lastname], 
+    [Project1].[BirthDate] AS [BirthDate], 
+    [Project1].[Login] AS [Login], 
+    [Project1].[AvatarImage] AS [AvatarImage], 
+    [Project1].[About] AS [About], 
+    [Project1].[CityId] AS [CityId], 
+    [Project1].[RegistrationDate] AS [RegistrationDate], 
+    [Project1].[Email] AS [Email], 
+    [Project1].[EmailConfirmed] AS [EmailConfirmed], 
+    [Project1].[PasswordHash] AS [PasswordHash], 
+    [Project1].[SecurityStamp] AS [SecurityStamp], 
+    [Project1].[PhoneNumber] AS [PhoneNumber], 
+    [Project1].[PhoneNumberConfirmed] AS [PhoneNumberConfirmed], 
+    [Project1].[TwoFactorEnabled] AS [TwoFactorEnabled], 
+    [Project1].[LockoutEndDateUtc] AS [LockoutEndDateUtc], 
+    [Project1].[LockoutEnabled] AS [LockoutEnabled], 
+    [Project1].[UserName] AS [UserName], 
+    [Project1].[C1] AS [C1], 
+    [Project1].[Id1] AS [Id1], 
+    [Project1].[Name] AS [Name]
+    FROM ( SELECT 
+        [Extent1].[Id] AS [Id], 
+        [Extent1].[FullName] AS [FullName], 
+        [Extent1].[Firstname] AS [Firstname], 
+        [Extent1].[Lastname] AS [Lastname], 
+        [Extent1].[BirthDate] AS [BirthDate], 
+        [Extent1].[Login] AS [Login], 
+        [Extent1].[AvatarImage] AS [AvatarImage], 
+        [Extent1].[About] AS [About], 
+        [Extent1].[CityId] AS [CityId], 
+        [Extent1].[RegistrationDate] AS [RegistrationDate], 
+        [Extent1].[Email] AS [Email], 
+        [Extent1].[EmailConfirmed] AS [EmailConfirmed], 
+        [Extent1].[PasswordHash] AS [PasswordHash], 
+        [Extent1].[SecurityStamp] AS [SecurityStamp], 
+        [Extent1].[PhoneNumber] AS [PhoneNumber], 
+        [Extent1].[PhoneNumberConfirmed] AS [PhoneNumberConfirmed], 
+        [Extent1].[TwoFactorEnabled] AS [TwoFactorEnabled], 
+        [Extent1].[LockoutEndDateUtc] AS [LockoutEndDateUtc], 
+        [Extent1].[LockoutEnabled] AS [LockoutEnabled], 
+        [Extent1].[AccessFailedCount] AS [AccessFailedCount], 
+        [Extent1].[UserName] AS [UserName], 
+        [Join1].[Id] AS [Id1], 
+        [Join1].[Name] AS [Name], 
+        CASE WHEN ([Join1].[Category_Id] IS NULL) THEN CAST(NULL AS int) ELSE 1 END AS [C1]
+        FROM  [dbo].[AspNetUsers] AS [Extent1]
+        LEFT OUTER JOIN  (SELECT [Extent2].[Category_Id] AS [Category_Id], [Extent2].[ApplicationUser_Id] AS [ApplicationUser_Id], [Extent3].[Id] AS [Id], [Extent3].[Name] AS [Name]
+            FROM  [dbo].[CategoryApplicationUsers] AS [Extent2]
+            INNER JOIN [dbo].[Categories] AS [Extent3] ON [Extent3].[Id] = [Extent2].[Category_Id] ) AS [Join1] ON [Extent1].[Id] = [Join1].[ApplicationUser_Id]
+    )  AS [Project1]
+    ORDER BY [Project1].[Id] ASC, [Project1].[C1] ASC
+-- Executing at 13.03.2018 22:11:28 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:28 +02:00
+Opened connection at 13.03.2018 22:11:28 +02:00
+SELECT 
+    [Extent1].[Id] AS [Id], 
+    [Extent1].[Url] AS [Url], 
+    [Extent1].[Performer] AS [Performer], 
+    [Extent1].[Title] AS [Title], 
+    [Extent1].[ApplicationUserId] AS [ApplicationUserId], 
+    [Extent1].[Description] AS [Description], 
+    [Extent1].[AuthorLogin] AS [AuthorLogin], 
+    [Extent1].[ImageCover] AS [ImageCover], 
+    [Extent1].[CountLikes] AS [CountLikes], 
+    [Extent1].[CategoryId] AS [CategoryId]
+    FROM [dbo].[Audios] AS [Extent1]
+    WHERE [Extent1].[ApplicationUserId] = @EntityKeyValue1
+-- EntityKeyValue1: '094b97ae-d7fa-4aeb-9b1c-37fbd6d9eb4e' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:28 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:28 +02:00
+Opened connection at 13.03.2018 22:11:28 +02:00
+SELECT 
+    [Extent1].[Id] AS [Id], 
+    [Extent1].[UserId] AS [UserId], 
+    [Extent1].[ClaimType] AS [ClaimType], 
+    [Extent1].[ClaimValue] AS [ClaimValue]
+    FROM [dbo].[AspNetUserClaims] AS [Extent1]
+    WHERE [Extent1].[UserId] = @EntityKeyValue1
+-- EntityKeyValue1: '094b97ae-d7fa-4aeb-9b1c-37fbd6d9eb4e' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:28 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:28 +02:00
+Opened connection at 13.03.2018 22:11:28 +02:00
+SELECT 
+    [Extent1].[LoginProvider] AS [LoginProvider], 
+    [Extent1].[ProviderKey] AS [ProviderKey], 
+    [Extent1].[UserId] AS [UserId]
+    FROM [dbo].[AspNetUserLogins] AS [Extent1]
+    WHERE [Extent1].[UserId] = @EntityKeyValue1
+-- EntityKeyValue1: '094b97ae-d7fa-4aeb-9b1c-37fbd6d9eb4e' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:28 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:28 +02:00
+Opened connection at 13.03.2018 22:11:28 +02:00
+SELECT 
+    [Extent1].[UserId] AS [UserId], 
+    [Extent1].[RoleId] AS [RoleId]
+    FROM [dbo].[AspNetUserRoles] AS [Extent1]
+    WHERE [Extent1].[UserId] = @EntityKeyValue1
+-- EntityKeyValue1: '094b97ae-d7fa-4aeb-9b1c-37fbd6d9eb4e' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:28 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:28 +02:00
+Opened connection at 13.03.2018 22:11:28 +02:00
+SELECT 
+    [Extent1].[ApplicationUserId] AS [ApplicationUserId], 
+    [Extent1].[Instagram] AS [Instagram], 
+    [Extent1].[Vk] AS [Vk], 
+    [Extent1].[FaceBook] AS [FaceBook], 
+    [Extent1].[YouTube] AS [YouTube], 
+    [Extent1].[Twitter] AS [Twitter]
+    FROM [dbo].[SocialNetworks] AS [Extent1]
+    WHERE [Extent1].[ApplicationUserId] = @EntityKeyValue1
+-- EntityKeyValue1: '094b97ae-d7fa-4aeb-9b1c-37fbd6d9eb4e' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:28 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:28 +02:00
+Opened connection at 13.03.2018 22:11:28 +02:00
+SELECT 
+    [Extent1].[Id] AS [Id], 
+    [Extent1].[Url] AS [Url], 
+    [Extent1].[Performer] AS [Performer], 
+    [Extent1].[Title] AS [Title], 
+    [Extent1].[ApplicationUserId] AS [ApplicationUserId], 
+    [Extent1].[Description] AS [Description], 
+    [Extent1].[AuthorLogin] AS [AuthorLogin], 
+    [Extent1].[ImageCover] AS [ImageCover], 
+    [Extent1].[CountLikes] AS [CountLikes], 
+    [Extent1].[CategoryId] AS [CategoryId]
+    FROM [dbo].[Audios] AS [Extent1]
+    WHERE [Extent1].[ApplicationUserId] = @EntityKeyValue1
+-- EntityKeyValue1: '200d5c7b-23f7-4fe7-a49a-7be506684f28' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:28 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:28 +02:00
+Opened connection at 13.03.2018 22:11:28 +02:00
+SELECT 
+    [Extent1].[Id] AS [Id], 
+    [Extent1].[UserId] AS [UserId], 
+    [Extent1].[ClaimType] AS [ClaimType], 
+    [Extent1].[ClaimValue] AS [ClaimValue]
+    FROM [dbo].[AspNetUserClaims] AS [Extent1]
+    WHERE [Extent1].[UserId] = @EntityKeyValue1
+-- EntityKeyValue1: '200d5c7b-23f7-4fe7-a49a-7be506684f28' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:28 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:28 +02:00
+Opened connection at 13.03.2018 22:11:28 +02:00
+SELECT 
+    [Extent1].[LoginProvider] AS [LoginProvider], 
+    [Extent1].[ProviderKey] AS [ProviderKey], 
+    [Extent1].[UserId] AS [UserId]
+    FROM [dbo].[AspNetUserLogins] AS [Extent1]
+    WHERE [Extent1].[UserId] = @EntityKeyValue1
+-- EntityKeyValue1: '200d5c7b-23f7-4fe7-a49a-7be506684f28' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:28 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:28 +02:00
+Opened connection at 13.03.2018 22:11:28 +02:00
+SELECT 
+    [Extent1].[UserId] AS [UserId], 
+    [Extent1].[RoleId] AS [RoleId]
+    FROM [dbo].[AspNetUserRoles] AS [Extent1]
+    WHERE [Extent1].[UserId] = @EntityKeyValue1
+-- EntityKeyValue1: '200d5c7b-23f7-4fe7-a49a-7be506684f28' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:28 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:28 +02:00
+Opened connection at 13.03.2018 22:11:28 +02:00
+SELECT 
+    [Extent1].[ApplicationUserId] AS [ApplicationUserId], 
+    [Extent1].[Instagram] AS [Instagram], 
+    [Extent1].[Vk] AS [Vk], 
+    [Extent1].[FaceBook] AS [FaceBook], 
+    [Extent1].[YouTube] AS [YouTube], 
+    [Extent1].[Twitter] AS [Twitter]
+    FROM [dbo].[SocialNetworks] AS [Extent1]
+    WHERE [Extent1].[ApplicationUserId] = @EntityKeyValue1
+-- EntityKeyValue1: '200d5c7b-23f7-4fe7-a49a-7be506684f28' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:28 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:28 +02:00
+Opened connection at 13.03.2018 22:11:28 +02:00
+SELECT 
+    [Extent1].[Id] AS [Id], 
+    [Extent1].[Url] AS [Url], 
+    [Extent1].[Performer] AS [Performer], 
+    [Extent1].[Title] AS [Title], 
+    [Extent1].[ApplicationUserId] AS [ApplicationUserId], 
+    [Extent1].[Description] AS [Description], 
+    [Extent1].[AuthorLogin] AS [AuthorLogin], 
+    [Extent1].[ImageCover] AS [ImageCover], 
+    [Extent1].[CountLikes] AS [CountLikes], 
+    [Extent1].[CategoryId] AS [CategoryId]
+    FROM [dbo].[Audios] AS [Extent1]
+    WHERE [Extent1].[ApplicationUserId] = @EntityKeyValue1
+-- EntityKeyValue1: '224b53b4-ed89-4ca3-a66d-6ce819f6a367' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:28 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:28 +02:00
+Opened connection at 13.03.2018 22:11:28 +02:00
+SELECT 
+    [Extent1].[Id] AS [Id], 
+    [Extent1].[UserId] AS [UserId], 
+    [Extent1].[ClaimType] AS [ClaimType], 
+    [Extent1].[ClaimValue] AS [ClaimValue]
+    FROM [dbo].[AspNetUserClaims] AS [Extent1]
+    WHERE [Extent1].[UserId] = @EntityKeyValue1
+-- EntityKeyValue1: '224b53b4-ed89-4ca3-a66d-6ce819f6a367' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:28 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:28 +02:00
+Opened connection at 13.03.2018 22:11:28 +02:00
+SELECT 
+    [Extent1].[LoginProvider] AS [LoginProvider], 
+    [Extent1].[ProviderKey] AS [ProviderKey], 
+    [Extent1].[UserId] AS [UserId]
+    FROM [dbo].[AspNetUserLogins] AS [Extent1]
+    WHERE [Extent1].[UserId] = @EntityKeyValue1
+-- EntityKeyValue1: '224b53b4-ed89-4ca3-a66d-6ce819f6a367' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:28 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:28 +02:00
+Opened connection at 13.03.2018 22:11:28 +02:00
+SELECT 
+    [Extent1].[UserId] AS [UserId], 
+    [Extent1].[RoleId] AS [RoleId]
+    FROM [dbo].[AspNetUserRoles] AS [Extent1]
+    WHERE [Extent1].[UserId] = @EntityKeyValue1
+-- EntityKeyValue1: '224b53b4-ed89-4ca3-a66d-6ce819f6a367' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:28 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:28 +02:00
+Opened connection at 13.03.2018 22:11:28 +02:00
+SELECT 
+    [Extent1].[ApplicationUserId] AS [ApplicationUserId], 
+    [Extent1].[Instagram] AS [Instagram], 
+    [Extent1].[Vk] AS [Vk], 
+    [Extent1].[FaceBook] AS [FaceBook], 
+    [Extent1].[YouTube] AS [YouTube], 
+    [Extent1].[Twitter] AS [Twitter]
+    FROM [dbo].[SocialNetworks] AS [Extent1]
+    WHERE [Extent1].[ApplicationUserId] = @EntityKeyValue1
+-- EntityKeyValue1: '224b53b4-ed89-4ca3-a66d-6ce819f6a367' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:28 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:28 +02:00
+Opened connection at 13.03.2018 22:11:28 +02:00
+SELECT 
+    [Extent1].[Id] AS [Id], 
+    [Extent1].[Url] AS [Url], 
+    [Extent1].[Performer] AS [Performer], 
+    [Extent1].[Title] AS [Title], 
+    [Extent1].[ApplicationUserId] AS [ApplicationUserId], 
+    [Extent1].[Description] AS [Description], 
+    [Extent1].[AuthorLogin] AS [AuthorLogin], 
+    [Extent1].[ImageCover] AS [ImageCover], 
+    [Extent1].[CountLikes] AS [CountLikes], 
+    [Extent1].[CategoryId] AS [CategoryId]
+    FROM [dbo].[Audios] AS [Extent1]
+    WHERE [Extent1].[ApplicationUserId] = @EntityKeyValue1
+-- EntityKeyValue1: '2d718115-ddc9-44ed-a4ec-cd674f39b4be' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:28 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:28 +02:00
+Opened connection at 13.03.2018 22:11:28 +02:00
+SELECT 
+    [Extent1].[Id] AS [Id], 
+    [Extent1].[UserId] AS [UserId], 
+    [Extent1].[ClaimType] AS [ClaimType], 
+    [Extent1].[ClaimValue] AS [ClaimValue]
+    FROM [dbo].[AspNetUserClaims] AS [Extent1]
+    WHERE [Extent1].[UserId] = @EntityKeyValue1
+-- EntityKeyValue1: '2d718115-ddc9-44ed-a4ec-cd674f39b4be' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:28 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:28 +02:00
+Opened connection at 13.03.2018 22:11:28 +02:00
+SELECT 
+    [Extent1].[LoginProvider] AS [LoginProvider], 
+    [Extent1].[ProviderKey] AS [ProviderKey], 
+    [Extent1].[UserId] AS [UserId]
+    FROM [dbo].[AspNetUserLogins] AS [Extent1]
+    WHERE [Extent1].[UserId] = @EntityKeyValue1
+-- EntityKeyValue1: '2d718115-ddc9-44ed-a4ec-cd674f39b4be' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:28 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:28 +02:00
+Opened connection at 13.03.2018 22:11:28 +02:00
+SELECT 
+    [Extent1].[UserId] AS [UserId], 
+    [Extent1].[RoleId] AS [RoleId]
+    FROM [dbo].[AspNetUserRoles] AS [Extent1]
+    WHERE [Extent1].[UserId] = @EntityKeyValue1
+-- EntityKeyValue1: '2d718115-ddc9-44ed-a4ec-cd674f39b4be' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:28 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:28 +02:00
+Opened connection at 13.03.2018 22:11:28 +02:00
+SELECT 
+    [Extent1].[ApplicationUserId] AS [ApplicationUserId], 
+    [Extent1].[Instagram] AS [Instagram], 
+    [Extent1].[Vk] AS [Vk], 
+    [Extent1].[FaceBook] AS [FaceBook], 
+    [Extent1].[YouTube] AS [YouTube], 
+    [Extent1].[Twitter] AS [Twitter]
+    FROM [dbo].[SocialNetworks] AS [Extent1]
+    WHERE [Extent1].[ApplicationUserId] = @EntityKeyValue1
+-- EntityKeyValue1: '2d718115-ddc9-44ed-a4ec-cd674f39b4be' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:28 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:28 +02:00
+Opened connection at 13.03.2018 22:11:28 +02:00
+SELECT 
+    [Extent1].[Id] AS [Id], 
+    [Extent1].[Url] AS [Url], 
+    [Extent1].[Performer] AS [Performer], 
+    [Extent1].[Title] AS [Title], 
+    [Extent1].[ApplicationUserId] AS [ApplicationUserId], 
+    [Extent1].[Description] AS [Description], 
+    [Extent1].[AuthorLogin] AS [AuthorLogin], 
+    [Extent1].[ImageCover] AS [ImageCover], 
+    [Extent1].[CountLikes] AS [CountLikes], 
+    [Extent1].[CategoryId] AS [CategoryId]
+    FROM [dbo].[Audios] AS [Extent1]
+    WHERE [Extent1].[ApplicationUserId] = @EntityKeyValue1
+-- EntityKeyValue1: '320e2230-3747-4400-a5e6-4f9653746ee9' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:28 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:28 +02:00
+Opened connection at 13.03.2018 22:11:28 +02:00
+SELECT 
+    [Extent1].[Id] AS [Id], 
+    [Extent1].[UserId] AS [UserId], 
+    [Extent1].[ClaimType] AS [ClaimType], 
+    [Extent1].[ClaimValue] AS [ClaimValue]
+    FROM [dbo].[AspNetUserClaims] AS [Extent1]
+    WHERE [Extent1].[UserId] = @EntityKeyValue1
+-- EntityKeyValue1: '320e2230-3747-4400-a5e6-4f9653746ee9' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:28 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:28 +02:00
+Opened connection at 13.03.2018 22:11:28 +02:00
+SELECT 
+    [Extent1].[LoginProvider] AS [LoginProvider], 
+    [Extent1].[ProviderKey] AS [ProviderKey], 
+    [Extent1].[UserId] AS [UserId]
+    FROM [dbo].[AspNetUserLogins] AS [Extent1]
+    WHERE [Extent1].[UserId] = @EntityKeyValue1
+-- EntityKeyValue1: '320e2230-3747-4400-a5e6-4f9653746ee9' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:28 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:28 +02:00
+Opened connection at 13.03.2018 22:11:28 +02:00
+SELECT 
+    [Extent1].[UserId] AS [UserId], 
+    [Extent1].[RoleId] AS [RoleId]
+    FROM [dbo].[AspNetUserRoles] AS [Extent1]
+    WHERE [Extent1].[UserId] = @EntityKeyValue1
+-- EntityKeyValue1: '320e2230-3747-4400-a5e6-4f9653746ee9' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:28 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:28 +02:00
+Opened connection at 13.03.2018 22:11:28 +02:00
+SELECT 
+    [Extent1].[ApplicationUserId] AS [ApplicationUserId], 
+    [Extent1].[Instagram] AS [Instagram], 
+    [Extent1].[Vk] AS [Vk], 
+    [Extent1].[FaceBook] AS [FaceBook], 
+    [Extent1].[YouTube] AS [YouTube], 
+    [Extent1].[Twitter] AS [Twitter]
+    FROM [dbo].[SocialNetworks] AS [Extent1]
+    WHERE [Extent1].[ApplicationUserId] = @EntityKeyValue1
+-- EntityKeyValue1: '320e2230-3747-4400-a5e6-4f9653746ee9' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:28 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:28 +02:00
+Opened connection at 13.03.2018 22:11:28 +02:00
+SELECT 
+    [Extent1].[Id] AS [Id], 
+    [Extent1].[Url] AS [Url], 
+    [Extent1].[Performer] AS [Performer], 
+    [Extent1].[Title] AS [Title], 
+    [Extent1].[ApplicationUserId] AS [ApplicationUserId], 
+    [Extent1].[Description] AS [Description], 
+    [Extent1].[AuthorLogin] AS [AuthorLogin], 
+    [Extent1].[ImageCover] AS [ImageCover], 
+    [Extent1].[CountLikes] AS [CountLikes], 
+    [Extent1].[CategoryId] AS [CategoryId]
+    FROM [dbo].[Audios] AS [Extent1]
+    WHERE [Extent1].[ApplicationUserId] = @EntityKeyValue1
+-- EntityKeyValue1: '3665a231-3ff0-4e1b-8702-75cd980a3908' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:28 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:28 +02:00
+Opened connection at 13.03.2018 22:11:28 +02:00
+SELECT 
+    [Extent1].[Id] AS [Id], 
+    [Extent1].[UserId] AS [UserId], 
+    [Extent1].[ClaimType] AS [ClaimType], 
+    [Extent1].[ClaimValue] AS [ClaimValue]
+    FROM [dbo].[AspNetUserClaims] AS [Extent1]
+    WHERE [Extent1].[UserId] = @EntityKeyValue1
+-- EntityKeyValue1: '3665a231-3ff0-4e1b-8702-75cd980a3908' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:28 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:28 +02:00
+Opened connection at 13.03.2018 22:11:28 +02:00
+SELECT 
+    [Extent1].[LoginProvider] AS [LoginProvider], 
+    [Extent1].[ProviderKey] AS [ProviderKey], 
+    [Extent1].[UserId] AS [UserId]
+    FROM [dbo].[AspNetUserLogins] AS [Extent1]
+    WHERE [Extent1].[UserId] = @EntityKeyValue1
+-- EntityKeyValue1: '3665a231-3ff0-4e1b-8702-75cd980a3908' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:28 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:28 +02:00
+Opened connection at 13.03.2018 22:11:28 +02:00
+SELECT 
+    [Extent1].[UserId] AS [UserId], 
+    [Extent1].[RoleId] AS [RoleId]
+    FROM [dbo].[AspNetUserRoles] AS [Extent1]
+    WHERE [Extent1].[UserId] = @EntityKeyValue1
+-- EntityKeyValue1: '3665a231-3ff0-4e1b-8702-75cd980a3908' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:28 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:28 +02:00
+Opened connection at 13.03.2018 22:11:28 +02:00
+SELECT 
+    [Extent1].[ApplicationUserId] AS [ApplicationUserId], 
+    [Extent1].[Instagram] AS [Instagram], 
+    [Extent1].[Vk] AS [Vk], 
+    [Extent1].[FaceBook] AS [FaceBook], 
+    [Extent1].[YouTube] AS [YouTube], 
+    [Extent1].[Twitter] AS [Twitter]
+    FROM [dbo].[SocialNetworks] AS [Extent1]
+    WHERE [Extent1].[ApplicationUserId] = @EntityKeyValue1
+-- EntityKeyValue1: '3665a231-3ff0-4e1b-8702-75cd980a3908' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:28 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:28 +02:00
+Opened connection at 13.03.2018 22:11:28 +02:00
+SELECT 
+    [Extent1].[Id] AS [Id], 
+    [Extent1].[Url] AS [Url], 
+    [Extent1].[Performer] AS [Performer], 
+    [Extent1].[Title] AS [Title], 
+    [Extent1].[ApplicationUserId] AS [ApplicationUserId], 
+    [Extent1].[Description] AS [Description], 
+    [Extent1].[AuthorLogin] AS [AuthorLogin], 
+    [Extent1].[ImageCover] AS [ImageCover], 
+    [Extent1].[CountLikes] AS [CountLikes], 
+    [Extent1].[CategoryId] AS [CategoryId]
+    FROM [dbo].[Audios] AS [Extent1]
+    WHERE [Extent1].[ApplicationUserId] = @EntityKeyValue1
+-- EntityKeyValue1: '47866024-97bd-43b2-9c82-9a743dcc8090' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:28 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:28 +02:00
+Opened connection at 13.03.2018 22:11:28 +02:00
+SELECT 
+    [Extent1].[Id] AS [Id], 
+    [Extent1].[UserId] AS [UserId], 
+    [Extent1].[ClaimType] AS [ClaimType], 
+    [Extent1].[ClaimValue] AS [ClaimValue]
+    FROM [dbo].[AspNetUserClaims] AS [Extent1]
+    WHERE [Extent1].[UserId] = @EntityKeyValue1
+-- EntityKeyValue1: '47866024-97bd-43b2-9c82-9a743dcc8090' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:28 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:28 +02:00
+Opened connection at 13.03.2018 22:11:28 +02:00
+SELECT 
+    [Extent1].[LoginProvider] AS [LoginProvider], 
+    [Extent1].[ProviderKey] AS [ProviderKey], 
+    [Extent1].[UserId] AS [UserId]
+    FROM [dbo].[AspNetUserLogins] AS [Extent1]
+    WHERE [Extent1].[UserId] = @EntityKeyValue1
+-- EntityKeyValue1: '47866024-97bd-43b2-9c82-9a743dcc8090' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:28 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:28 +02:00
+Opened connection at 13.03.2018 22:11:28 +02:00
+SELECT 
+    [Extent1].[UserId] AS [UserId], 
+    [Extent1].[RoleId] AS [RoleId]
+    FROM [dbo].[AspNetUserRoles] AS [Extent1]
+    WHERE [Extent1].[UserId] = @EntityKeyValue1
+-- EntityKeyValue1: '47866024-97bd-43b2-9c82-9a743dcc8090' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:28 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:28 +02:00
+Opened connection at 13.03.2018 22:11:28 +02:00
+SELECT 
+    [Extent1].[ApplicationUserId] AS [ApplicationUserId], 
+    [Extent1].[Instagram] AS [Instagram], 
+    [Extent1].[Vk] AS [Vk], 
+    [Extent1].[FaceBook] AS [FaceBook], 
+    [Extent1].[YouTube] AS [YouTube], 
+    [Extent1].[Twitter] AS [Twitter]
+    FROM [dbo].[SocialNetworks] AS [Extent1]
+    WHERE [Extent1].[ApplicationUserId] = @EntityKeyValue1
+-- EntityKeyValue1: '47866024-97bd-43b2-9c82-9a743dcc8090' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:28 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:28 +02:00
+Opened connection at 13.03.2018 22:11:28 +02:00
+SELECT 
+    [Extent1].[Id] AS [Id], 
+    [Extent1].[Url] AS [Url], 
+    [Extent1].[Performer] AS [Performer], 
+    [Extent1].[Title] AS [Title], 
+    [Extent1].[ApplicationUserId] AS [ApplicationUserId], 
+    [Extent1].[Description] AS [Description], 
+    [Extent1].[AuthorLogin] AS [AuthorLogin], 
+    [Extent1].[ImageCover] AS [ImageCover], 
+    [Extent1].[CountLikes] AS [CountLikes], 
+    [Extent1].[CategoryId] AS [CategoryId]
+    FROM [dbo].[Audios] AS [Extent1]
+    WHERE [Extent1].[ApplicationUserId] = @EntityKeyValue1
+-- EntityKeyValue1: '823d15a8-a853-4013-829a-351902063410' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:28 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:28 +02:00
+Opened connection at 13.03.2018 22:11:28 +02:00
+SELECT 
+    [Extent1].[Id] AS [Id], 
+    [Extent1].[UserId] AS [UserId], 
+    [Extent1].[ClaimType] AS [ClaimType], 
+    [Extent1].[ClaimValue] AS [ClaimValue]
+    FROM [dbo].[AspNetUserClaims] AS [Extent1]
+    WHERE [Extent1].[UserId] = @EntityKeyValue1
+-- EntityKeyValue1: '823d15a8-a853-4013-829a-351902063410' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:28 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:28 +02:00
+Opened connection at 13.03.2018 22:11:28 +02:00
+SELECT 
+    [Extent1].[LoginProvider] AS [LoginProvider], 
+    [Extent1].[ProviderKey] AS [ProviderKey], 
+    [Extent1].[UserId] AS [UserId]
+    FROM [dbo].[AspNetUserLogins] AS [Extent1]
+    WHERE [Extent1].[UserId] = @EntityKeyValue1
+-- EntityKeyValue1: '823d15a8-a853-4013-829a-351902063410' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:28 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:28 +02:00
+Opened connection at 13.03.2018 22:11:28 +02:00
+SELECT 
+    [Extent1].[UserId] AS [UserId], 
+    [Extent1].[RoleId] AS [RoleId]
+    FROM [dbo].[AspNetUserRoles] AS [Extent1]
+    WHERE [Extent1].[UserId] = @EntityKeyValue1
+-- EntityKeyValue1: '823d15a8-a853-4013-829a-351902063410' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:28 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:28 +02:00
+Opened connection at 13.03.2018 22:11:28 +02:00
+SELECT 
+    [Extent1].[ApplicationUserId] AS [ApplicationUserId], 
+    [Extent1].[Instagram] AS [Instagram], 
+    [Extent1].[Vk] AS [Vk], 
+    [Extent1].[FaceBook] AS [FaceBook], 
+    [Extent1].[YouTube] AS [YouTube], 
+    [Extent1].[Twitter] AS [Twitter]
+    FROM [dbo].[SocialNetworks] AS [Extent1]
+    WHERE [Extent1].[ApplicationUserId] = @EntityKeyValue1
+-- EntityKeyValue1: '823d15a8-a853-4013-829a-351902063410' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:28 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:28 +02:00
+Opened connection at 13.03.2018 22:11:28 +02:00
+SELECT 
+    [Extent1].[Id] AS [Id], 
+    [Extent1].[Url] AS [Url], 
+    [Extent1].[Performer] AS [Performer], 
+    [Extent1].[Title] AS [Title], 
+    [Extent1].[ApplicationUserId] AS [ApplicationUserId], 
+    [Extent1].[Description] AS [Description], 
+    [Extent1].[AuthorLogin] AS [AuthorLogin], 
+    [Extent1].[ImageCover] AS [ImageCover], 
+    [Extent1].[CountLikes] AS [CountLikes], 
+    [Extent1].[CategoryId] AS [CategoryId]
+    FROM [dbo].[Audios] AS [Extent1]
+    WHERE [Extent1].[ApplicationUserId] = @EntityKeyValue1
+-- EntityKeyValue1: 'adf51d42-339b-45f1-a59f-a320ee671fa1' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:28 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:28 +02:00
+Opened connection at 13.03.2018 22:11:28 +02:00
+SELECT 
+    [Extent1].[Id] AS [Id], 
+    [Extent1].[UserId] AS [UserId], 
+    [Extent1].[ClaimType] AS [ClaimType], 
+    [Extent1].[ClaimValue] AS [ClaimValue]
+    FROM [dbo].[AspNetUserClaims] AS [Extent1]
+    WHERE [Extent1].[UserId] = @EntityKeyValue1
+-- EntityKeyValue1: 'adf51d42-339b-45f1-a59f-a320ee671fa1' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:28 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:28 +02:00
+Opened connection at 13.03.2018 22:11:28 +02:00
+SELECT 
+    [Extent1].[LoginProvider] AS [LoginProvider], 
+    [Extent1].[ProviderKey] AS [ProviderKey], 
+    [Extent1].[UserId] AS [UserId]
+    FROM [dbo].[AspNetUserLogins] AS [Extent1]
+    WHERE [Extent1].[UserId] = @EntityKeyValue1
+-- EntityKeyValue1: 'adf51d42-339b-45f1-a59f-a320ee671fa1' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:28 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:28 +02:00
+Opened connection at 13.03.2018 22:11:28 +02:00
+SELECT 
+    [Extent1].[UserId] AS [UserId], 
+    [Extent1].[RoleId] AS [RoleId]
+    FROM [dbo].[AspNetUserRoles] AS [Extent1]
+    WHERE [Extent1].[UserId] = @EntityKeyValue1
+-- EntityKeyValue1: 'adf51d42-339b-45f1-a59f-a320ee671fa1' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:28 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:28 +02:00
+Opened connection at 13.03.2018 22:11:28 +02:00
+SELECT 
+    [Extent1].[ApplicationUserId] AS [ApplicationUserId], 
+    [Extent1].[Instagram] AS [Instagram], 
+    [Extent1].[Vk] AS [Vk], 
+    [Extent1].[FaceBook] AS [FaceBook], 
+    [Extent1].[YouTube] AS [YouTube], 
+    [Extent1].[Twitter] AS [Twitter]
+    FROM [dbo].[SocialNetworks] AS [Extent1]
+    WHERE [Extent1].[ApplicationUserId] = @EntityKeyValue1
+-- EntityKeyValue1: 'adf51d42-339b-45f1-a59f-a320ee671fa1' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:28 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:28 +02:00
+Opened connection at 13.03.2018 22:11:58 +02:00
+SELECT 
+    [Project1].[AccessFailedCount] AS [AccessFailedCount], 
+    [Project1].[Id] AS [Id], 
+    [Project1].[FullName] AS [FullName], 
+    [Project1].[Firstname] AS [Firstname], 
+    [Project1].[Lastname] AS [Lastname], 
+    [Project1].[BirthDate] AS [BirthDate], 
+    [Project1].[Login] AS [Login], 
+    [Project1].[AvatarImage] AS [AvatarImage], 
+    [Project1].[About] AS [About], 
+    [Project1].[CityId] AS [CityId], 
+    [Project1].[RegistrationDate] AS [RegistrationDate], 
+    [Project1].[Email] AS [Email], 
+    [Project1].[EmailConfirmed] AS [EmailConfirmed], 
+    [Project1].[PasswordHash] AS [PasswordHash], 
+    [Project1].[SecurityStamp] AS [SecurityStamp], 
+    [Project1].[PhoneNumber] AS [PhoneNumber], 
+    [Project1].[PhoneNumberConfirmed] AS [PhoneNumberConfirmed], 
+    [Project1].[TwoFactorEnabled] AS [TwoFactorEnabled], 
+    [Project1].[LockoutEndDateUtc] AS [LockoutEndDateUtc], 
+    [Project1].[LockoutEnabled] AS [LockoutEnabled], 
+    [Project1].[UserName] AS [UserName], 
+    [Project1].[C1] AS [C1], 
+    [Project1].[Id1] AS [Id1], 
+    [Project1].[Name] AS [Name]
+    FROM ( SELECT 
+        [Extent1].[Id] AS [Id], 
+        [Extent1].[FullName] AS [FullName], 
+        [Extent1].[Firstname] AS [Firstname], 
+        [Extent1].[Lastname] AS [Lastname], 
+        [Extent1].[BirthDate] AS [BirthDate], 
+        [Extent1].[Login] AS [Login], 
+        [Extent1].[AvatarImage] AS [AvatarImage], 
+        [Extent1].[About] AS [About], 
+        [Extent1].[CityId] AS [CityId], 
+        [Extent1].[RegistrationDate] AS [RegistrationDate], 
+        [Extent1].[Email] AS [Email], 
+        [Extent1].[EmailConfirmed] AS [EmailConfirmed], 
+        [Extent1].[PasswordHash] AS [PasswordHash], 
+        [Extent1].[SecurityStamp] AS [SecurityStamp], 
+        [Extent1].[PhoneNumber] AS [PhoneNumber], 
+        [Extent1].[PhoneNumberConfirmed] AS [PhoneNumberConfirmed], 
+        [Extent1].[TwoFactorEnabled] AS [TwoFactorEnabled], 
+        [Extent1].[LockoutEndDateUtc] AS [LockoutEndDateUtc], 
+        [Extent1].[LockoutEnabled] AS [LockoutEnabled], 
+        [Extent1].[AccessFailedCount] AS [AccessFailedCount], 
+        [Extent1].[UserName] AS [UserName], 
+        [Join1].[Id] AS [Id1], 
+        [Join1].[Name] AS [Name], 
+        CASE WHEN ([Join1].[Category_Id] IS NULL) THEN CAST(NULL AS int) ELSE 1 END AS [C1]
+        FROM  [dbo].[AspNetUsers] AS [Extent1]
+        LEFT OUTER JOIN  (SELECT [Extent2].[Category_Id] AS [Category_Id], [Extent2].[ApplicationUser_Id] AS [ApplicationUser_Id], [Extent3].[Id] AS [Id], [Extent3].[Name] AS [Name]
+            FROM  [dbo].[CategoryApplicationUsers] AS [Extent2]
+            INNER JOIN [dbo].[Categories] AS [Extent3] ON [Extent3].[Id] = [Extent2].[Category_Id] ) AS [Join1] ON [Extent1].[Id] = [Join1].[ApplicationUser_Id]
+    )  AS [Project1]
+    ORDER BY [Project1].[Id] ASC, [Project1].[C1] ASC
+-- Executing at 13.03.2018 22:11:58 +02:00
+-- Completed in 21 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:58 +02:00
+Opened connection at 13.03.2018 22:11:58 +02:00
+SELECT 
+    [Extent1].[Id] AS [Id], 
+    [Extent1].[Url] AS [Url], 
+    [Extent1].[Performer] AS [Performer], 
+    [Extent1].[Title] AS [Title], 
+    [Extent1].[ApplicationUserId] AS [ApplicationUserId], 
+    [Extent1].[Description] AS [Description], 
+    [Extent1].[AuthorLogin] AS [AuthorLogin], 
+    [Extent1].[ImageCover] AS [ImageCover], 
+    [Extent1].[CountLikes] AS [CountLikes], 
+    [Extent1].[CategoryId] AS [CategoryId]
+    FROM [dbo].[Audios] AS [Extent1]
+    WHERE [Extent1].[ApplicationUserId] = @EntityKeyValue1
+-- EntityKeyValue1: '094b97ae-d7fa-4aeb-9b1c-37fbd6d9eb4e' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:58 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:58 +02:00
+Opened connection at 13.03.2018 22:11:58 +02:00
+SELECT 
+    [Extent1].[Id] AS [Id], 
+    [Extent1].[UserId] AS [UserId], 
+    [Extent1].[ClaimType] AS [ClaimType], 
+    [Extent1].[ClaimValue] AS [ClaimValue]
+    FROM [dbo].[AspNetUserClaims] AS [Extent1]
+    WHERE [Extent1].[UserId] = @EntityKeyValue1
+-- EntityKeyValue1: '094b97ae-d7fa-4aeb-9b1c-37fbd6d9eb4e' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:58 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:58 +02:00
+Opened connection at 13.03.2018 22:11:58 +02:00
+SELECT 
+    [Extent1].[LoginProvider] AS [LoginProvider], 
+    [Extent1].[ProviderKey] AS [ProviderKey], 
+    [Extent1].[UserId] AS [UserId]
+    FROM [dbo].[AspNetUserLogins] AS [Extent1]
+    WHERE [Extent1].[UserId] = @EntityKeyValue1
+-- EntityKeyValue1: '094b97ae-d7fa-4aeb-9b1c-37fbd6d9eb4e' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:58 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:58 +02:00
+Opened connection at 13.03.2018 22:11:58 +02:00
+SELECT 
+    [Extent1].[UserId] AS [UserId], 
+    [Extent1].[RoleId] AS [RoleId]
+    FROM [dbo].[AspNetUserRoles] AS [Extent1]
+    WHERE [Extent1].[UserId] = @EntityKeyValue1
+-- EntityKeyValue1: '094b97ae-d7fa-4aeb-9b1c-37fbd6d9eb4e' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:58 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:58 +02:00
+Opened connection at 13.03.2018 22:11:58 +02:00
+SELECT 
+    [Extent1].[ApplicationUserId] AS [ApplicationUserId], 
+    [Extent1].[Instagram] AS [Instagram], 
+    [Extent1].[Vk] AS [Vk], 
+    [Extent1].[FaceBook] AS [FaceBook], 
+    [Extent1].[YouTube] AS [YouTube], 
+    [Extent1].[Twitter] AS [Twitter]
+    FROM [dbo].[SocialNetworks] AS [Extent1]
+    WHERE [Extent1].[ApplicationUserId] = @EntityKeyValue1
+-- EntityKeyValue1: '094b97ae-d7fa-4aeb-9b1c-37fbd6d9eb4e' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:58 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:58 +02:00
+Opened connection at 13.03.2018 22:11:58 +02:00
+SELECT 
+    [Extent1].[Id] AS [Id], 
+    [Extent1].[Url] AS [Url], 
+    [Extent1].[Performer] AS [Performer], 
+    [Extent1].[Title] AS [Title], 
+    [Extent1].[ApplicationUserId] AS [ApplicationUserId], 
+    [Extent1].[Description] AS [Description], 
+    [Extent1].[AuthorLogin] AS [AuthorLogin], 
+    [Extent1].[ImageCover] AS [ImageCover], 
+    [Extent1].[CountLikes] AS [CountLikes], 
+    [Extent1].[CategoryId] AS [CategoryId]
+    FROM [dbo].[Audios] AS [Extent1]
+    WHERE [Extent1].[ApplicationUserId] = @EntityKeyValue1
+-- EntityKeyValue1: '200d5c7b-23f7-4fe7-a49a-7be506684f28' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:58 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:58 +02:00
+Opened connection at 13.03.2018 22:11:58 +02:00
+SELECT 
+    [Extent1].[Id] AS [Id], 
+    [Extent1].[UserId] AS [UserId], 
+    [Extent1].[ClaimType] AS [ClaimType], 
+    [Extent1].[ClaimValue] AS [ClaimValue]
+    FROM [dbo].[AspNetUserClaims] AS [Extent1]
+    WHERE [Extent1].[UserId] = @EntityKeyValue1
+-- EntityKeyValue1: '200d5c7b-23f7-4fe7-a49a-7be506684f28' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:58 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:58 +02:00
+Opened connection at 13.03.2018 22:11:58 +02:00
+SELECT 
+    [Extent1].[LoginProvider] AS [LoginProvider], 
+    [Extent1].[ProviderKey] AS [ProviderKey], 
+    [Extent1].[UserId] AS [UserId]
+    FROM [dbo].[AspNetUserLogins] AS [Extent1]
+    WHERE [Extent1].[UserId] = @EntityKeyValue1
+-- EntityKeyValue1: '200d5c7b-23f7-4fe7-a49a-7be506684f28' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:58 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:58 +02:00
+Opened connection at 13.03.2018 22:11:58 +02:00
+SELECT 
+    [Extent1].[UserId] AS [UserId], 
+    [Extent1].[RoleId] AS [RoleId]
+    FROM [dbo].[AspNetUserRoles] AS [Extent1]
+    WHERE [Extent1].[UserId] = @EntityKeyValue1
+-- EntityKeyValue1: '200d5c7b-23f7-4fe7-a49a-7be506684f28' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:58 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:58 +02:00
+Opened connection at 13.03.2018 22:11:58 +02:00
+SELECT 
+    [Extent1].[ApplicationUserId] AS [ApplicationUserId], 
+    [Extent1].[Instagram] AS [Instagram], 
+    [Extent1].[Vk] AS [Vk], 
+    [Extent1].[FaceBook] AS [FaceBook], 
+    [Extent1].[YouTube] AS [YouTube], 
+    [Extent1].[Twitter] AS [Twitter]
+    FROM [dbo].[SocialNetworks] AS [Extent1]
+    WHERE [Extent1].[ApplicationUserId] = @EntityKeyValue1
+-- EntityKeyValue1: '200d5c7b-23f7-4fe7-a49a-7be506684f28' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:58 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:58 +02:00
+Opened connection at 13.03.2018 22:11:58 +02:00
+SELECT 
+    [Extent1].[Id] AS [Id], 
+    [Extent1].[Url] AS [Url], 
+    [Extent1].[Performer] AS [Performer], 
+    [Extent1].[Title] AS [Title], 
+    [Extent1].[ApplicationUserId] AS [ApplicationUserId], 
+    [Extent1].[Description] AS [Description], 
+    [Extent1].[AuthorLogin] AS [AuthorLogin], 
+    [Extent1].[ImageCover] AS [ImageCover], 
+    [Extent1].[CountLikes] AS [CountLikes], 
+    [Extent1].[CategoryId] AS [CategoryId]
+    FROM [dbo].[Audios] AS [Extent1]
+    WHERE [Extent1].[ApplicationUserId] = @EntityKeyValue1
+-- EntityKeyValue1: '224b53b4-ed89-4ca3-a66d-6ce819f6a367' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:58 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:58 +02:00
+Opened connection at 13.03.2018 22:11:58 +02:00
+SELECT 
+    [Extent1].[Id] AS [Id], 
+    [Extent1].[UserId] AS [UserId], 
+    [Extent1].[ClaimType] AS [ClaimType], 
+    [Extent1].[ClaimValue] AS [ClaimValue]
+    FROM [dbo].[AspNetUserClaims] AS [Extent1]
+    WHERE [Extent1].[UserId] = @EntityKeyValue1
+-- EntityKeyValue1: '224b53b4-ed89-4ca3-a66d-6ce819f6a367' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:58 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:58 +02:00
+Opened connection at 13.03.2018 22:11:58 +02:00
+SELECT 
+    [Extent1].[LoginProvider] AS [LoginProvider], 
+    [Extent1].[ProviderKey] AS [ProviderKey], 
+    [Extent1].[UserId] AS [UserId]
+    FROM [dbo].[AspNetUserLogins] AS [Extent1]
+    WHERE [Extent1].[UserId] = @EntityKeyValue1
+-- EntityKeyValue1: '224b53b4-ed89-4ca3-a66d-6ce819f6a367' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:58 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:58 +02:00
+Opened connection at 13.03.2018 22:11:58 +02:00
+SELECT 
+    [Extent1].[UserId] AS [UserId], 
+    [Extent1].[RoleId] AS [RoleId]
+    FROM [dbo].[AspNetUserRoles] AS [Extent1]
+    WHERE [Extent1].[UserId] = @EntityKeyValue1
+-- EntityKeyValue1: '224b53b4-ed89-4ca3-a66d-6ce819f6a367' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:58 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:58 +02:00
+Opened connection at 13.03.2018 22:11:58 +02:00
+SELECT 
+    [Extent1].[ApplicationUserId] AS [ApplicationUserId], 
+    [Extent1].[Instagram] AS [Instagram], 
+    [Extent1].[Vk] AS [Vk], 
+    [Extent1].[FaceBook] AS [FaceBook], 
+    [Extent1].[YouTube] AS [YouTube], 
+    [Extent1].[Twitter] AS [Twitter]
+    FROM [dbo].[SocialNetworks] AS [Extent1]
+    WHERE [Extent1].[ApplicationUserId] = @EntityKeyValue1
+-- EntityKeyValue1: '224b53b4-ed89-4ca3-a66d-6ce819f6a367' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:58 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:58 +02:00
+Opened connection at 13.03.2018 22:11:58 +02:00
+SELECT 
+    [Extent1].[Id] AS [Id], 
+    [Extent1].[Url] AS [Url], 
+    [Extent1].[Performer] AS [Performer], 
+    [Extent1].[Title] AS [Title], 
+    [Extent1].[ApplicationUserId] AS [ApplicationUserId], 
+    [Extent1].[Description] AS [Description], 
+    [Extent1].[AuthorLogin] AS [AuthorLogin], 
+    [Extent1].[ImageCover] AS [ImageCover], 
+    [Extent1].[CountLikes] AS [CountLikes], 
+    [Extent1].[CategoryId] AS [CategoryId]
+    FROM [dbo].[Audios] AS [Extent1]
+    WHERE [Extent1].[ApplicationUserId] = @EntityKeyValue1
+-- EntityKeyValue1: '2d718115-ddc9-44ed-a4ec-cd674f39b4be' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:58 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:58 +02:00
+Opened connection at 13.03.2018 22:11:58 +02:00
+SELECT 
+    [Extent1].[Id] AS [Id], 
+    [Extent1].[UserId] AS [UserId], 
+    [Extent1].[ClaimType] AS [ClaimType], 
+    [Extent1].[ClaimValue] AS [ClaimValue]
+    FROM [dbo].[AspNetUserClaims] AS [Extent1]
+    WHERE [Extent1].[UserId] = @EntityKeyValue1
+-- EntityKeyValue1: '2d718115-ddc9-44ed-a4ec-cd674f39b4be' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:58 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:58 +02:00
+Opened connection at 13.03.2018 22:11:58 +02:00
+SELECT 
+    [Extent1].[LoginProvider] AS [LoginProvider], 
+    [Extent1].[ProviderKey] AS [ProviderKey], 
+    [Extent1].[UserId] AS [UserId]
+    FROM [dbo].[AspNetUserLogins] AS [Extent1]
+    WHERE [Extent1].[UserId] = @EntityKeyValue1
+-- EntityKeyValue1: '2d718115-ddc9-44ed-a4ec-cd674f39b4be' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:58 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:58 +02:00
+Opened connection at 13.03.2018 22:11:58 +02:00
+SELECT 
+    [Extent1].[UserId] AS [UserId], 
+    [Extent1].[RoleId] AS [RoleId]
+    FROM [dbo].[AspNetUserRoles] AS [Extent1]
+    WHERE [Extent1].[UserId] = @EntityKeyValue1
+-- EntityKeyValue1: '2d718115-ddc9-44ed-a4ec-cd674f39b4be' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:58 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:58 +02:00
+Opened connection at 13.03.2018 22:11:58 +02:00
+SELECT 
+    [Extent1].[ApplicationUserId] AS [ApplicationUserId], 
+    [Extent1].[Instagram] AS [Instagram], 
+    [Extent1].[Vk] AS [Vk], 
+    [Extent1].[FaceBook] AS [FaceBook], 
+    [Extent1].[YouTube] AS [YouTube], 
+    [Extent1].[Twitter] AS [Twitter]
+    FROM [dbo].[SocialNetworks] AS [Extent1]
+    WHERE [Extent1].[ApplicationUserId] = @EntityKeyValue1
+-- EntityKeyValue1: '2d718115-ddc9-44ed-a4ec-cd674f39b4be' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:58 +02:00
+-- Completed in 3 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:58 +02:00
+Opened connection at 13.03.2018 22:11:58 +02:00
+SELECT 
+    [Extent1].[Id] AS [Id], 
+    [Extent1].[Url] AS [Url], 
+    [Extent1].[Performer] AS [Performer], 
+    [Extent1].[Title] AS [Title], 
+    [Extent1].[ApplicationUserId] AS [ApplicationUserId], 
+    [Extent1].[Description] AS [Description], 
+    [Extent1].[AuthorLogin] AS [AuthorLogin], 
+    [Extent1].[ImageCover] AS [ImageCover], 
+    [Extent1].[CountLikes] AS [CountLikes], 
+    [Extent1].[CategoryId] AS [CategoryId]
+    FROM [dbo].[Audios] AS [Extent1]
+    WHERE [Extent1].[ApplicationUserId] = @EntityKeyValue1
+-- EntityKeyValue1: '320e2230-3747-4400-a5e6-4f9653746ee9' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:58 +02:00
+-- Completed in 4 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:58 +02:00
+Opened connection at 13.03.2018 22:11:58 +02:00
+SELECT 
+    [Extent1].[Id] AS [Id], 
+    [Extent1].[UserId] AS [UserId], 
+    [Extent1].[ClaimType] AS [ClaimType], 
+    [Extent1].[ClaimValue] AS [ClaimValue]
+    FROM [dbo].[AspNetUserClaims] AS [Extent1]
+    WHERE [Extent1].[UserId] = @EntityKeyValue1
+-- EntityKeyValue1: '320e2230-3747-4400-a5e6-4f9653746ee9' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:58 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:58 +02:00
+Opened connection at 13.03.2018 22:11:58 +02:00
+SELECT 
+    [Extent1].[LoginProvider] AS [LoginProvider], 
+    [Extent1].[ProviderKey] AS [ProviderKey], 
+    [Extent1].[UserId] AS [UserId]
+    FROM [dbo].[AspNetUserLogins] AS [Extent1]
+    WHERE [Extent1].[UserId] = @EntityKeyValue1
+-- EntityKeyValue1: '320e2230-3747-4400-a5e6-4f9653746ee9' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:58 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:58 +02:00
+Opened connection at 13.03.2018 22:11:58 +02:00
+SELECT 
+    [Extent1].[UserId] AS [UserId], 
+    [Extent1].[RoleId] AS [RoleId]
+    FROM [dbo].[AspNetUserRoles] AS [Extent1]
+    WHERE [Extent1].[UserId] = @EntityKeyValue1
+-- EntityKeyValue1: '320e2230-3747-4400-a5e6-4f9653746ee9' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:58 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:58 +02:00
+Opened connection at 13.03.2018 22:11:58 +02:00
+SELECT 
+    [Extent1].[ApplicationUserId] AS [ApplicationUserId], 
+    [Extent1].[Instagram] AS [Instagram], 
+    [Extent1].[Vk] AS [Vk], 
+    [Extent1].[FaceBook] AS [FaceBook], 
+    [Extent1].[YouTube] AS [YouTube], 
+    [Extent1].[Twitter] AS [Twitter]
+    FROM [dbo].[SocialNetworks] AS [Extent1]
+    WHERE [Extent1].[ApplicationUserId] = @EntityKeyValue1
+-- EntityKeyValue1: '320e2230-3747-4400-a5e6-4f9653746ee9' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:58 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:58 +02:00
+Opened connection at 13.03.2018 22:11:58 +02:00
+SELECT 
+    [Extent1].[Id] AS [Id], 
+    [Extent1].[Url] AS [Url], 
+    [Extent1].[Performer] AS [Performer], 
+    [Extent1].[Title] AS [Title], 
+    [Extent1].[ApplicationUserId] AS [ApplicationUserId], 
+    [Extent1].[Description] AS [Description], 
+    [Extent1].[AuthorLogin] AS [AuthorLogin], 
+    [Extent1].[ImageCover] AS [ImageCover], 
+    [Extent1].[CountLikes] AS [CountLikes], 
+    [Extent1].[CategoryId] AS [CategoryId]
+    FROM [dbo].[Audios] AS [Extent1]
+    WHERE [Extent1].[ApplicationUserId] = @EntityKeyValue1
+-- EntityKeyValue1: '3665a231-3ff0-4e1b-8702-75cd980a3908' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:58 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:58 +02:00
+Opened connection at 13.03.2018 22:11:58 +02:00
+SELECT 
+    [Extent1].[Id] AS [Id], 
+    [Extent1].[UserId] AS [UserId], 
+    [Extent1].[ClaimType] AS [ClaimType], 
+    [Extent1].[ClaimValue] AS [ClaimValue]
+    FROM [dbo].[AspNetUserClaims] AS [Extent1]
+    WHERE [Extent1].[UserId] = @EntityKeyValue1
+-- EntityKeyValue1: '3665a231-3ff0-4e1b-8702-75cd980a3908' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:58 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:58 +02:00
+Opened connection at 13.03.2018 22:11:58 +02:00
+SELECT 
+    [Extent1].[LoginProvider] AS [LoginProvider], 
+    [Extent1].[ProviderKey] AS [ProviderKey], 
+    [Extent1].[UserId] AS [UserId]
+    FROM [dbo].[AspNetUserLogins] AS [Extent1]
+    WHERE [Extent1].[UserId] = @EntityKeyValue1
+-- EntityKeyValue1: '3665a231-3ff0-4e1b-8702-75cd980a3908' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:58 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:58 +02:00
+Opened connection at 13.03.2018 22:11:58 +02:00
+SELECT 
+    [Extent1].[UserId] AS [UserId], 
+    [Extent1].[RoleId] AS [RoleId]
+    FROM [dbo].[AspNetUserRoles] AS [Extent1]
+    WHERE [Extent1].[UserId] = @EntityKeyValue1
+-- EntityKeyValue1: '3665a231-3ff0-4e1b-8702-75cd980a3908' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:58 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:58 +02:00
+Opened connection at 13.03.2018 22:11:58 +02:00
+SELECT 
+    [Extent1].[ApplicationUserId] AS [ApplicationUserId], 
+    [Extent1].[Instagram] AS [Instagram], 
+    [Extent1].[Vk] AS [Vk], 
+    [Extent1].[FaceBook] AS [FaceBook], 
+    [Extent1].[YouTube] AS [YouTube], 
+    [Extent1].[Twitter] AS [Twitter]
+    FROM [dbo].[SocialNetworks] AS [Extent1]
+    WHERE [Extent1].[ApplicationUserId] = @EntityKeyValue1
+-- EntityKeyValue1: '3665a231-3ff0-4e1b-8702-75cd980a3908' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:58 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:58 +02:00
+Opened connection at 13.03.2018 22:11:58 +02:00
+SELECT 
+    [Extent1].[Id] AS [Id], 
+    [Extent1].[Url] AS [Url], 
+    [Extent1].[Performer] AS [Performer], 
+    [Extent1].[Title] AS [Title], 
+    [Extent1].[ApplicationUserId] AS [ApplicationUserId], 
+    [Extent1].[Description] AS [Description], 
+    [Extent1].[AuthorLogin] AS [AuthorLogin], 
+    [Extent1].[ImageCover] AS [ImageCover], 
+    [Extent1].[CountLikes] AS [CountLikes], 
+    [Extent1].[CategoryId] AS [CategoryId]
+    FROM [dbo].[Audios] AS [Extent1]
+    WHERE [Extent1].[ApplicationUserId] = @EntityKeyValue1
+-- EntityKeyValue1: '47866024-97bd-43b2-9c82-9a743dcc8090' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:58 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:58 +02:00
+Opened connection at 13.03.2018 22:11:58 +02:00
+SELECT 
+    [Extent1].[Id] AS [Id], 
+    [Extent1].[UserId] AS [UserId], 
+    [Extent1].[ClaimType] AS [ClaimType], 
+    [Extent1].[ClaimValue] AS [ClaimValue]
+    FROM [dbo].[AspNetUserClaims] AS [Extent1]
+    WHERE [Extent1].[UserId] = @EntityKeyValue1
+-- EntityKeyValue1: '47866024-97bd-43b2-9c82-9a743dcc8090' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:58 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:58 +02:00
+Opened connection at 13.03.2018 22:11:58 +02:00
+SELECT 
+    [Extent1].[LoginProvider] AS [LoginProvider], 
+    [Extent1].[ProviderKey] AS [ProviderKey], 
+    [Extent1].[UserId] AS [UserId]
+    FROM [dbo].[AspNetUserLogins] AS [Extent1]
+    WHERE [Extent1].[UserId] = @EntityKeyValue1
+-- EntityKeyValue1: '47866024-97bd-43b2-9c82-9a743dcc8090' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:58 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:58 +02:00
+Opened connection at 13.03.2018 22:11:58 +02:00
+SELECT 
+    [Extent1].[UserId] AS [UserId], 
+    [Extent1].[RoleId] AS [RoleId]
+    FROM [dbo].[AspNetUserRoles] AS [Extent1]
+    WHERE [Extent1].[UserId] = @EntityKeyValue1
+-- EntityKeyValue1: '47866024-97bd-43b2-9c82-9a743dcc8090' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:58 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:58 +02:00
+Opened connection at 13.03.2018 22:11:58 +02:00
+SELECT 
+    [Extent1].[ApplicationUserId] AS [ApplicationUserId], 
+    [Extent1].[Instagram] AS [Instagram], 
+    [Extent1].[Vk] AS [Vk], 
+    [Extent1].[FaceBook] AS [FaceBook], 
+    [Extent1].[YouTube] AS [YouTube], 
+    [Extent1].[Twitter] AS [Twitter]
+    FROM [dbo].[SocialNetworks] AS [Extent1]
+    WHERE [Extent1].[ApplicationUserId] = @EntityKeyValue1
+-- EntityKeyValue1: '47866024-97bd-43b2-9c82-9a743dcc8090' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:58 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:58 +02:00
+Opened connection at 13.03.2018 22:11:58 +02:00
+SELECT 
+    [Extent1].[Id] AS [Id], 
+    [Extent1].[Url] AS [Url], 
+    [Extent1].[Performer] AS [Performer], 
+    [Extent1].[Title] AS [Title], 
+    [Extent1].[ApplicationUserId] AS [ApplicationUserId], 
+    [Extent1].[Description] AS [Description], 
+    [Extent1].[AuthorLogin] AS [AuthorLogin], 
+    [Extent1].[ImageCover] AS [ImageCover], 
+    [Extent1].[CountLikes] AS [CountLikes], 
+    [Extent1].[CategoryId] AS [CategoryId]
+    FROM [dbo].[Audios] AS [Extent1]
+    WHERE [Extent1].[ApplicationUserId] = @EntityKeyValue1
+-- EntityKeyValue1: '823d15a8-a853-4013-829a-351902063410' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:58 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:58 +02:00
+Opened connection at 13.03.2018 22:11:58 +02:00
+SELECT 
+    [Extent1].[Id] AS [Id], 
+    [Extent1].[UserId] AS [UserId], 
+    [Extent1].[ClaimType] AS [ClaimType], 
+    [Extent1].[ClaimValue] AS [ClaimValue]
+    FROM [dbo].[AspNetUserClaims] AS [Extent1]
+    WHERE [Extent1].[UserId] = @EntityKeyValue1
+-- EntityKeyValue1: '823d15a8-a853-4013-829a-351902063410' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:58 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:58 +02:00
+Opened connection at 13.03.2018 22:11:58 +02:00
+SELECT 
+    [Extent1].[LoginProvider] AS [LoginProvider], 
+    [Extent1].[ProviderKey] AS [ProviderKey], 
+    [Extent1].[UserId] AS [UserId]
+    FROM [dbo].[AspNetUserLogins] AS [Extent1]
+    WHERE [Extent1].[UserId] = @EntityKeyValue1
+-- EntityKeyValue1: '823d15a8-a853-4013-829a-351902063410' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:58 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:58 +02:00
+Opened connection at 13.03.2018 22:11:58 +02:00
+SELECT 
+    [Extent1].[UserId] AS [UserId], 
+    [Extent1].[RoleId] AS [RoleId]
+    FROM [dbo].[AspNetUserRoles] AS [Extent1]
+    WHERE [Extent1].[UserId] = @EntityKeyValue1
+-- EntityKeyValue1: '823d15a8-a853-4013-829a-351902063410' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:58 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:58 +02:00
+Opened connection at 13.03.2018 22:11:58 +02:00
+SELECT 
+    [Extent1].[ApplicationUserId] AS [ApplicationUserId], 
+    [Extent1].[Instagram] AS [Instagram], 
+    [Extent1].[Vk] AS [Vk], 
+    [Extent1].[FaceBook] AS [FaceBook], 
+    [Extent1].[YouTube] AS [YouTube], 
+    [Extent1].[Twitter] AS [Twitter]
+    FROM [dbo].[SocialNetworks] AS [Extent1]
+    WHERE [Extent1].[ApplicationUserId] = @EntityKeyValue1
+-- EntityKeyValue1: '823d15a8-a853-4013-829a-351902063410' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:58 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:58 +02:00
+Opened connection at 13.03.2018 22:11:58 +02:00
+SELECT 
+    [Extent1].[Id] AS [Id], 
+    [Extent1].[Url] AS [Url], 
+    [Extent1].[Performer] AS [Performer], 
+    [Extent1].[Title] AS [Title], 
+    [Extent1].[ApplicationUserId] AS [ApplicationUserId], 
+    [Extent1].[Description] AS [Description], 
+    [Extent1].[AuthorLogin] AS [AuthorLogin], 
+    [Extent1].[ImageCover] AS [ImageCover], 
+    [Extent1].[CountLikes] AS [CountLikes], 
+    [Extent1].[CategoryId] AS [CategoryId]
+    FROM [dbo].[Audios] AS [Extent1]
+    WHERE [Extent1].[ApplicationUserId] = @EntityKeyValue1
+-- EntityKeyValue1: 'adf51d42-339b-45f1-a59f-a320ee671fa1' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:58 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:58 +02:00
+Opened connection at 13.03.2018 22:11:58 +02:00
+SELECT 
+    [Extent1].[Id] AS [Id], 
+    [Extent1].[UserId] AS [UserId], 
+    [Extent1].[ClaimType] AS [ClaimType], 
+    [Extent1].[ClaimValue] AS [ClaimValue]
+    FROM [dbo].[AspNetUserClaims] AS [Extent1]
+    WHERE [Extent1].[UserId] = @EntityKeyValue1
+-- EntityKeyValue1: 'adf51d42-339b-45f1-a59f-a320ee671fa1' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:58 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:58 +02:00
+Opened connection at 13.03.2018 22:11:58 +02:00
+SELECT 
+    [Extent1].[LoginProvider] AS [LoginProvider], 
+    [Extent1].[ProviderKey] AS [ProviderKey], 
+    [Extent1].[UserId] AS [UserId]
+    FROM [dbo].[AspNetUserLogins] AS [Extent1]
+    WHERE [Extent1].[UserId] = @EntityKeyValue1
+-- EntityKeyValue1: 'adf51d42-339b-45f1-a59f-a320ee671fa1' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:58 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:58 +02:00
+Opened connection at 13.03.2018 22:11:58 +02:00
+SELECT 
+    [Extent1].[UserId] AS [UserId], 
+    [Extent1].[RoleId] AS [RoleId]
+    FROM [dbo].[AspNetUserRoles] AS [Extent1]
+    WHERE [Extent1].[UserId] = @EntityKeyValue1
+-- EntityKeyValue1: 'adf51d42-339b-45f1-a59f-a320ee671fa1' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:58 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:58 +02:00
+Opened connection at 13.03.2018 22:11:58 +02:00
+SELECT 
+    [Extent1].[ApplicationUserId] AS [ApplicationUserId], 
+    [Extent1].[Instagram] AS [Instagram], 
+    [Extent1].[Vk] AS [Vk], 
+    [Extent1].[FaceBook] AS [FaceBook], 
+    [Extent1].[YouTube] AS [YouTube], 
+    [Extent1].[Twitter] AS [Twitter]
+    FROM [dbo].[SocialNetworks] AS [Extent1]
+    WHERE [Extent1].[ApplicationUserId] = @EntityKeyValue1
+-- EntityKeyValue1: 'adf51d42-339b-45f1-a59f-a320ee671fa1' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 13.03.2018 22:11:58 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 13.03.2018 22:11:58 +02:00

@@ -139,7 +139,7 @@ namespace WebAPI_Finder_Test.Providers
 
         public override IEnumerable<ApplicationUser> Check(IEnumerable<ApplicationUser> _users)
         {
-            IEnumerable<ApplicationUser> Users = _users.Where(us => Values.Any(val => us.FullName.ToLower().Contains(val.ToLower())));
+            IEnumerable<ApplicationUser> Users = _users.Where(us => Values.Any(val => us.FullName.Contains(val.ToLower())));
 
             if(NextChain!=null)
             {

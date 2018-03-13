@@ -18,7 +18,12 @@ namespace WebAPI_Finder_Test.Migrations
 
         protected override void Seed(WebAPI_Finder_Test.Models.ApplicationDbContext context)
         {
-          
+            foreach (var item in context.Users)
+            {
+                item.FullName = item.FullName.ToLower();
+            }
+
+
         }
     }
 }
