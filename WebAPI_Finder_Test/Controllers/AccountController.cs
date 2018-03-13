@@ -68,7 +68,12 @@ namespace WebAPI_Finder_Test.Controllersз
         public IHttpActionResult Find([ModelBinder]Filters filters)
         {
             //Для поиска используються такие ключи
-           //
+            //cityid
+            //По возросту не важно какой из параметров передаётся ,там есть значения по умолчанию
+            //minAge
+            //maxAge
+            //categoryid-по этому ключу можно передавать несколько параметров 
+            //fullname-строка поиска для имени
 
             IEnumerable<ApplicationUser> users = db.Users.Include(xr => xr.Categories).AsNoTracking();
             users = filters.Check(users).Skip(0).Take(20).ToList();
