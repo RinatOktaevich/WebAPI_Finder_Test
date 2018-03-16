@@ -26,9 +26,5 @@ namespace WebAPI_Finder_Test.Models
             Users = new List<ApplicationUser>();
         }
 
-        public string  Puska { get; set; }
-
-
-
     }
 }
