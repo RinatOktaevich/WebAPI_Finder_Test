@@ -16,7 +16,7 @@ namespace WebAPI_Finder_Test.Models
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
-        
+
         public string FullName { get; set; }
 
         public string Firstname { get; set; }
@@ -42,7 +42,7 @@ namespace WebAPI_Finder_Test.Models
 
         public DateTime RegistrationDate { get; set; }
 
-        public ICollection<Category> Categories { get; set; }
+        public virtual ICollection<Category> Categories { get; set; }
 
         public virtual SocialNetworks SocNetworks { get; set; }
 
@@ -73,6 +73,7 @@ namespace WebAPI_Finder_Test.Models
         public ApplicationDbContext()
             : base("DtConnnect", throwIfV1Schema: false)
         {
+            this.Configuration.LazyLoadingEnabled = false;
         }
 
         public virtual DbSet<Audio> AudioTracks { get; set; }

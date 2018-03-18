@@ -61,7 +61,7 @@ namespace WebAPI_Finder_Test.Controllersз
         public ISecureDataFormat<AuthenticationTicket> AccessTokenFormat { get; private set; }
         #endregion
 
-
+    
         [AllowAnonymous]
         [Route("Searcher")]
         [HttpPost]
@@ -75,7 +75,7 @@ namespace WebAPI_Finder_Test.Controllersз
             //categoryid-по этому ключу можно передавать несколько параметров 
             //fullname-строка поиска для имени
 
-            IEnumerable<ApplicationUser> users = db.Users.Include(xr => xr.Categories).AsNoTracking();
+            IEnumerable<ApplicationUser> users = db.Users.AsNoTracking().Include(xr=>xr.Categories);
             users = filters.Check(users).Skip(0).Take(20).ToList();
 
             return Ok(users);
@@ -212,7 +212,8 @@ namespace WebAPI_Finder_Test.Controllersз
         {
             // List<ApplicationUser> users = new List<ApplicationUser>();
             ApplicationDbContext db = new ApplicationDbContext();
-            var users = db.Users.Include(xr => xr.Categories).ToList();
+            db.Configuration.LazyLoadingEnabled = false;
+            var users = db.Users.Include(xr => xr.Categories).AsNoTracking().ToList();
 
             return Ok(users);
         }

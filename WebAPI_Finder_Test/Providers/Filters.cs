@@ -95,11 +95,11 @@ namespace WebAPI_Finder_Test.Providers
 
         public override IEnumerable<ApplicationUser> Check(IEnumerable<ApplicationUser> _users)
         {
-           // Здесь физически все юзеры
+            // Здесь физически все юзеры
             _users = _users.ToList();
             Category tmp = new Category();
 
-           // Result collection
+            // Result collection
             ICollection<ApplicationUser> Users = new List<ApplicationUser>();
 
 
@@ -134,6 +134,7 @@ namespace WebAPI_Finder_Test.Providers
         public FullNameFilter(string _value)
         {
             Values = _value.Trim().Split(' ');
+
         }
 
 
@@ -141,7 +142,8 @@ namespace WebAPI_Finder_Test.Providers
         {
             IEnumerable<ApplicationUser> Users = _users.Where(us => Values.Any(val => us.FullName.Contains(val.ToLower())));
 
-            if(NextChain!=null)
+
+            if (NextChain != null)
             {
                 return NextChain.Check(Users);
             }
