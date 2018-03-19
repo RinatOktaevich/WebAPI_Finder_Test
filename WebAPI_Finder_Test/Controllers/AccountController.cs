@@ -181,9 +181,9 @@ namespace WebAPI_Finder_Test.Controllersз
                 return BadRequest("Emaill is null");
 
             // var user = UserManager.FindByEmail(email);
-            ApplicationDbContext db = new ApplicationDbContext();
-            //db.Entry(user).Collection(u => u.Claims).Load();
-            var user = db.Users.Include(u => u.Claims).First(u => u.Email == email);
+            // ApplicationDbContext db = new ApplicationDbContext();
+
+            var user = UserManager.Users.Include(xr => xr.Categories).Include(xr => xr.City).Where(u => u.UserName == email).ToList()[0];
 
             if (user == null)
                 return NotFound();
@@ -204,8 +204,10 @@ namespace WebAPI_Finder_Test.Controllersз
             if (login == null)
                 return BadRequest("Login is null");
 
-            var user = UserManager.Users.Where(u => u.Login == login).ToList()[0];
-
+            var user = UserManager.Users.Include(xr=>xr.Categories).Include(xr=>xr.City).Where(u => u.Login == login).ToList()[0];
+         
+            
+            
             if (user == null)
                 return NotFound();
 

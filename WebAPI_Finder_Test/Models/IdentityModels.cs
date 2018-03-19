@@ -73,6 +73,8 @@ namespace WebAPI_Finder_Test.Models
         public ApplicationDbContext()
             : base("DtConnnect", throwIfV1Schema: false)
         {
+            this.Database.Log = (s => System.Diagnostics.Debug.WriteLine(s));
+
         }
 
         public virtual DbSet<Audio> AudioTracks { get; set; }
