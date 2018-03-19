@@ -65,7 +65,7 @@ namespace WebAPI_Finder_Test.Controllersз
         [AllowAnonymous]
         [Route("Searcher")]
         [HttpPost]
-        public IHttpActionResult Find([ModelBinder]Filters filters,int offset=1)
+        public IHttpActionResult Find([ModelBinder]Filters filters, int offset = 1)
         {
             //offset-смещение по коллекции
             //для того чтобы взять первую двадцатку при первом запросе ,нужно передать "1"
@@ -183,7 +183,13 @@ namespace WebAPI_Finder_Test.Controllersз
             // var user = UserManager.FindByEmail(email);
             // ApplicationDbContext db = new ApplicationDbContext();
 
-            var user = UserManager.Users.Include(xr => xr.Categories).Include(xr => xr.City).Where(u => u.UserName == email).ToList()[0];
+            db.Configuration.ProxyCreationEnabled = false;
+
+            var user = db.Users.AsNoTracking()
+                .Include(xr => xr.Categories)
+                .Include(xr => xr.City)
+                .Include(xr => xr.City.Country)
+                .Where(u => u.UserName == email).ToList()[0];
 
             if (user == null)
                 return NotFound();
@@ -204,10 +210,16 @@ namespace WebAPI_Finder_Test.Controllersз
             if (login == null)
                 return BadRequest("Login is null");
 
-            var user = UserManager.Users.Include(xr=>xr.Categories).Include(xr=>xr.City).Where(u => u.Login == login).ToList()[0];
-         
-            
-            
+            db.Configuration.ProxyCreationEnabled = false;
+
+            var user = db.Users.AsNoTracking()
+                .Include(xr => xr.Categories)
+                .Include(xr => xr.City)
+                .Include(xr => xr.City.Country)
+                .Where(u => u.Login == login).ToList()[0];
+
+
+
             if (user == null)
                 return NotFound();
 
@@ -218,9 +230,13 @@ namespace WebAPI_Finder_Test.Controllersз
         [Route("getAll")]
         public IHttpActionResult GetAll()
         {
-            // List<ApplicationUser> users = new List<ApplicationUser>();
-            ApplicationDbContext db = new ApplicationDbContext();
-            var users = db.Users.Include(xr => xr.Categories).ToList();
+            db.Configuration.ProxyCreationEnabled = false;
+
+            var users = db.Users.AsNoTracking()
+                .Include(xr => xr.Categories)
+                .Include(xr => xr.City)
+                .Include(xr => xr.City.Country)
+                .ToList();
 
             return Ok(users);
         }
@@ -280,7 +296,7 @@ namespace WebAPI_Finder_Test.Controllersз
             }
 
 
-            ApplicationUser user = new ApplicationUser() { UserName = model.Email, Email = model.Email, Firstname = model.Firstname, Lastname = model.Lastname, BirthDate = model.BirthDate, AvatarImage = "/Images/defaultImg.jpg", RegistrationDate = DateTime.Now,FullName=model.Firstname.ToLower()+" "+model.Lastname.ToLower() };
+            ApplicationUser user = new ApplicationUser() { UserName = model.Email, Email = model.Email, Firstname = model.Firstname, Lastname = model.Lastname, BirthDate = model.BirthDate, AvatarImage = "/Images/defaultImg.jpg", RegistrationDate = DateTime.Now, FullName = model.Firstname.ToLower() + " " + model.Lastname.ToLower() };
 
 
             IdentityResult result = null;

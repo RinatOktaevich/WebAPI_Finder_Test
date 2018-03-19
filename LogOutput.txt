@@ -10735,3 +10735,1081 @@ SELECT
 -- Completed in 0 ms with result: SqlDataReader
 
 Closed connection at 19.03.2018 19:29:33 +02:00
+Opened connection at 19.03.2018 19:37:49 +02:00
+select cast(serverproperty('EngineEdition') as int)
+-- Executing at 19.03.2018 19:37:49 +02:00
+-- Completed in 8 ms with result: SqlDataReader
+
+Closed connection at 19.03.2018 19:37:49 +02:00
+Opened connection at 19.03.2018 19:37:50 +02:00
+IF db_id(N'DtConnnect') IS NOT NULL SELECT 1 ELSE SELECT Count(*) FROM sys.databases WHERE [name]=N'DtConnnect'
+-- Executing at 19.03.2018 19:37:50 +02:00
+-- Completed in 0 ms with result: 1
+
+Closed connection at 19.03.2018 19:37:50 +02:00
+Opened connection at 19.03.2018 19:37:50 +02:00
+
+SELECT Count(*)
+FROM INFORMATION_SCHEMA.TABLES AS t
+WHERE t.TABLE_SCHEMA + '.' + t.TABLE_NAME IN ('dbo.Audios','dbo.Likes','dbo.AspNetUsers','dbo.Categories','dbo.Cities','dbo.Countries','dbo.AspNetUserClaims','dbo.AspNetUserLogins','dbo.AspNetUserRoles','dbo.SocialNetworks','dbo.Videos','dbo.AspNetRoles','dbo.CategoryApplicationUsers')
+    OR t.TABLE_NAME = 'EdmMetadata'
+-- Executing at 19.03.2018 19:37:50 +02:00
+-- Completed in 3 ms with result: 13
+
+Closed connection at 19.03.2018 19:37:50 +02:00
+Opened connection at 19.03.2018 19:37:50 +02:00
+SELECT 
+    [GroupBy1].[A1] AS [C1]
+    FROM ( SELECT 
+        COUNT(1) AS [A1]
+        FROM [dbo].[__MigrationHistory] AS [Extent1]
+        WHERE [Extent1].[ContextKey] = @p__linq__0
+    )  AS [GroupBy1]
+-- p__linq__0: 'WebAPI_Finder_Test.Migrations.Configuration' (Type = String, Size = 4000)
+-- Executing at 19.03.2018 19:37:51 +02:00
+-- Completed in 0 ms with result: SqlDataReader
+
+Closed connection at 19.03.2018 19:37:51 +02:00
+Opened connection at 19.03.2018 19:37:51 +02:00
+SELECT TOP (1) 
+    [Project1].[C1] AS [C1], 
+    [Project1].[MigrationId] AS [MigrationId], 
+    [Project1].[Model] AS [Model], 
+    [Project1].[ProductVersion] AS [ProductVersion]
+    FROM ( SELECT 
+        [Extent1].[MigrationId] AS [MigrationId], 
+        [Extent1].[Model] AS [Model], 
+        [Extent1].[ProductVersion] AS [ProductVersion], 
+        1 AS [C1]
+        FROM [dbo].[__MigrationHistory] AS [Extent1]
+        WHERE [Extent1].[ContextKey] = @p__linq__0
+    )  AS [Project1]
+    ORDER BY [Project1].[MigrationId] DESC
+-- p__linq__0: 'WebAPI_Finder_Test.Migrations.Configuration' (Type = String, Size = 4000)
+-- Executing at 19.03.2018 19:37:51 +02:00
+-- Completed in 0 ms with result: SqlDataReader
+
+Closed connection at 19.03.2018 19:37:51 +02:00
+Opened connection at 19.03.2018 19:37:51 +02:00
+SELECT 
+    [Project1].[AccessFailedCount] AS [AccessFailedCount], 
+    [Project1].[Id] AS [Id], 
+    [Project1].[FullName] AS [FullName], 
+    [Project1].[Firstname] AS [Firstname], 
+    [Project1].[Lastname] AS [Lastname], 
+    [Project1].[BirthDate] AS [BirthDate], 
+    [Project1].[Login] AS [Login], 
+    [Project1].[AvatarImage] AS [AvatarImage], 
+    [Project1].[About] AS [About], 
+    [Project1].[CityId] AS [CityId], 
+    [Project1].[RegistrationDate] AS [RegistrationDate], 
+    [Project1].[Email] AS [Email], 
+    [Project1].[EmailConfirmed] AS [EmailConfirmed], 
+    [Project1].[PasswordHash] AS [PasswordHash], 
+    [Project1].[SecurityStamp] AS [SecurityStamp], 
+    [Project1].[PhoneNumber] AS [PhoneNumber], 
+    [Project1].[PhoneNumberConfirmed] AS [PhoneNumberConfirmed], 
+    [Project1].[TwoFactorEnabled] AS [TwoFactorEnabled], 
+    [Project1].[LockoutEndDateUtc] AS [LockoutEndDateUtc], 
+    [Project1].[LockoutEnabled] AS [LockoutEnabled], 
+    [Project1].[UserName] AS [UserName], 
+    [Project1].[Id1] AS [Id1], 
+    [Project1].[Name] AS [Name], 
+    [Project1].[CountryId] AS [CountryId], 
+    [Project1].[C1] AS [C1], 
+    [Project1].[Id2] AS [Id2], 
+    [Project1].[Name1] AS [Name1]
+    FROM ( SELECT 
+        [Extent1].[Id] AS [Id], 
+        [Extent1].[FullName] AS [FullName], 
+        [Extent1].[Firstname] AS [Firstname], 
+        [Extent1].[Lastname] AS [Lastname], 
+        [Extent1].[BirthDate] AS [BirthDate], 
+        [Extent1].[Login] AS [Login], 
+        [Extent1].[AvatarImage] AS [AvatarImage], 
+        [Extent1].[About] AS [About], 
+        [Extent1].[CityId] AS [CityId], 
+        [Extent1].[RegistrationDate] AS [RegistrationDate], 
+        [Extent1].[Email] AS [Email], 
+        [Extent1].[EmailConfirmed] AS [EmailConfirmed], 
+        [Extent1].[PasswordHash] AS [PasswordHash], 
+        [Extent1].[SecurityStamp] AS [SecurityStamp], 
+        [Extent1].[PhoneNumber] AS [PhoneNumber], 
+        [Extent1].[PhoneNumberConfirmed] AS [PhoneNumberConfirmed], 
+        [Extent1].[TwoFactorEnabled] AS [TwoFactorEnabled], 
+        [Extent1].[LockoutEndDateUtc] AS [LockoutEndDateUtc], 
+        [Extent1].[LockoutEnabled] AS [LockoutEnabled], 
+        [Extent1].[AccessFailedCount] AS [AccessFailedCount], 
+        [Extent1].[UserName] AS [UserName], 
+        [Extent2].[Id] AS [Id1], 
+        [Extent2].[Name] AS [Name], 
+        [Extent2].[CountryId] AS [CountryId], 
+        [Join2].[Id] AS [Id2], 
+        [Join2].[Name] AS [Name1], 
+        CASE WHEN ([Join2].[Category_Id] IS NULL) THEN CAST(NULL AS int) ELSE 1 END AS [C1]
+        FROM   [dbo].[AspNetUsers] AS [Extent1]
+        LEFT OUTER JOIN [dbo].[Cities] AS [Extent2] ON [Extent1].[CityId] = [Extent2].[Id]
+        LEFT OUTER JOIN  (SELECT [Extent3].[Category_Id] AS [Category_Id], [Extent3].[ApplicationUser_Id] AS [ApplicationUser_Id], [Extent4].[Id] AS [Id], [Extent4].[Name] AS [Name]
+            FROM  [dbo].[CategoryApplicationUsers] AS [Extent3]
+            INNER JOIN [dbo].[Categories] AS [Extent4] ON [Extent4].[Id] = [Extent3].[Category_Id] ) AS [Join2] ON [Extent1].[Id] = [Join2].[ApplicationUser_Id]
+        WHERE ([Extent1].[Login] = @p__linq__0) OR (([Extent1].[Login] IS NULL) AND (@p__linq__0 IS NULL))
+    )  AS [Project1]
+    ORDER BY [Project1].[Id] ASC, [Project1].[Id1] ASC, [Project1].[C1] ASC
+-- p__linq__0: 'rd3094b' (Type = String, Size = 4000)
+-- Executing at 19.03.2018 19:37:51 +02:00
+-- Completed in 0 ms with result: SqlDataReader
+
+Closed connection at 19.03.2018 19:37:51 +02:00
+Opened connection at 19.03.2018 19:37:51 +02:00
+SELECT 
+    [Extent1].[Id] AS [Id], 
+    [Extent1].[Url] AS [Url], 
+    [Extent1].[Performer] AS [Performer], 
+    [Extent1].[Title] AS [Title], 
+    [Extent1].[ApplicationUserId] AS [ApplicationUserId], 
+    [Extent1].[Description] AS [Description], 
+    [Extent1].[AuthorLogin] AS [AuthorLogin], 
+    [Extent1].[ImageCover] AS [ImageCover], 
+    [Extent1].[CountLikes] AS [CountLikes], 
+    [Extent1].[CategoryId] AS [CategoryId]
+    FROM [dbo].[Audios] AS [Extent1]
+    WHERE [Extent1].[ApplicationUserId] = @EntityKeyValue1
+-- EntityKeyValue1: '094b97ae-d7fa-4aeb-9b1c-37fbd6d9eb4e' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 19.03.2018 19:37:52 +02:00
+-- Completed in 0 ms with result: SqlDataReader
+
+Closed connection at 19.03.2018 19:37:52 +02:00
+Opened connection at 19.03.2018 19:37:52 +02:00
+SELECT 
+    [Extent1].[Id] AS [Id], 
+    [Extent1].[UserId] AS [UserId], 
+    [Extent1].[ClaimType] AS [ClaimType], 
+    [Extent1].[ClaimValue] AS [ClaimValue]
+    FROM [dbo].[AspNetUserClaims] AS [Extent1]
+    WHERE [Extent1].[UserId] = @EntityKeyValue1
+-- EntityKeyValue1: '094b97ae-d7fa-4aeb-9b1c-37fbd6d9eb4e' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 19.03.2018 19:37:52 +02:00
+-- Completed in 0 ms with result: SqlDataReader
+
+Closed connection at 19.03.2018 19:37:52 +02:00
+Opened connection at 19.03.2018 19:37:52 +02:00
+SELECT 
+    [Extent1].[LoginProvider] AS [LoginProvider], 
+    [Extent1].[ProviderKey] AS [ProviderKey], 
+    [Extent1].[UserId] AS [UserId]
+    FROM [dbo].[AspNetUserLogins] AS [Extent1]
+    WHERE [Extent1].[UserId] = @EntityKeyValue1
+-- EntityKeyValue1: '094b97ae-d7fa-4aeb-9b1c-37fbd6d9eb4e' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 19.03.2018 19:37:52 +02:00
+-- Completed in 0 ms with result: SqlDataReader
+
+Closed connection at 19.03.2018 19:37:52 +02:00
+Opened connection at 19.03.2018 19:37:52 +02:00
+SELECT 
+    [Extent1].[UserId] AS [UserId], 
+    [Extent1].[RoleId] AS [RoleId]
+    FROM [dbo].[AspNetUserRoles] AS [Extent1]
+    WHERE [Extent1].[UserId] = @EntityKeyValue1
+-- EntityKeyValue1: '094b97ae-d7fa-4aeb-9b1c-37fbd6d9eb4e' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 19.03.2018 19:37:52 +02:00
+-- Completed in 0 ms with result: SqlDataReader
+
+Closed connection at 19.03.2018 19:37:52 +02:00
+Opened connection at 19.03.2018 19:37:52 +02:00
+SELECT 
+    [Extent1].[ApplicationUserId] AS [ApplicationUserId], 
+    [Extent1].[Instagram] AS [Instagram], 
+    [Extent1].[Vk] AS [Vk], 
+    [Extent1].[FaceBook] AS [FaceBook], 
+    [Extent1].[YouTube] AS [YouTube], 
+    [Extent1].[Twitter] AS [Twitter]
+    FROM [dbo].[SocialNetworks] AS [Extent1]
+    WHERE [Extent1].[ApplicationUserId] = @EntityKeyValue1
+-- EntityKeyValue1: '094b97ae-d7fa-4aeb-9b1c-37fbd6d9eb4e' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 19.03.2018 19:37:52 +02:00
+-- Completed in 0 ms with result: SqlDataReader
+
+Closed connection at 19.03.2018 19:37:52 +02:00
+Opened connection at 19.03.2018 19:37:52 +02:00
+SELECT 
+    [Extent1].[Id] AS [Id], 
+    [Extent1].[Name] AS [Name]
+    FROM [dbo].[Countries] AS [Extent1]
+    WHERE [Extent1].[Id] = @EntityKeyValue1
+-- EntityKeyValue1: '1' (Type = Int32, IsNullable = false)
+-- Executing at 19.03.2018 19:37:52 +02:00
+-- Completed in 0 ms with result: SqlDataReader
+
+Closed connection at 19.03.2018 19:37:52 +02:00
+Opened connection at 19.03.2018 19:43:12 +02:00
+select cast(serverproperty('EngineEdition') as int)
+-- Executing at 19.03.2018 19:43:12 +02:00
+-- Completed in 8 ms with result: SqlDataReader
+
+Closed connection at 19.03.2018 19:43:12 +02:00
+Opened connection at 19.03.2018 19:43:13 +02:00
+IF db_id(N'DtConnnect') IS NOT NULL SELECT 1 ELSE SELECT Count(*) FROM sys.databases WHERE [name]=N'DtConnnect'
+-- Executing at 19.03.2018 19:43:13 +02:00
+-- Completed in 0 ms with result: 1
+
+Closed connection at 19.03.2018 19:43:13 +02:00
+Opened connection at 19.03.2018 19:43:13 +02:00
+
+SELECT Count(*)
+FROM INFORMATION_SCHEMA.TABLES AS t
+WHERE t.TABLE_SCHEMA + '.' + t.TABLE_NAME IN ('dbo.Audios','dbo.Likes','dbo.AspNetUsers','dbo.Categories','dbo.Cities','dbo.Countries','dbo.AspNetUserClaims','dbo.AspNetUserLogins','dbo.AspNetUserRoles','dbo.SocialNetworks','dbo.Videos','dbo.AspNetRoles','dbo.CategoryApplicationUsers')
+    OR t.TABLE_NAME = 'EdmMetadata'
+-- Executing at 19.03.2018 19:43:13 +02:00
+-- Completed in 3 ms with result: 13
+
+Closed connection at 19.03.2018 19:43:13 +02:00
+Opened connection at 19.03.2018 19:43:13 +02:00
+SELECT 
+    [GroupBy1].[A1] AS [C1]
+    FROM ( SELECT 
+        COUNT(1) AS [A1]
+        FROM [dbo].[__MigrationHistory] AS [Extent1]
+        WHERE [Extent1].[ContextKey] = @p__linq__0
+    )  AS [GroupBy1]
+-- p__linq__0: 'WebAPI_Finder_Test.Migrations.Configuration' (Type = String, Size = 4000)
+-- Executing at 19.03.2018 19:43:14 +02:00
+-- Completed in 0 ms with result: SqlDataReader
+
+Closed connection at 19.03.2018 19:43:14 +02:00
+Opened connection at 19.03.2018 19:43:14 +02:00
+SELECT TOP (1) 
+    [Project1].[C1] AS [C1], 
+    [Project1].[MigrationId] AS [MigrationId], 
+    [Project1].[Model] AS [Model], 
+    [Project1].[ProductVersion] AS [ProductVersion]
+    FROM ( SELECT 
+        [Extent1].[MigrationId] AS [MigrationId], 
+        [Extent1].[Model] AS [Model], 
+        [Extent1].[ProductVersion] AS [ProductVersion], 
+        1 AS [C1]
+        FROM [dbo].[__MigrationHistory] AS [Extent1]
+        WHERE [Extent1].[ContextKey] = @p__linq__0
+    )  AS [Project1]
+    ORDER BY [Project1].[MigrationId] DESC
+-- p__linq__0: 'WebAPI_Finder_Test.Migrations.Configuration' (Type = String, Size = 4000)
+-- Executing at 19.03.2018 19:43:14 +02:00
+-- Completed in 0 ms with result: SqlDataReader
+
+Closed connection at 19.03.2018 19:43:14 +02:00
+Opened connection at 19.03.2018 19:43:14 +02:00
+Closed connection at 19.03.2018 19:43:14 +02:00
+Opened connection at 19.03.2018 19:49:04 +02:00
+select cast(serverproperty('EngineEdition') as int)
+-- Executing at 19.03.2018 19:49:04 +02:00
+-- Completed in 8 ms with result: SqlDataReader
+
+Closed connection at 19.03.2018 19:49:04 +02:00
+Opened connection at 19.03.2018 19:49:05 +02:00
+IF db_id(N'DtConnnect') IS NOT NULL SELECT 1 ELSE SELECT Count(*) FROM sys.databases WHERE [name]=N'DtConnnect'
+-- Executing at 19.03.2018 19:49:05 +02:00
+-- Completed in 0 ms with result: 1
+
+Closed connection at 19.03.2018 19:49:05 +02:00
+Opened connection at 19.03.2018 19:49:05 +02:00
+
+SELECT Count(*)
+FROM INFORMATION_SCHEMA.TABLES AS t
+WHERE t.TABLE_SCHEMA + '.' + t.TABLE_NAME IN ('dbo.Audios','dbo.Likes','dbo.AspNetUsers','dbo.Categories','dbo.Cities','dbo.Countries','dbo.AspNetUserClaims','dbo.AspNetUserLogins','dbo.AspNetUserRoles','dbo.SocialNetworks','dbo.Videos','dbo.AspNetRoles','dbo.CategoryApplicationUsers')
+    OR t.TABLE_NAME = 'EdmMetadata'
+-- Executing at 19.03.2018 19:49:05 +02:00
+-- Completed in 3 ms with result: 13
+
+Closed connection at 19.03.2018 19:49:05 +02:00
+Opened connection at 19.03.2018 19:49:05 +02:00
+SELECT 
+    [GroupBy1].[A1] AS [C1]
+    FROM ( SELECT 
+        COUNT(1) AS [A1]
+        FROM [dbo].[__MigrationHistory] AS [Extent1]
+        WHERE [Extent1].[ContextKey] = @p__linq__0
+    )  AS [GroupBy1]
+-- p__linq__0: 'WebAPI_Finder_Test.Migrations.Configuration' (Type = String, Size = 4000)
+-- Executing at 19.03.2018 19:49:05 +02:00
+-- Completed in 0 ms with result: SqlDataReader
+
+Closed connection at 19.03.2018 19:49:05 +02:00
+Opened connection at 19.03.2018 19:49:05 +02:00
+SELECT TOP (1) 
+    [Project1].[C1] AS [C1], 
+    [Project1].[MigrationId] AS [MigrationId], 
+    [Project1].[Model] AS [Model], 
+    [Project1].[ProductVersion] AS [ProductVersion]
+    FROM ( SELECT 
+        [Extent1].[MigrationId] AS [MigrationId], 
+        [Extent1].[Model] AS [Model], 
+        [Extent1].[ProductVersion] AS [ProductVersion], 
+        1 AS [C1]
+        FROM [dbo].[__MigrationHistory] AS [Extent1]
+        WHERE [Extent1].[ContextKey] = @p__linq__0
+    )  AS [Project1]
+    ORDER BY [Project1].[MigrationId] DESC
+-- p__linq__0: 'WebAPI_Finder_Test.Migrations.Configuration' (Type = String, Size = 4000)
+-- Executing at 19.03.2018 19:49:05 +02:00
+-- Completed in 0 ms with result: SqlDataReader
+
+Closed connection at 19.03.2018 19:49:05 +02:00
+Opened connection at 19.03.2018 19:49:05 +02:00
+SELECT 
+    [Project1].[AccessFailedCount] AS [AccessFailedCount], 
+    [Project1].[Id] AS [Id], 
+    [Project1].[FullName] AS [FullName], 
+    [Project1].[Firstname] AS [Firstname], 
+    [Project1].[Lastname] AS [Lastname], 
+    [Project1].[BirthDate] AS [BirthDate], 
+    [Project1].[Login] AS [Login], 
+    [Project1].[AvatarImage] AS [AvatarImage], 
+    [Project1].[About] AS [About], 
+    [Project1].[CityId] AS [CityId], 
+    [Project1].[RegistrationDate] AS [RegistrationDate], 
+    [Project1].[Email] AS [Email], 
+    [Project1].[EmailConfirmed] AS [EmailConfirmed], 
+    [Project1].[PasswordHash] AS [PasswordHash], 
+    [Project1].[SecurityStamp] AS [SecurityStamp], 
+    [Project1].[PhoneNumber] AS [PhoneNumber], 
+    [Project1].[PhoneNumberConfirmed] AS [PhoneNumberConfirmed], 
+    [Project1].[TwoFactorEnabled] AS [TwoFactorEnabled], 
+    [Project1].[LockoutEndDateUtc] AS [LockoutEndDateUtc], 
+    [Project1].[LockoutEnabled] AS [LockoutEnabled], 
+    [Project1].[UserName] AS [UserName], 
+    [Project1].[Id1] AS [Id1], 
+    [Project1].[Name] AS [Name], 
+    [Project1].[CountryId] AS [CountryId], 
+    [Project1].[C1] AS [C1], 
+    [Project1].[Id2] AS [Id2], 
+    [Project1].[Name1] AS [Name1]
+    FROM ( SELECT 
+        [Extent1].[Id] AS [Id], 
+        [Extent1].[FullName] AS [FullName], 
+        [Extent1].[Firstname] AS [Firstname], 
+        [Extent1].[Lastname] AS [Lastname], 
+        [Extent1].[BirthDate] AS [BirthDate], 
+        [Extent1].[Login] AS [Login], 
+        [Extent1].[AvatarImage] AS [AvatarImage], 
+        [Extent1].[About] AS [About], 
+        [Extent1].[CityId] AS [CityId], 
+        [Extent1].[RegistrationDate] AS [RegistrationDate], 
+        [Extent1].[Email] AS [Email], 
+        [Extent1].[EmailConfirmed] AS [EmailConfirmed], 
+        [Extent1].[PasswordHash] AS [PasswordHash], 
+        [Extent1].[SecurityStamp] AS [SecurityStamp], 
+        [Extent1].[PhoneNumber] AS [PhoneNumber], 
+        [Extent1].[PhoneNumberConfirmed] AS [PhoneNumberConfirmed], 
+        [Extent1].[TwoFactorEnabled] AS [TwoFactorEnabled], 
+        [Extent1].[LockoutEndDateUtc] AS [LockoutEndDateUtc], 
+        [Extent1].[LockoutEnabled] AS [LockoutEnabled], 
+        [Extent1].[AccessFailedCount] AS [AccessFailedCount], 
+        [Extent1].[UserName] AS [UserName], 
+        [Extent2].[Id] AS [Id1], 
+        [Extent2].[Name] AS [Name], 
+        [Extent2].[CountryId] AS [CountryId], 
+        [Join2].[Id] AS [Id2], 
+        [Join2].[Name] AS [Name1], 
+        CASE WHEN ([Join2].[Category_Id] IS NULL) THEN CAST(NULL AS int) ELSE 1 END AS [C1]
+        FROM   [dbo].[AspNetUsers] AS [Extent1]
+        LEFT OUTER JOIN [dbo].[Cities] AS [Extent2] ON [Extent1].[CityId] = [Extent2].[Id]
+        LEFT OUTER JOIN  (SELECT [Extent3].[Category_Id] AS [Category_Id], [Extent3].[ApplicationUser_Id] AS [ApplicationUser_Id], [Extent4].[Id] AS [Id], [Extent4].[Name] AS [Name]
+            FROM  [dbo].[CategoryApplicationUsers] AS [Extent3]
+            INNER JOIN [dbo].[Categories] AS [Extent4] ON [Extent4].[Id] = [Extent3].[Category_Id] ) AS [Join2] ON [Extent1].[Id] = [Join2].[ApplicationUser_Id]
+        WHERE ([Extent1].[Login] = @p__linq__0) OR (([Extent1].[Login] IS NULL) AND (@p__linq__0 IS NULL))
+    )  AS [Project1]
+    ORDER BY [Project1].[Id] ASC, [Project1].[Id1] ASC, [Project1].[C1] ASC
+-- p__linq__0: 'rd3094b' (Type = String, Size = 4000)
+-- Executing at 19.03.2018 19:49:05 +02:00
+-- Completed in 0 ms with result: SqlDataReader
+
+Closed connection at 19.03.2018 19:49:05 +02:00
+Opened connection at 19.03.2018 19:49:05 +02:00
+SELECT 
+    [Extent1].[Id] AS [Id], 
+    [Extent1].[Url] AS [Url], 
+    [Extent1].[Performer] AS [Performer], 
+    [Extent1].[Title] AS [Title], 
+    [Extent1].[ApplicationUserId] AS [ApplicationUserId], 
+    [Extent1].[Description] AS [Description], 
+    [Extent1].[AuthorLogin] AS [AuthorLogin], 
+    [Extent1].[ImageCover] AS [ImageCover], 
+    [Extent1].[CountLikes] AS [CountLikes], 
+    [Extent1].[CategoryId] AS [CategoryId]
+    FROM [dbo].[Audios] AS [Extent1]
+    WHERE [Extent1].[ApplicationUserId] = @EntityKeyValue1
+-- EntityKeyValue1: '094b97ae-d7fa-4aeb-9b1c-37fbd6d9eb4e' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 19.03.2018 19:49:05 +02:00
+-- Completed in 0 ms with result: SqlDataReader
+
+Closed connection at 19.03.2018 19:49:05 +02:00
+Opened connection at 19.03.2018 19:49:05 +02:00
+SELECT 
+    [Extent1].[Id] AS [Id], 
+    [Extent1].[UserId] AS [UserId], 
+    [Extent1].[ClaimType] AS [ClaimType], 
+    [Extent1].[ClaimValue] AS [ClaimValue]
+    FROM [dbo].[AspNetUserClaims] AS [Extent1]
+    WHERE [Extent1].[UserId] = @EntityKeyValue1
+-- EntityKeyValue1: '094b97ae-d7fa-4aeb-9b1c-37fbd6d9eb4e' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 19.03.2018 19:49:05 +02:00
+-- Completed in 0 ms with result: SqlDataReader
+
+Closed connection at 19.03.2018 19:49:05 +02:00
+Opened connection at 19.03.2018 19:49:05 +02:00
+SELECT 
+    [Extent1].[LoginProvider] AS [LoginProvider], 
+    [Extent1].[ProviderKey] AS [ProviderKey], 
+    [Extent1].[UserId] AS [UserId]
+    FROM [dbo].[AspNetUserLogins] AS [Extent1]
+    WHERE [Extent1].[UserId] = @EntityKeyValue1
+-- EntityKeyValue1: '094b97ae-d7fa-4aeb-9b1c-37fbd6d9eb4e' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 19.03.2018 19:49:05 +02:00
+-- Completed in 0 ms with result: SqlDataReader
+
+Closed connection at 19.03.2018 19:49:05 +02:00
+Opened connection at 19.03.2018 19:49:05 +02:00
+SELECT 
+    [Extent1].[UserId] AS [UserId], 
+    [Extent1].[RoleId] AS [RoleId]
+    FROM [dbo].[AspNetUserRoles] AS [Extent1]
+    WHERE [Extent1].[UserId] = @EntityKeyValue1
+-- EntityKeyValue1: '094b97ae-d7fa-4aeb-9b1c-37fbd6d9eb4e' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 19.03.2018 19:49:05 +02:00
+-- Completed in 0 ms with result: SqlDataReader
+
+Closed connection at 19.03.2018 19:49:05 +02:00
+Opened connection at 19.03.2018 19:49:05 +02:00
+SELECT 
+    [Extent1].[ApplicationUserId] AS [ApplicationUserId], 
+    [Extent1].[Instagram] AS [Instagram], 
+    [Extent1].[Vk] AS [Vk], 
+    [Extent1].[FaceBook] AS [FaceBook], 
+    [Extent1].[YouTube] AS [YouTube], 
+    [Extent1].[Twitter] AS [Twitter]
+    FROM [dbo].[SocialNetworks] AS [Extent1]
+    WHERE [Extent1].[ApplicationUserId] = @EntityKeyValue1
+-- EntityKeyValue1: '094b97ae-d7fa-4aeb-9b1c-37fbd6d9eb4e' (Type = String, IsNullable = false, Size = 128)
+-- Executing at 19.03.2018 19:49:05 +02:00
+-- Completed in 0 ms with result: SqlDataReader
+
+Closed connection at 19.03.2018 19:49:05 +02:00
+Opened connection at 19.03.2018 19:49:05 +02:00
+SELECT 
+    [Extent1].[Id] AS [Id], 
+    [Extent1].[Name] AS [Name]
+    FROM [dbo].[Countries] AS [Extent1]
+    WHERE [Extent1].[Id] = @EntityKeyValue1
+-- EntityKeyValue1: '1' (Type = Int32, IsNullable = false)
+-- Executing at 19.03.2018 19:49:05 +02:00
+-- Completed in 0 ms with result: SqlDataReader
+
+Closed connection at 19.03.2018 19:49:05 +02:00
+Opened connection at 19.03.2018 19:51:25 +02:00
+select cast(serverproperty('EngineEdition') as int)
+-- Executing at 19.03.2018 19:51:25 +02:00
+-- Completed in 8 ms with result: SqlDataReader
+
+Closed connection at 19.03.2018 19:51:25 +02:00
+Opened connection at 19.03.2018 19:51:26 +02:00
+IF db_id(N'DtConnnect') IS NOT NULL SELECT 1 ELSE SELECT Count(*) FROM sys.databases WHERE [name]=N'DtConnnect'
+-- Executing at 19.03.2018 19:51:26 +02:00
+-- Completed in 0 ms with result: 1
+
+Closed connection at 19.03.2018 19:51:26 +02:00
+Opened connection at 19.03.2018 19:51:26 +02:00
+
+SELECT Count(*)
+FROM INFORMATION_SCHEMA.TABLES AS t
+WHERE t.TABLE_SCHEMA + '.' + t.TABLE_NAME IN ('dbo.Audios','dbo.Likes','dbo.AspNetUsers','dbo.Categories','dbo.Cities','dbo.Countries','dbo.AspNetUserClaims','dbo.AspNetUserLogins','dbo.AspNetUserRoles','dbo.SocialNetworks','dbo.Videos','dbo.AspNetRoles','dbo.CategoryApplicationUsers')
+    OR t.TABLE_NAME = 'EdmMetadata'
+-- Executing at 19.03.2018 19:51:26 +02:00
+-- Completed in 3 ms with result: 13
+
+Closed connection at 19.03.2018 19:51:26 +02:00
+Opened connection at 19.03.2018 19:51:26 +02:00
+SELECT 
+    [GroupBy1].[A1] AS [C1]
+    FROM ( SELECT 
+        COUNT(1) AS [A1]
+        FROM [dbo].[__MigrationHistory] AS [Extent1]
+        WHERE [Extent1].[ContextKey] = @p__linq__0
+    )  AS [GroupBy1]
+-- p__linq__0: 'WebAPI_Finder_Test.Migrations.Configuration' (Type = String, Size = 4000)
+-- Executing at 19.03.2018 19:51:27 +02:00
+-- Completed in 0 ms with result: SqlDataReader
+
+Closed connection at 19.03.2018 19:51:27 +02:00
+Opened connection at 19.03.2018 19:51:27 +02:00
+SELECT TOP (1) 
+    [Project1].[C1] AS [C1], 
+    [Project1].[MigrationId] AS [MigrationId], 
+    [Project1].[Model] AS [Model], 
+    [Project1].[ProductVersion] AS [ProductVersion]
+    FROM ( SELECT 
+        [Extent1].[MigrationId] AS [MigrationId], 
+        [Extent1].[Model] AS [Model], 
+        [Extent1].[ProductVersion] AS [ProductVersion], 
+        1 AS [C1]
+        FROM [dbo].[__MigrationHistory] AS [Extent1]
+        WHERE [Extent1].[ContextKey] = @p__linq__0
+    )  AS [Project1]
+    ORDER BY [Project1].[MigrationId] DESC
+-- p__linq__0: 'WebAPI_Finder_Test.Migrations.Configuration' (Type = String, Size = 4000)
+-- Executing at 19.03.2018 19:51:27 +02:00
+-- Completed in 0 ms with result: SqlDataReader
+
+Closed connection at 19.03.2018 19:51:27 +02:00
+Opened connection at 19.03.2018 19:51:27 +02:00
+SELECT 
+    [Project1].[AccessFailedCount] AS [AccessFailedCount], 
+    [Project1].[Id] AS [Id], 
+    [Project1].[FullName] AS [FullName], 
+    [Project1].[Firstname] AS [Firstname], 
+    [Project1].[Lastname] AS [Lastname], 
+    [Project1].[BirthDate] AS [BirthDate], 
+    [Project1].[Login] AS [Login], 
+    [Project1].[AvatarImage] AS [AvatarImage], 
+    [Project1].[About] AS [About], 
+    [Project1].[CityId] AS [CityId], 
+    [Project1].[RegistrationDate] AS [RegistrationDate], 
+    [Project1].[Email] AS [Email], 
+    [Project1].[EmailConfirmed] AS [EmailConfirmed], 
+    [Project1].[PasswordHash] AS [PasswordHash], 
+    [Project1].[SecurityStamp] AS [SecurityStamp], 
+    [Project1].[PhoneNumber] AS [PhoneNumber], 
+    [Project1].[PhoneNumberConfirmed] AS [PhoneNumberConfirmed], 
+    [Project1].[TwoFactorEnabled] AS [TwoFactorEnabled], 
+    [Project1].[LockoutEndDateUtc] AS [LockoutEndDateUtc], 
+    [Project1].[LockoutEnabled] AS [LockoutEnabled], 
+    [Project1].[UserName] AS [UserName], 
+    [Project1].[Id1] AS [Id1], 
+    [Project1].[Name] AS [Name], 
+    [Project1].[CountryId] AS [CountryId], 
+    [Project1].[C1] AS [C1], 
+    [Project1].[Id2] AS [Id2], 
+    [Project1].[Name1] AS [Name1]
+    FROM ( SELECT 
+        [Extent1].[Id] AS [Id], 
+        [Extent1].[FullName] AS [FullName], 
+        [Extent1].[Firstname] AS [Firstname], 
+        [Extent1].[Lastname] AS [Lastname], 
+        [Extent1].[BirthDate] AS [BirthDate], 
+        [Extent1].[Login] AS [Login], 
+        [Extent1].[AvatarImage] AS [AvatarImage], 
+        [Extent1].[About] AS [About], 
+        [Extent1].[CityId] AS [CityId], 
+        [Extent1].[RegistrationDate] AS [RegistrationDate], 
+        [Extent1].[Email] AS [Email], 
+        [Extent1].[EmailConfirmed] AS [EmailConfirmed], 
+        [Extent1].[PasswordHash] AS [PasswordHash], 
+        [Extent1].[SecurityStamp] AS [SecurityStamp], 
+        [Extent1].[PhoneNumber] AS [PhoneNumber], 
+        [Extent1].[PhoneNumberConfirmed] AS [PhoneNumberConfirmed], 
+        [Extent1].[TwoFactorEnabled] AS [TwoFactorEnabled], 
+        [Extent1].[LockoutEndDateUtc] AS [LockoutEndDateUtc], 
+        [Extent1].[LockoutEnabled] AS [LockoutEnabled], 
+        [Extent1].[AccessFailedCount] AS [AccessFailedCount], 
+        [Extent1].[UserName] AS [UserName], 
+        [Extent2].[Id] AS [Id1], 
+        [Extent2].[Name] AS [Name], 
+        [Extent2].[CountryId] AS [CountryId], 
+        [Join2].[Id] AS [Id2], 
+        [Join2].[Name] AS [Name1], 
+        CASE WHEN ([Join2].[Category_Id] IS NULL) THEN CAST(NULL AS int) ELSE 1 END AS [C1]
+        FROM   [dbo].[AspNetUsers] AS [Extent1]
+        LEFT OUTER JOIN [dbo].[Cities] AS [Extent2] ON [Extent1].[CityId] = [Extent2].[Id]
+        LEFT OUTER JOIN  (SELECT [Extent3].[Category_Id] AS [Category_Id], [Extent3].[ApplicationUser_Id] AS [ApplicationUser_Id], [Extent4].[Id] AS [Id], [Extent4].[Name] AS [Name]
+            FROM  [dbo].[CategoryApplicationUsers] AS [Extent3]
+            INNER JOIN [dbo].[Categories] AS [Extent4] ON [Extent4].[Id] = [Extent3].[Category_Id] ) AS [Join2] ON [Extent1].[Id] = [Join2].[ApplicationUser_Id]
+        WHERE ([Extent1].[Login] = @p__linq__0) OR (([Extent1].[Login] IS NULL) AND (@p__linq__0 IS NULL))
+    )  AS [Project1]
+    ORDER BY [Project1].[Id] ASC, [Project1].[Id1] ASC, [Project1].[C1] ASC
+-- p__linq__0: 'rd3094b' (Type = String, Size = 4000)
+-- Executing at 19.03.2018 19:51:28 +02:00
+-- Completed in 0 ms with result: SqlDataReader
+
+Closed connection at 19.03.2018 19:51:28 +02:00
+Opened connection at 19.03.2018 19:54:08 +02:00
+select cast(serverproperty('EngineEdition') as int)
+-- Executing at 19.03.2018 19:54:08 +02:00
+-- Completed in 8 ms with result: SqlDataReader
+
+Closed connection at 19.03.2018 19:54:08 +02:00
+Opened connection at 19.03.2018 19:54:09 +02:00
+IF db_id(N'DtConnnect') IS NOT NULL SELECT 1 ELSE SELECT Count(*) FROM sys.databases WHERE [name]=N'DtConnnect'
+-- Executing at 19.03.2018 19:54:09 +02:00
+-- Completed in 0 ms with result: 1
+
+Closed connection at 19.03.2018 19:54:09 +02:00
+Opened connection at 19.03.2018 19:54:09 +02:00
+
+SELECT Count(*)
+FROM INFORMATION_SCHEMA.TABLES AS t
+WHERE t.TABLE_SCHEMA + '.' + t.TABLE_NAME IN ('dbo.Audios','dbo.Likes','dbo.AspNetUsers','dbo.Categories','dbo.Cities','dbo.Countries','dbo.AspNetUserClaims','dbo.AspNetUserLogins','dbo.AspNetUserRoles','dbo.SocialNetworks','dbo.Videos','dbo.AspNetRoles','dbo.CategoryApplicationUsers')
+    OR t.TABLE_NAME = 'EdmMetadata'
+-- Executing at 19.03.2018 19:54:09 +02:00
+-- Completed in 3 ms with result: 13
+
+Closed connection at 19.03.2018 19:54:09 +02:00
+Opened connection at 19.03.2018 19:54:09 +02:00
+SELECT 
+    [GroupBy1].[A1] AS [C1]
+    FROM ( SELECT 
+        COUNT(1) AS [A1]
+        FROM [dbo].[__MigrationHistory] AS [Extent1]
+        WHERE [Extent1].[ContextKey] = @p__linq__0
+    )  AS [GroupBy1]
+-- p__linq__0: 'WebAPI_Finder_Test.Migrations.Configuration' (Type = String, Size = 4000)
+-- Executing at 19.03.2018 19:54:10 +02:00
+-- Completed in 0 ms with result: SqlDataReader
+
+Closed connection at 19.03.2018 19:54:10 +02:00
+Opened connection at 19.03.2018 19:54:10 +02:00
+SELECT TOP (1) 
+    [Project1].[C1] AS [C1], 
+    [Project1].[MigrationId] AS [MigrationId], 
+    [Project1].[Model] AS [Model], 
+    [Project1].[ProductVersion] AS [ProductVersion]
+    FROM ( SELECT 
+        [Extent1].[MigrationId] AS [MigrationId], 
+        [Extent1].[Model] AS [Model], 
+        [Extent1].[ProductVersion] AS [ProductVersion], 
+        1 AS [C1]
+        FROM [dbo].[__MigrationHistory] AS [Extent1]
+        WHERE [Extent1].[ContextKey] = @p__linq__0
+    )  AS [Project1]
+    ORDER BY [Project1].[MigrationId] DESC
+-- p__linq__0: 'WebAPI_Finder_Test.Migrations.Configuration' (Type = String, Size = 4000)
+-- Executing at 19.03.2018 19:54:10 +02:00
+-- Completed in 0 ms with result: SqlDataReader
+
+Closed connection at 19.03.2018 19:54:10 +02:00
+Opened connection at 19.03.2018 19:54:10 +02:00
+SELECT 
+    [Project1].[AccessFailedCount] AS [AccessFailedCount], 
+    [Project1].[Id] AS [Id], 
+    [Project1].[FullName] AS [FullName], 
+    [Project1].[Firstname] AS [Firstname], 
+    [Project1].[Lastname] AS [Lastname], 
+    [Project1].[BirthDate] AS [BirthDate], 
+    [Project1].[Login] AS [Login], 
+    [Project1].[AvatarImage] AS [AvatarImage], 
+    [Project1].[About] AS [About], 
+    [Project1].[CityId] AS [CityId], 
+    [Project1].[RegistrationDate] AS [RegistrationDate], 
+    [Project1].[Email] AS [Email], 
+    [Project1].[EmailConfirmed] AS [EmailConfirmed], 
+    [Project1].[PasswordHash] AS [PasswordHash], 
+    [Project1].[SecurityStamp] AS [SecurityStamp], 
+    [Project1].[PhoneNumber] AS [PhoneNumber], 
+    [Project1].[PhoneNumberConfirmed] AS [PhoneNumberConfirmed], 
+    [Project1].[TwoFactorEnabled] AS [TwoFactorEnabled], 
+    [Project1].[LockoutEndDateUtc] AS [LockoutEndDateUtc], 
+    [Project1].[LockoutEnabled] AS [LockoutEnabled], 
+    [Project1].[UserName] AS [UserName], 
+    [Project1].[Id1] AS [Id1], 
+    [Project1].[Name] AS [Name], 
+    [Project1].[CountryId] AS [CountryId], 
+    [Project1].[Id2] AS [Id2], 
+    [Project1].[Name1] AS [Name1], 
+    [Project1].[C1] AS [C1], 
+    [Project1].[Id3] AS [Id3], 
+    [Project1].[Name2] AS [Name2]
+    FROM ( SELECT 
+        [Extent1].[Id] AS [Id], 
+        [Extent1].[FullName] AS [FullName], 
+        [Extent1].[Firstname] AS [Firstname], 
+        [Extent1].[Lastname] AS [Lastname], 
+        [Extent1].[BirthDate] AS [BirthDate], 
+        [Extent1].[Login] AS [Login], 
+        [Extent1].[AvatarImage] AS [AvatarImage], 
+        [Extent1].[About] AS [About], 
+        [Extent1].[CityId] AS [CityId], 
+        [Extent1].[RegistrationDate] AS [RegistrationDate], 
+        [Extent1].[Email] AS [Email], 
+        [Extent1].[EmailConfirmed] AS [EmailConfirmed], 
+        [Extent1].[PasswordHash] AS [PasswordHash], 
+        [Extent1].[SecurityStamp] AS [SecurityStamp], 
+        [Extent1].[PhoneNumber] AS [PhoneNumber], 
+        [Extent1].[PhoneNumberConfirmed] AS [PhoneNumberConfirmed], 
+        [Extent1].[TwoFactorEnabled] AS [TwoFactorEnabled], 
+        [Extent1].[LockoutEndDateUtc] AS [LockoutEndDateUtc], 
+        [Extent1].[LockoutEnabled] AS [LockoutEnabled], 
+        [Extent1].[AccessFailedCount] AS [AccessFailedCount], 
+        [Extent1].[UserName] AS [UserName], 
+        [Extent2].[Id] AS [Id1], 
+        [Extent2].[Name] AS [Name], 
+        [Extent2].[CountryId] AS [CountryId], 
+        [Extent3].[Id] AS [Id2], 
+        [Extent3].[Name] AS [Name1], 
+        [Join3].[Id] AS [Id3], 
+        [Join3].[Name] AS [Name2], 
+        CASE WHEN ([Join3].[Category_Id] IS NULL) THEN CAST(NULL AS int) ELSE 1 END AS [C1]
+        FROM    [dbo].[AspNetUsers] AS [Extent1]
+        LEFT OUTER JOIN [dbo].[Cities] AS [Extent2] ON [Extent1].[CityId] = [Extent2].[Id]
+        LEFT OUTER JOIN [dbo].[Countries] AS [Extent3] ON [Extent2].[CountryId] = [Extent3].[Id]
+        LEFT OUTER JOIN  (SELECT [Extent4].[Category_Id] AS [Category_Id], [Extent4].[ApplicationUser_Id] AS [ApplicationUser_Id], [Extent5].[Id] AS [Id], [Extent5].[Name] AS [Name]
+            FROM  [dbo].[CategoryApplicationUsers] AS [Extent4]
+            INNER JOIN [dbo].[Categories] AS [Extent5] ON [Extent5].[Id] = [Extent4].[Category_Id] ) AS [Join3] ON [Extent1].[Id] = [Join3].[ApplicationUser_Id]
+        WHERE ([Extent1].[Login] = @p__linq__0) OR (([Extent1].[Login] IS NULL) AND (@p__linq__0 IS NULL))
+    )  AS [Project1]
+    ORDER BY [Project1].[Id] ASC, [Project1].[Id1] ASC, [Project1].[Id2] ASC, [Project1].[C1] ASC
+-- p__linq__0: 'rd3094b' (Type = String, Size = 4000)
+-- Executing at 19.03.2018 19:54:11 +02:00
+-- Completed in 0 ms with result: SqlDataReader
+
+Closed connection at 19.03.2018 19:54:11 +02:00
+Opened connection at 19.03.2018 20:01:32 +02:00
+select cast(serverproperty('EngineEdition') as int)
+-- Executing at 19.03.2018 20:01:32 +02:00
+-- Completed in 8 ms with result: SqlDataReader
+
+Closed connection at 19.03.2018 20:01:32 +02:00
+Opened connection at 19.03.2018 20:01:32 +02:00
+IF db_id(N'DtConnnect') IS NOT NULL SELECT 1 ELSE SELECT Count(*) FROM sys.databases WHERE [name]=N'DtConnnect'
+-- Executing at 19.03.2018 20:01:32 +02:00
+-- Completed in 0 ms with result: 1
+
+Closed connection at 19.03.2018 20:01:32 +02:00
+Opened connection at 19.03.2018 20:01:32 +02:00
+
+SELECT Count(*)
+FROM INFORMATION_SCHEMA.TABLES AS t
+WHERE t.TABLE_SCHEMA + '.' + t.TABLE_NAME IN ('dbo.Audios','dbo.Likes','dbo.AspNetUsers','dbo.Categories','dbo.Cities','dbo.Countries','dbo.AspNetUserClaims','dbo.AspNetUserLogins','dbo.AspNetUserRoles','dbo.SocialNetworks','dbo.Videos','dbo.AspNetRoles','dbo.CategoryApplicationUsers')
+    OR t.TABLE_NAME = 'EdmMetadata'
+-- Executing at 19.03.2018 20:01:32 +02:00
+-- Completed in 8 ms with result: 13
+
+Closed connection at 19.03.2018 20:01:32 +02:00
+Opened connection at 19.03.2018 20:01:32 +02:00
+SELECT 
+    [GroupBy1].[A1] AS [C1]
+    FROM ( SELECT 
+        COUNT(1) AS [A1]
+        FROM [dbo].[__MigrationHistory] AS [Extent1]
+        WHERE [Extent1].[ContextKey] = @p__linq__0
+    )  AS [GroupBy1]
+-- p__linq__0: 'WebAPI_Finder_Test.Migrations.Configuration' (Type = String, Size = 4000)
+-- Executing at 19.03.2018 20:01:32 +02:00
+-- Completed in 0 ms with result: SqlDataReader
+
+Closed connection at 19.03.2018 20:01:32 +02:00
+Opened connection at 19.03.2018 20:01:32 +02:00
+SELECT TOP (1) 
+    [Project1].[C1] AS [C1], 
+    [Project1].[MigrationId] AS [MigrationId], 
+    [Project1].[Model] AS [Model], 
+    [Project1].[ProductVersion] AS [ProductVersion]
+    FROM ( SELECT 
+        [Extent1].[MigrationId] AS [MigrationId], 
+        [Extent1].[Model] AS [Model], 
+        [Extent1].[ProductVersion] AS [ProductVersion], 
+        1 AS [C1]
+        FROM [dbo].[__MigrationHistory] AS [Extent1]
+        WHERE [Extent1].[ContextKey] = @p__linq__0
+    )  AS [Project1]
+    ORDER BY [Project1].[MigrationId] DESC
+-- p__linq__0: 'WebAPI_Finder_Test.Migrations.Configuration' (Type = String, Size = 4000)
+-- Executing at 19.03.2018 20:01:32 +02:00
+-- Completed in 0 ms with result: SqlDataReader
+
+Closed connection at 19.03.2018 20:01:32 +02:00
+Opened connection at 19.03.2018 20:01:32 +02:00
+SELECT 
+    [Project1].[AccessFailedCount] AS [AccessFailedCount], 
+    [Project1].[Id] AS [Id], 
+    [Project1].[FullName] AS [FullName], 
+    [Project1].[Firstname] AS [Firstname], 
+    [Project1].[Lastname] AS [Lastname], 
+    [Project1].[BirthDate] AS [BirthDate], 
+    [Project1].[Login] AS [Login], 
+    [Project1].[AvatarImage] AS [AvatarImage], 
+    [Project1].[About] AS [About], 
+    [Project1].[CityId] AS [CityId], 
+    [Project1].[RegistrationDate] AS [RegistrationDate], 
+    [Project1].[Email] AS [Email], 
+    [Project1].[EmailConfirmed] AS [EmailConfirmed], 
+    [Project1].[PasswordHash] AS [PasswordHash], 
+    [Project1].[SecurityStamp] AS [SecurityStamp], 
+    [Project1].[PhoneNumber] AS [PhoneNumber], 
+    [Project1].[PhoneNumberConfirmed] AS [PhoneNumberConfirmed], 
+    [Project1].[TwoFactorEnabled] AS [TwoFactorEnabled], 
+    [Project1].[LockoutEndDateUtc] AS [LockoutEndDateUtc], 
+    [Project1].[LockoutEnabled] AS [LockoutEnabled], 
+    [Project1].[UserName] AS [UserName], 
+    [Project1].[Id1] AS [Id1], 
+    [Project1].[Name] AS [Name], 
+    [Project1].[CountryId] AS [CountryId], 
+    [Project1].[Id2] AS [Id2], 
+    [Project1].[Name1] AS [Name1], 
+    [Project1].[C1] AS [C1], 
+    [Project1].[Id3] AS [Id3], 
+    [Project1].[Name2] AS [Name2]
+    FROM ( SELECT 
+        [Extent1].[Id] AS [Id], 
+        [Extent1].[FullName] AS [FullName], 
+        [Extent1].[Firstname] AS [Firstname], 
+        [Extent1].[Lastname] AS [Lastname], 
+        [Extent1].[BirthDate] AS [BirthDate], 
+        [Extent1].[Login] AS [Login], 
+        [Extent1].[AvatarImage] AS [AvatarImage], 
+        [Extent1].[About] AS [About], 
+        [Extent1].[CityId] AS [CityId], 
+        [Extent1].[RegistrationDate] AS [RegistrationDate], 
+        [Extent1].[Email] AS [Email], 
+        [Extent1].[EmailConfirmed] AS [EmailConfirmed], 
+        [Extent1].[PasswordHash] AS [PasswordHash], 
+        [Extent1].[SecurityStamp] AS [SecurityStamp], 
+        [Extent1].[PhoneNumber] AS [PhoneNumber], 
+        [Extent1].[PhoneNumberConfirmed] AS [PhoneNumberConfirmed], 
+        [Extent1].[TwoFactorEnabled] AS [TwoFactorEnabled], 
+        [Extent1].[LockoutEndDateUtc] AS [LockoutEndDateUtc], 
+        [Extent1].[LockoutEnabled] AS [LockoutEnabled], 
+        [Extent1].[AccessFailedCount] AS [AccessFailedCount], 
+        [Extent1].[UserName] AS [UserName], 
+        [Extent2].[Id] AS [Id1], 
+        [Extent2].[Name] AS [Name], 
+        [Extent2].[CountryId] AS [CountryId], 
+        [Extent3].[Id] AS [Id2], 
+        [Extent3].[Name] AS [Name1], 
+        [Join3].[Id] AS [Id3], 
+        [Join3].[Name] AS [Name2], 
+        CASE WHEN ([Join3].[Category_Id] IS NULL) THEN CAST(NULL AS int) ELSE 1 END AS [C1]
+        FROM    [dbo].[AspNetUsers] AS [Extent1]
+        LEFT OUTER JOIN [dbo].[Cities] AS [Extent2] ON [Extent1].[CityId] = [Extent2].[Id]
+        LEFT OUTER JOIN [dbo].[Countries] AS [Extent3] ON [Extent2].[CountryId] = [Extent3].[Id]
+        LEFT OUTER JOIN  (SELECT [Extent4].[Category_Id] AS [Category_Id], [Extent4].[ApplicationUser_Id] AS [ApplicationUser_Id], [Extent5].[Id] AS [Id], [Extent5].[Name] AS [Name]
+            FROM  [dbo].[CategoryApplicationUsers] AS [Extent4]
+            INNER JOIN [dbo].[Categories] AS [Extent5] ON [Extent5].[Id] = [Extent4].[Category_Id] ) AS [Join3] ON [Extent1].[Id] = [Join3].[ApplicationUser_Id]
+        WHERE ([Extent1].[Login] = @p__linq__0) OR (([Extent1].[Login] IS NULL) AND (@p__linq__0 IS NULL))
+    )  AS [Project1]
+    ORDER BY [Project1].[Id] ASC, [Project1].[Id1] ASC, [Project1].[Id2] ASC, [Project1].[C1] ASC
+-- p__linq__0: 'rd3094b' (Type = String, Size = 4000)
+-- Executing at 19.03.2018 20:01:32 +02:00
+-- Completed in 0 ms with result: SqlDataReader
+
+Closed connection at 19.03.2018 20:01:32 +02:00
+Opened connection at 19.03.2018 20:04:09 +02:00
+SELECT 
+    [Project1].[AccessFailedCount] AS [AccessFailedCount], 
+    [Project1].[Id] AS [Id], 
+    [Project1].[FullName] AS [FullName], 
+    [Project1].[Firstname] AS [Firstname], 
+    [Project1].[Lastname] AS [Lastname], 
+    [Project1].[BirthDate] AS [BirthDate], 
+    [Project1].[Login] AS [Login], 
+    [Project1].[AvatarImage] AS [AvatarImage], 
+    [Project1].[About] AS [About], 
+    [Project1].[CityId] AS [CityId], 
+    [Project1].[RegistrationDate] AS [RegistrationDate], 
+    [Project1].[Email] AS [Email], 
+    [Project1].[EmailConfirmed] AS [EmailConfirmed], 
+    [Project1].[PasswordHash] AS [PasswordHash], 
+    [Project1].[SecurityStamp] AS [SecurityStamp], 
+    [Project1].[PhoneNumber] AS [PhoneNumber], 
+    [Project1].[PhoneNumberConfirmed] AS [PhoneNumberConfirmed], 
+    [Project1].[TwoFactorEnabled] AS [TwoFactorEnabled], 
+    [Project1].[LockoutEndDateUtc] AS [LockoutEndDateUtc], 
+    [Project1].[LockoutEnabled] AS [LockoutEnabled], 
+    [Project1].[UserName] AS [UserName], 
+    [Project1].[Id1] AS [Id1], 
+    [Project1].[Name] AS [Name], 
+    [Project1].[CountryId] AS [CountryId], 
+    [Project1].[Id2] AS [Id2], 
+    [Project1].[Name1] AS [Name1], 
+    [Project1].[C1] AS [C1], 
+    [Project1].[Id3] AS [Id3], 
+    [Project1].[Name2] AS [Name2]
+    FROM ( SELECT 
+        [Extent1].[Id] AS [Id], 
+        [Extent1].[FullName] AS [FullName], 
+        [Extent1].[Firstname] AS [Firstname], 
+        [Extent1].[Lastname] AS [Lastname], 
+        [Extent1].[BirthDate] AS [BirthDate], 
+        [Extent1].[Login] AS [Login], 
+        [Extent1].[AvatarImage] AS [AvatarImage], 
+        [Extent1].[About] AS [About], 
+        [Extent1].[CityId] AS [CityId], 
+        [Extent1].[RegistrationDate] AS [RegistrationDate], 
+        [Extent1].[Email] AS [Email], 
+        [Extent1].[EmailConfirmed] AS [EmailConfirmed], 
+        [Extent1].[PasswordHash] AS [PasswordHash], 
+        [Extent1].[SecurityStamp] AS [SecurityStamp], 
+        [Extent1].[PhoneNumber] AS [PhoneNumber], 
+        [Extent1].[PhoneNumberConfirmed] AS [PhoneNumberConfirmed], 
+        [Extent1].[TwoFactorEnabled] AS [TwoFactorEnabled], 
+        [Extent1].[LockoutEndDateUtc] AS [LockoutEndDateUtc], 
+        [Extent1].[LockoutEnabled] AS [LockoutEnabled], 
+        [Extent1].[AccessFailedCount] AS [AccessFailedCount], 
+        [Extent1].[UserName] AS [UserName], 
+        [Extent2].[Id] AS [Id1], 
+        [Extent2].[Name] AS [Name], 
+        [Extent2].[CountryId] AS [CountryId], 
+        [Extent3].[Id] AS [Id2], 
+        [Extent3].[Name] AS [Name1], 
+        [Join3].[Id] AS [Id3], 
+        [Join3].[Name] AS [Name2], 
+        CASE WHEN ([Join3].[Category_Id] IS NULL) THEN CAST(NULL AS int) ELSE 1 END AS [C1]
+        FROM    [dbo].[AspNetUsers] AS [Extent1]
+        LEFT OUTER JOIN [dbo].[Cities] AS [Extent2] ON [Extent1].[CityId] = [Extent2].[Id]
+        LEFT OUTER JOIN [dbo].[Countries] AS [Extent3] ON [Extent2].[CountryId] = [Extent3].[Id]
+        LEFT OUTER JOIN  (SELECT [Extent4].[Category_Id] AS [Category_Id], [Extent4].[ApplicationUser_Id] AS [ApplicationUser_Id], [Extent5].[Id] AS [Id], [Extent5].[Name] AS [Name]
+            FROM  [dbo].[CategoryApplicationUsers] AS [Extent4]
+            INNER JOIN [dbo].[Categories] AS [Extent5] ON [Extent5].[Id] = [Extent4].[Category_Id] ) AS [Join3] ON [Extent1].[Id] = [Join3].[ApplicationUser_Id]
+        WHERE ([Extent1].[Login] = @p__linq__0) OR (([Extent1].[Login] IS NULL) AND (@p__linq__0 IS NULL))
+    )  AS [Project1]
+    ORDER BY [Project1].[Id] ASC, [Project1].[Id1] ASC, [Project1].[Id2] ASC, [Project1].[C1] ASC
+-- p__linq__0: 'rd8200d' (Type = String, Size = 4000)
+-- Executing at 19.03.2018 20:04:09 +02:00
+-- Completed in 1 ms with result: SqlDataReader
+
+Closed connection at 19.03.2018 20:04:09 +02:00
+Opened connection at 19.03.2018 20:04:48 +02:00
+SELECT 
+    [Extent1].[Id] AS [Id], 
+    [Extent1].[Name] AS [Name]
+    FROM [dbo].[Categories] AS [Extent1]
+-- Executing at 19.03.2018 20:04:48 +02:00
+-- Completed in 0 ms with result: SqlDataReader
+
+Closed connection at 19.03.2018 20:04:48 +02:00
+Opened connection at 19.03.2018 20:04:48 +02:00
+SELECT TOP (2) 
+    [Extent1].[Id] AS [Id], 
+    [Extent1].[FullName] AS [FullName], 
+    [Extent1].[Firstname] AS [Firstname], 
+    [Extent1].[Lastname] AS [Lastname], 
+    [Extent1].[BirthDate] AS [BirthDate], 
+    [Extent1].[Login] AS [Login], 
+    [Extent1].[AvatarImage] AS [AvatarImage], 
+    [Extent1].[About] AS [About], 
+    [Extent1].[CityId] AS [CityId], 
+    [Extent1].[RegistrationDate] AS [RegistrationDate], 
+    [Extent1].[Email] AS [Email], 
+    [Extent1].[EmailConfirmed] AS [EmailConfirmed], 
+    [Extent1].[PasswordHash] AS [PasswordHash], 
+    [Extent1].[SecurityStamp] AS [SecurityStamp], 
+    [Extent1].[PhoneNumber] AS [PhoneNumber], 
+    [Extent1].[PhoneNumberConfirmed] AS [PhoneNumberConfirmed], 
+    [Extent1].[TwoFactorEnabled] AS [TwoFactorEnabled], 
+    [Extent1].[LockoutEndDateUtc] AS [LockoutEndDateUtc], 
+    [Extent1].[LockoutEnabled] AS [LockoutEnabled], 
+    [Extent1].[AccessFailedCount] AS [AccessFailedCount], 
+    [Extent1].[UserName] AS [UserName]
+    FROM [dbo].[AspNetUsers] AS [Extent1]
+    WHERE [Extent1].[Id] = @p0
+-- p0: '200d5c7b-23f7-4fe7-a49a-7be506684f28' (Type = String, Size = 4000)
+-- Executing at 19.03.2018 20:04:48 +02:00
+-- Completed in 0 ms with result: SqlDataReader
+
+Closed connection at 19.03.2018 20:04:48 +02:00
+Opened connection asynchronously at 19.03.2018 20:04:49 +02:00
+Started transaction at 19.03.2018 20:04:49 +02:00
+UPDATE [dbo].[AspNetUsers]
+SET [FullName] = @0, [Firstname] = @1, [Lastname] = @2, [BirthDate] = @3, [Login] = @4, [AvatarImage] = @5, [About] = NULL, [CityId] = @6, [RegistrationDate] = @7, [Email] = @8, [EmailConfirmed] = @9, [PasswordHash] = @10, [SecurityStamp] = @11, [PhoneNumber] = NULL, [PhoneNumberConfirmed] = @12, [TwoFactorEnabled] = @13, [LockoutEndDateUtc] = NULL, [LockoutEnabled] = @14, [AccessFailedCount] = @15, [UserName] = @16
+WHERE ([Id] = @17)
+-- @0: 'rinat8 okjjafjljd8' (Type = String, Size = -1)
+-- @1: 'Rinat8' (Type = String, Size = -1)
+-- @2: 'Okjjafjljd8' (Type = String, Size = -1)
+-- @3: '10.03.2018 18:00:49' (Type = DateTime2)
+-- @4: 'rd8200d' (Type = String, Size = 300)
+-- @5: '/Images/defaultImg.jpg' (Type = String, Size = -1)
+-- @6: '1' (Type = Int32)
+-- @7: '10.03.2018 18:00:49' (Type = DateTime2)
+-- @8: 'rd8@mail.ru' (Type = String, Size = 256)
+-- @9: 'False' (Type = Boolean)
+-- @10: 'AF61Nb6bRLerDo4vq+JvRpKyYnuiddyeJMQFGEHJgqEieGyhZOjdCpv21nDHm8DeAA==' (Type = String, Size = -1)
+-- @11: 'b5aef6d4-9cf4-4c78-bd4a-75b4c0c5d7ec' (Type = String, Size = -1)
+-- @12: 'False' (Type = Boolean)
+-- @13: 'False' (Type = Boolean)
+-- @14: 'False' (Type = Boolean)
+-- @15: '0' (Type = Int32)
+-- @16: 'rd8@mail.ru' (Type = String, Size = 256)
+-- @17: '200d5c7b-23f7-4fe7-a49a-7be506684f28' (Type = String, Size = 128)
+-- Executing asynchronously at 19.03.2018 20:04:49 +02:00
+-- Completed in 0 ms with result: 1
+
+INSERT [dbo].[CategoryApplicationUsers]([Category_Id], [ApplicationUser_Id])
+VALUES (@0, @1)
+-- @0: '1002' (Type = Int32)
+-- @1: '200d5c7b-23f7-4fe7-a49a-7be506684f28' (Type = String, Size = 128)
+-- Executing asynchronously at 19.03.2018 20:04:49 +02:00
+-- Completed in 2 ms with result: 1
+
+Committed transaction at 19.03.2018 20:04:49 +02:00
+Closed connection at 19.03.2018 20:04:49 +02:00
+Opened connection at 19.03.2018 20:06:20 +02:00
+SELECT 
+    [Project1].[AccessFailedCount] AS [AccessFailedCount], 
+    [Project1].[Id] AS [Id], 
+    [Project1].[FullName] AS [FullName], 
+    [Project1].[Firstname] AS [Firstname], 
+    [Project1].[Lastname] AS [Lastname], 
+    [Project1].[BirthDate] AS [BirthDate], 
+    [Project1].[Login] AS [Login], 
+    [Project1].[AvatarImage] AS [AvatarImage], 
+    [Project1].[About] AS [About], 
+    [Project1].[CityId] AS [CityId], 
+    [Project1].[RegistrationDate] AS [RegistrationDate], 
+    [Project1].[Email] AS [Email], 
+    [Project1].[EmailConfirmed] AS [EmailConfirmed], 
+    [Project1].[PasswordHash] AS [PasswordHash], 
+    [Project1].[SecurityStamp] AS [SecurityStamp], 
+    [Project1].[PhoneNumber] AS [PhoneNumber], 
+    [Project1].[PhoneNumberConfirmed] AS [PhoneNumberConfirmed], 
+    [Project1].[TwoFactorEnabled] AS [TwoFactorEnabled], 
+    [Project1].[LockoutEndDateUtc] AS [LockoutEndDateUtc], 
+    [Project1].[LockoutEnabled] AS [LockoutEnabled], 
+    [Project1].[UserName] AS [UserName], 
+    [Project1].[Id1] AS [Id1], 
+    [Project1].[Name] AS [Name], 
+    [Project1].[CountryId] AS [CountryId], 
+    [Project1].[Id2] AS [Id2], 
+    [Project1].[Name1] AS [Name1], 
+    [Project1].[C1] AS [C1], 
+    [Project1].[Id3] AS [Id3], 
+    [Project1].[Name2] AS [Name2]
+    FROM ( SELECT 
+        [Extent1].[Id] AS [Id], 
+        [Extent1].[FullName] AS [FullName], 
+        [Extent1].[Firstname] AS [Firstname], 
+        [Extent1].[Lastname] AS [Lastname], 
+        [Extent1].[BirthDate] AS [BirthDate], 
+        [Extent1].[Login] AS [Login], 
+        [Extent1].[AvatarImage] AS [AvatarImage], 
+        [Extent1].[About] AS [About], 
+        [Extent1].[CityId] AS [CityId], 
+        [Extent1].[RegistrationDate] AS [RegistrationDate], 
+        [Extent1].[Email] AS [Email], 
+        [Extent1].[EmailConfirmed] AS [EmailConfirmed], 
+        [Extent1].[PasswordHash] AS [PasswordHash], 
+        [Extent1].[SecurityStamp] AS [SecurityStamp], 
+        [Extent1].[PhoneNumber] AS [PhoneNumber], 
+        [Extent1].[PhoneNumberConfirmed] AS [PhoneNumberConfirmed], 
+        [Extent1].[TwoFactorEnabled] AS [TwoFactorEnabled], 
+        [Extent1].[LockoutEndDateUtc] AS [LockoutEndDateUtc], 
+        [Extent1].[LockoutEnabled] AS [LockoutEnabled], 
+        [Extent1].[AccessFailedCount] AS [AccessFailedCount], 
+        [Extent1].[UserName] AS [UserName], 
+        [Extent2].[Id] AS [Id1], 
+        [Extent2].[Name] AS [Name], 
+        [Extent2].[CountryId] AS [CountryId], 
+        [Extent3].[Id] AS [Id2], 
+        [Extent3].[Name] AS [Name1], 
+        [Join3].[Id] AS [Id3], 
+        [Join3].[Name] AS [Name2], 
+        CASE WHEN ([Join3].[Category_Id] IS NULL) THEN CAST(NULL AS int) ELSE 1 END AS [C1]
+        FROM    [dbo].[AspNetUsers] AS [Extent1]
+        LEFT OUTER JOIN [dbo].[Cities] AS [Extent2] ON [Extent1].[CityId] = [Extent2].[Id]
+        LEFT OUTER JOIN [dbo].[Countries] AS [Extent3] ON [Extent2].[CountryId] = [Extent3].[Id]
+        LEFT OUTER JOIN  (SELECT [Extent4].[Category_Id] AS [Category_Id], [Extent4].[ApplicationUser_Id] AS [ApplicationUser_Id], [Extent5].[Id] AS [Id], [Extent5].[Name] AS [Name]
+            FROM  [dbo].[CategoryApplicationUsers] AS [Extent4]
+            INNER JOIN [dbo].[Categories] AS [Extent5] ON [Extent5].[Id] = [Extent4].[Category_Id] ) AS [Join3] ON [Extent1].[Id] = [Join3].[ApplicationUser_Id]
+        WHERE ([Extent1].[Login] = @p__linq__0) OR (([Extent1].[Login] IS NULL) AND (@p__linq__0 IS NULL))
+    )  AS [Project1]
+    ORDER BY [Project1].[Id] ASC, [Project1].[Id1] ASC, [Project1].[Id2] ASC, [Project1].[C1] ASC
+-- p__linq__0: 'rd8200d' (Type = String, Size = 4000)
+-- Executing at 19.03.2018 20:06:20 +02:00
+-- Completed in 0 ms with result: SqlDataReader
+
+Closed connection at 19.03.2018 20:06:20 +02:00
