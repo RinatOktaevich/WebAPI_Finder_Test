@@ -17,7 +17,7 @@ namespace WebAPI_Finder_Test.Models
         [Required]
         public int CountryId { get; set; }
 
-        public Country Country { get; set; }
+        public virtual Country Country { get; set; }
 
         public ICollection<ApplicationUser> Users { get; set; }
 

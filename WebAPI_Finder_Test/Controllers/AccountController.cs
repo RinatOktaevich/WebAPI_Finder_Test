@@ -65,8 +65,13 @@ namespace WebAPI_Finder_Test.Controllersз
         [AllowAnonymous]
         [Route("Searcher")]
         [HttpPost]
-        public IHttpActionResult Find([ModelBinder]Filters filters)
+        public IHttpActionResult Find([ModelBinder]Filters filters, int offset = 1)
         {
+            //offset-смещение по коллекции
+            //для того чтобы взять первую двадцатку при первом запросе ,нужно передать "1"
+            //потом нажав кнопку "Показать ещё" передать "2" и так далее
+
+
             //Для поиска используються такие ключи
             //cityid
             //По возросту не важно какой из параметров передаётся ,там есть значения по умолчанию
@@ -75,8 +80,14 @@ namespace WebAPI_Finder_Test.Controllersз
             //categoryid-по этому ключу можно передавать несколько параметров 
             //fullname-строка поиска для имени
 
+<<<<<<< HEAD
             IEnumerable<ApplicationUser> users = db.Users.AsNoTracking().Include(xr=>xr.Categories);
             users = filters.Check(users).Skip(0).Take(20).ToList();
+=======
+            offset = 20 * --offset;
+            IEnumerable<ApplicationUser> users = db.Users.AsNoTracking().Include(xr => xr.Categories);
+            users = filters.Check(users).Skip(offset).Take(20).ToList();
+>>>>>>> master
 
             return Ok(users);
         }
@@ -175,9 +186,15 @@ namespace WebAPI_Finder_Test.Controllersз
                 return BadRequest("Emaill is null");
 
             // var user = UserManager.FindByEmail(email);
-            ApplicationDbContext db = new ApplicationDbContext();
-            //db.Entry(user).Collection(u => u.Claims).Load();
-            var user = db.Users.Include(u => u.Claims).First(u => u.Email == email);
+            // ApplicationDbContext db = new ApplicationDbContext();
+
+            db.Configuration.ProxyCreationEnabled = false;
+
+            var user = db.Users.AsNoTracking()
+                .Include(xr => xr.Categories)
+                .Include(xr => xr.City)
+                .Include(xr => xr.City.Country)
+                .Where(u => u.UserName == email).ToList()[0];
 
             if (user == null)
                 return NotFound();
@@ -198,7 +215,15 @@ namespace WebAPI_Finder_Test.Controllersз
             if (login == null)
                 return BadRequest("Login is null");
 
-            var user = UserManager.Users.Where(u => u.Login == login).ToList()[0];
+            db.Configuration.ProxyCreationEnabled = false;
+
+            var user = db.Users.AsNoTracking()
+                .Include(xr => xr.Categories)
+                .Include(xr => xr.City)
+                .Include(xr => xr.City.Country)
+                .Where(u => u.Login == login).ToList()[0];
+
+
 
             if (user == null)
                 return NotFound();
@@ -210,10 +235,13 @@ namespace WebAPI_Finder_Test.Controllersз
         [Route("getAll")]
         public IHttpActionResult GetAll()
         {
-            // List<ApplicationUser> users = new List<ApplicationUser>();
-            ApplicationDbContext db = new ApplicationDbContext();
-            db.Configuration.LazyLoadingEnabled = false;
-            var users = db.Users.Include(xr => xr.Categories).AsNoTracking().ToList();
+            db.Configuration.ProxyCreationEnabled = false;
+
+            var users = db.Users.AsNoTracking()
+                .Include(xr => xr.Categories)
+                .Include(xr => xr.City)
+                .Include(xr => xr.City.Country)
+                .ToList();
 
             return Ok(users);
         }
@@ -273,7 +301,7 @@ namespace WebAPI_Finder_Test.Controllersз
             }
 
 
-            ApplicationUser user = new ApplicationUser() { UserName = model.Email, Email = model.Email, Firstname = model.Firstname, Lastname = model.Lastname, BirthDate = model.BirthDate, AvatarImage = "/Images/defaultImg.jpg", RegistrationDate = DateTime.Now,FullName=model.Firstname.ToLower()+" "+model.Lastname.ToLower() };
+            ApplicationUser user = new ApplicationUser() { UserName = model.Email, Email = model.Email, Firstname = model.Firstname, Lastname = model.Lastname, BirthDate = model.BirthDate, AvatarImage = "/Images/defaultImg.jpg", RegistrationDate = DateTime.Now, FullName = model.Firstname.ToLower() + " " + model.Lastname.ToLower() };
 
 
             IdentityResult result = null;

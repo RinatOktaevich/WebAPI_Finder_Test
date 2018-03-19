@@ -74,6 +74,7 @@ namespace WebAPI_Finder_Test.Models
             : base("DtConnnect", throwIfV1Schema: false)
         {
             this.Configuration.LazyLoadingEnabled = false;
+            this.Database.Log = (s => System.Diagnostics.Debug.WriteLine(s));
         }
 
         public virtual DbSet<Audio> AudioTracks { get; set; }
