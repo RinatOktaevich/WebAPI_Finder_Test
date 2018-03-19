@@ -65,8 +65,13 @@ namespace WebAPI_Finder_Test.Controllersз
         [AllowAnonymous]
         [Route("Searcher")]
         [HttpPost]
-        public IHttpActionResult Find([ModelBinder]Filters filters)
+        public IHttpActionResult Find([ModelBinder]Filters filters,int offset=1)
         {
+            //offset-смещение по коллекции
+            //для того чтобы взять первую двадцатку при первом запросе ,нужно передать "1"
+            //потом нажав кнопку "Показать ещё" передать "2" и так далее
+
+
             //Для поиска используються такие ключи
             //cityid
             //По возросту не важно какой из параметров передаётся ,там есть значения по умолчанию
@@ -75,8 +80,9 @@ namespace WebAPI_Finder_Test.Controllersз
             //categoryid-по этому ключу можно передавать несколько параметров 
             //fullname-строка поиска для имени
 
-            IEnumerable<ApplicationUser> users = db.Users.Include(xr => xr.Categories).AsNoTracking();
-            users = filters.Check(users).Skip(0).Take(20).ToList();
+            offset = 20 * --offset;
+            IEnumerable<ApplicationUser> users = db.Users.AsNoTracking().Include(xr => xr.Categories);
+            users = filters.Check(users).Skip(offset).Take(20).ToList();
 
             return Ok(users);
         }
