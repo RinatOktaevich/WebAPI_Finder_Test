@@ -331,6 +331,8 @@
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\City.cs" />
     <Compile Include="Models\Country.cs" />
+    <Compile Include="Models\DI\Account IoC\AccountRepository.cs" />
+    <Compile Include="Models\DI\Account IoC\IAccountRepository.cs" />
     <Compile Include="Models\DI\City IoC\CityRepository.cs" />
     <Compile Include="Models\DI\City IoC\ICityRepository.cs" />
     <Compile Include="Models\DI\Country IoC\CountryRepository.cs" />

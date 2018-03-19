@@ -22,6 +22,7 @@ using System.Net;
 using System.IO;
 using WebAPI_Finder_Test.Models.Helpers;
 using System.Web.Http.ModelBinding;
+using WebAPI_Finder_Test.Models.DI.Account_IoC;
 
 namespace WebAPI_Finder_Test.Controllersз
 {
@@ -33,10 +34,11 @@ namespace WebAPI_Finder_Test.Controllersз
         private const string LocalLoginProvider = "Local";
         private ApplicationUserManager _userManager;
         private ApplicationDbContext db = new ApplicationDbContext();
-
+        private IAccountRepository AccRepo;
 
         public AccountController()
         {
+            
         }
 
         public AccountController(ApplicationUserManager userManager,
