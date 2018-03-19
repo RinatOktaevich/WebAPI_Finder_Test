@@ -80,14 +80,11 @@ namespace WebAPI_Finder_Test.Controllersз
             //categoryid-по этому ключу можно передавать несколько параметров 
             //fullname-строка поиска для имени
 
-<<<<<<< HEAD
-            IEnumerable<ApplicationUser> users = db.Users.AsNoTracking().Include(xr=>xr.Categories);
-            users = filters.Check(users).Skip(0).Take(20).ToList();
-=======
+
             offset = 20 * --offset;
             IEnumerable<ApplicationUser> users = db.Users.AsNoTracking().Include(xr => xr.Categories);
             users = filters.Check(users).Skip(offset).Take(20).ToList();
->>>>>>> master
+
 
             return Ok(users);
         }
