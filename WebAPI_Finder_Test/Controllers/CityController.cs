@@ -10,12 +10,12 @@ using WebAPI_Finder_Test.Models;
 
 namespace WebAPI_Finder_Test.Controllers
 {
-    [Authorize]
     [RoutePrefix("api/City")]
     public class CityController : ApiController
     {
         ApplicationDbContext db = new ApplicationDbContext();
 
+        [Authorize]
         [HttpPost]
         [Route("Add")]
         public async Task<HttpResponseMessage> AddCity(int countryid, string name)
@@ -32,7 +32,7 @@ namespace WebAPI_Finder_Test.Controllers
             return new HttpResponseMessage(HttpStatusCode.OK);
         }
 
-
+        [Authorize]
         [HttpPost]
         [Route("Delete")]
         public async Task<HttpResponseMessage> DeleteCity(int cityid)
@@ -49,7 +49,7 @@ namespace WebAPI_Finder_Test.Controllers
             return new HttpResponseMessage(HttpStatusCode.OK);
         }
 
-
+        [Authorize]
         [HttpPost]
         [Route("Rename")]
         public async Task<HttpResponseMessage> RenameCity(int cityid, string name)
@@ -68,7 +68,15 @@ namespace WebAPI_Finder_Test.Controllers
             return new HttpResponseMessage(HttpStatusCode.OK);
         }
 
+        [HttpGet]
+        [Route("CitiesInCountry/ToList")]
+        public IHttpActionResult Cities_ByCountry(int countryId)
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+            var cities = db.Cities.AsNoTracking().Where(xr => xr.CountryId == countryId).ToList();
 
+            return Ok(cities);
+        }
 
 
         [HttpGet]
