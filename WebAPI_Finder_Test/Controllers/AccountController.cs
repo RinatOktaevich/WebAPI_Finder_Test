@@ -81,7 +81,11 @@ namespace WebAPI_Finder_Test.Controllersз
             //fullname-строка поиска для имени
 
             offset = 20 * --offset;
-            IEnumerable<ApplicationUser> users = db.Users.AsNoTracking().Include(xr => xr.Categories);
+            db.Configuration.ProxyCreationEnabled = false;
+            IEnumerable<ApplicationUser> users = db.Users.AsNoTracking()
+                .Include(xr => xr.Categories)
+                .Include(xr => xr.City)
+                .Include(xr => xr.City.Country);
             users = filters.Check(users).Skip(offset).Take(20).ToList();
 
             return Ok(users);
@@ -295,6 +299,7 @@ namespace WebAPI_Finder_Test.Controllersз
                 return BadRequest(ModelState);
             }
 
+           // var pass = UserManager.PasswordHasher.HashPassword(model.Password);
 
             ApplicationUser user = new ApplicationUser() { UserName = model.Email, Email = model.Email, Firstname = model.Firstname, Lastname = model.Lastname, BirthDate = model.BirthDate, AvatarImage = "/Images/defaultImg.jpg", RegistrationDate = DateTime.Now, FullName = model.Firstname.ToLower() + " " + model.Lastname.ToLower(),CityId=model.CityId };
 
@@ -303,8 +308,9 @@ namespace WebAPI_Finder_Test.Controllersз
             IdentityResult result = null;
             try
             {
+               
                 result = await UserManager.CreateAsync(user, model.Password);
-
+              //result=db.Users.Add(user);
             }
             catch (Exception)
             {

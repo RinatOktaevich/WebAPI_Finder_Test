@@ -42,7 +42,8 @@ namespace WebAPI_Finder_Test.Controllers
         {
             AccountController acc = new AccountController();
             acc.Request = new System.Net.Http.HttpRequestMessage();
-
+            acc.Configuration = new HttpConfiguration();
+            acc.ActionContext = new System.Web.Http.Controllers.HttpActionContext();
             var res = acc.Register(model);
 
             
