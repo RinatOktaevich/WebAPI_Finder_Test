@@ -71,7 +71,7 @@ namespace WebAPI_Finder_Test.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DtConnnectLocal", throwIfV1Schema: false)
+            : base("DtConnnect", throwIfV1Schema: false)
         {
             this.Database.Log = (s => System.Diagnostics.Debug.WriteLine(s));
         }

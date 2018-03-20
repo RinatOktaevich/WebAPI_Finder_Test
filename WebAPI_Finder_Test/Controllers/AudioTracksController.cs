@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -37,7 +38,7 @@ namespace WebAPI_Finder_Test.Controllers
                 }
 
 
-                soundtrack = FileSaver.SaveImage("/Data/" + user.Login+"/Audios/");
+                soundtrack = FileSaver.SaveImage("/Data/" + user.Login + "/Audios/");
             }
             catch (Exception)
             {
@@ -104,32 +105,67 @@ namespace WebAPI_Finder_Test.Controllers
             return Request.CreateResponse(HttpStatusCode.OK);
         }
 
+
+        #region Changed
         [AllowAnonymous]
         [HttpPost]
         [Route("AudioList")]
-        public IHttpActionResult GetAudios(string iduser)
+        public IHttpActionResult GetAudios(string iduser,int categoryid)
         {
-            var user = db.Users.Find(iduser);
+            var user = db.Users.Include(xr=>xr.AudioTracks).Where(xr=>xr.Id==iduser).ToList()[0];
             if (user == null)
             {
                 return BadRequest("User doesn`t found");
             }
-            #region Changed
-            var audios = db.Categories.ToList();
 
-            foreach (var item in audios)
-            {
-                item.Audios = user.AudioTracks.Where(xr => xr.CategoryId == item.Id).ToList();
-            }
 
-            #endregion
 
-            #region Origin
-            //var audios = db.AudioTracks.Where(tr => tr.ApplicationUserId == iduser).ToList();
-            #endregion
+
+           var audios = user.AudioTracks.Where(xr => xr.CategoryId == categoryid).ToList();
+
+            //foreach (var item in audios)
+            //{
+            //    item.Audios = user.AudioTracks.Where(xr => xr.CategoryId == item.Id).ToList();
+            //}
+
+            
+
+          
 
             return Ok(audios);
         }
+        #endregion
+
+        #region Origin
+        //[AllowAnonymous]
+        //[HttpPost]
+        //[Route("AudioList")]
+        //public IHttpActionResult GetAudios(string iduser)
+        //{
+        //    var user = db.Users.Find(iduser);
+        //    if (user == null)
+        //    {
+        //        return BadRequest("User doesn`t found");
+        //    }
+        //    #region Changed
+        //    var audios = db.Categories.ToList();
+
+        //    foreach (var item in audios)
+        //    {
+        //        item.Audios = user.AudioTracks.Where(xr => xr.CategoryId == item.Id).ToList();
+        //    }
+
+        //    #endregion
+
+        //    #region Origin
+        //    //var audios = db.AudioTracks.Where(tr => tr.ApplicationUserId == iduser).ToList();
+        //    #endregion
+
+        //    return Ok(audios);
+        //}
+        #endregion
+
+
 
         /// <summary>
         /// 

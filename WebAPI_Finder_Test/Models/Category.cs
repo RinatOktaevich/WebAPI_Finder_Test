@@ -22,8 +22,8 @@ namespace WebAPI_Finder_Test.Models
         [Index(IsUnique = true, IsClustered = false)]
         public string Name { get; set; }
 
-        public ICollection<ApplicationUser> Users { get; set; }
+        public  ICollection<ApplicationUser> Users { get; set; }
 
-        public ICollection<Audio> Audios { get; set; }
+        public  ICollection<Audio> Audios { get; set; }
     }
 }
