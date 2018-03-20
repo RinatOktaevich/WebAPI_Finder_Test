@@ -27,9 +27,6 @@ bin/
 obj/
 TestResults/
 WebAPI_Finder_Test/App_Data/
-Audio/
-Images/
-Photos/
 ###################
 # Web publish log #
 ###################

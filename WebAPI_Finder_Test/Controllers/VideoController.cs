@@ -33,8 +33,12 @@ namespace WebAPI_Finder_Test.Controllers
                 {
                     return new HttpResponseMessage(HttpStatusCode.UnsupportedMediaType);
                 }
+                string realPath = Server.MapPath("/Data/" + user.Login + "/");
+                Helper.IsUserDirectoryExist(realPath);
+                Helper.CheckVideosDir(realPath);
 
-                vidos = FileSaver.SaveImage("/Data/" + user.Login + "/Videos/");
+
+                vidos = Helper.SaveImage("/Data/" + user.Login + "/Videos/");
             }
             catch (Exception ex)
             {

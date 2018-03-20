@@ -261,15 +261,30 @@ namespace WebAPI_Finder_Test.Controllersз
                 }
 
                 string virtualPath = "/Data/" + user.Login + "/";
+                string realPath = Server.MapPath("/Data/" +user.Login + "/");
+
+                Helper.IsUserDirectoryExist(realPath);
+                
+
+                //This check and create ,if doesn`t exist ,required directories
+              //  Helper.CheckAudioDir(user.Login,Server);
+
+
                 //string realPath =Server.MapPath("/Data/" + user.Login+"/");
-
+                //if(!Directory.Exists(realPath))
+                //{
+                //    Directory.CreateDirectory(realPath);
+                //}
+                //if(!Directory.Exists(realPath+"Audios"))
+                //{
+                //    Directory.CreateDirectory(realPath + "Audios");
+                //}
                 //var info = Directory.CreateDirectory(realPath);
-
                 //var info2 = Directory.CreateDirectory(realPath + "Audios");
                 //var info3 = Directory.CreateDirectory(realPath + "Videos");
 
 
-                image = FileSaver.SaveImage(virtualPath);
+                image = Helper.SaveImage(virtualPath);
             }
             catch (Exception)
             {

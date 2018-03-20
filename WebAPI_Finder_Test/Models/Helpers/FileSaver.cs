@@ -8,7 +8,7 @@ using System.Web.Http;
 
 namespace WebAPI_Finder_Test.Models.Helpers
 {
-    public static class FileSaver
+    public static class Helper
     {
         /// <summary>
         /// Save uploaded file to the server folder
@@ -17,7 +17,7 @@ namespace WebAPI_Finder_Test.Models.Helpers
         public static string SaveImage(string ServerPath)
         {
             var file = HttpContext.Current.Request.Files[0];
-            
+
 
             if (file.ContentLength == 0)
             {
@@ -31,6 +31,54 @@ namespace WebAPI_Finder_Test.Models.Helpers
             file.SaveAs(filePath);
             return name;
         }
+
+        /// <summary>
+        /// Check if User/Audios directory exist.If it don`t ,create.
+        /// Also check for UserLogin directory
+        /// </summary>
+        /// <param name="Login">User Login </param>
+        /// <param name="Server">Server util</param>
+        public static void CheckAudioDir(string realPath)
+        {
+            // string realPath = Server.MapPath("/Data/" + Login + "/");
+
+            //IsUserDirectoryExist(realPath);
+
+            if (!Directory.Exists(realPath + "Audios"))
+            {
+                Directory.CreateDirectory(realPath + "Audios");
+            }
+        }
+
+
+        /// <summary>
+        /// Check if User/Audios directory exist.If it don`t ,create.
+        /// Also check for UserLogin directory
+        /// </summary>
+        /// <param name="Login">User Login </param>
+        /// <param name="Server">Server util</param>
+        public static void CheckVideosDir(string realPath)
+        {
+            // string realPath = Server.MapPath("/Data/" + Login + "/");
+
+           // IsUserDirectoryExist(realPath);
+
+            if (!Directory.Exists(realPath + "Videos"))
+            {
+                Directory.CreateDirectory(realPath + "Videos");
+            }
+        }
+
+
+        public static void IsUserDirectoryExist(string realPath)
+        {
+            if (!Directory.Exists(realPath))
+            {
+                Directory.CreateDirectory(realPath);
+            }
+        }
+
+
 
 
     }
