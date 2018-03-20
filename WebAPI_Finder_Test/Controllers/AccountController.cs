@@ -246,7 +246,7 @@ namespace WebAPI_Finder_Test.Controllersз
         public HttpResponseMessage InsertAvatar(string email)
         {
             string image;
-            var user = db.Users.First(u => u.Email == email);
+            var user = db.Users.First(u => u.UserName == email);
             var Server = HttpContext.Current.Server;
             try
             {
@@ -296,8 +296,9 @@ namespace WebAPI_Finder_Test.Controllersз
             }
 
 
-            ApplicationUser user = new ApplicationUser() { UserName = model.Email, Email = model.Email, Firstname = model.Firstname, Lastname = model.Lastname, BirthDate = model.BirthDate, AvatarImage = "/Images/defaultImg.jpg", RegistrationDate = DateTime.Now, FullName = model.Firstname.ToLower() + " " + model.Lastname.ToLower() };
+            ApplicationUser user = new ApplicationUser() { UserName = model.Email, Email = model.Email, Firstname = model.Firstname, Lastname = model.Lastname, BirthDate = model.BirthDate, AvatarImage = "/Images/defaultImg.jpg", RegistrationDate = DateTime.Now, FullName = model.Firstname.ToLower() + " " + model.Lastname.ToLower(),CityId=model.CityId };
 
+            //default avatar=/Images/defaultImg.jpg
 
             IdentityResult result = null;
             try

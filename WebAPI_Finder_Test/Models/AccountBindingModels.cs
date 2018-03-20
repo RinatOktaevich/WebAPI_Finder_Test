@@ -34,6 +34,8 @@ namespace WebAPI_Finder_Test.Models
 
     public class RegisterBindingModel
     {
+        public int CityId { get; set; }
+
         [Required]
         [StringLength(100)]
         public string Firstname { get; set; }

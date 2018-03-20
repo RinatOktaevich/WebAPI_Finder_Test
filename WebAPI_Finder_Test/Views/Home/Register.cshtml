@@ -15,7 +15,16 @@
     <input type="password" id="password" /><br /><br />
     <label>Подтвердите пароль</label><br />
     <input type="password" id="confirmpassword" /><br /><br />
+    <label>City Id</label><br />
+    <input type="number"  id="cityid" />
+
     <input type="submit" id="submit" value="Регистрация" />
+
+    
+
+
+
+
 </div>
 @section scripts{
     <script type="text/javascript">
@@ -28,7 +37,8 @@
                 ConfirmPassword: $('#confirmpassword').val(),
                 Firstname: $('#Firstname').val(),
                 Lastname: $('#Lastname').val(),
-                BirthDate:$('#BirthDate').val()
+                BirthDate: $('#BirthDate').val(),
+                CityId: $('#cityid').val()
             };
 
             $.ajax({
