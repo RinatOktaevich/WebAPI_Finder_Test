@@ -71,10 +71,9 @@ namespace WebAPI_Finder_Test.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DtConnnect", throwIfV1Schema: false)
+            : base("DtConnnectLocal", throwIfV1Schema: false)
         {
             this.Database.Log = (s => System.Diagnostics.Debug.WriteLine(s));
-
         }
 
         public virtual DbSet<Audio> AudioTracks { get; set; }
@@ -88,9 +87,6 @@ namespace WebAPI_Finder_Test.Models
         public virtual DbSet<Category> Categories { get; set; }
 
         public virtual DbSet<Video> Videos { get; set; }
-
-
-
 
 
 
