@@ -37,24 +37,24 @@ namespace WebAPI_Finder_Test.Controllers
             return View();
         }
 
-        [System.Web.Mvc.HttpPost]
-        public ActionResult Create(RegisterBindingModel model)
-        {
-            AccountController acc = new AccountController();
-            acc.Request = new System.Net.Http.HttpRequestMessage();
-            acc.Configuration = new HttpConfiguration();
-            acc.ActionContext = new System.Web.Http.Controllers.HttpActionContext();
-            var res = acc.Register(model);
+        //[System.Web.Mvc.HttpPost]
+        //public ActionResult Create(RegisterBindingModel model)
+        //{
+        //    AccountController acc = new AccountController();
+        //    acc.Request = new System.Net.Http.HttpRequestMessage();
+        //    acc.Configuration = new HttpConfiguration();
+        //    acc.ActionContext = new System.Web.Http.Controllers.HttpActionContext();
+        //    var res = acc.Register(model);
 
             
-            if (res != null)
-            {
-                acc.InsertAvatar(model.Email);
-            }
+        //    if (res != null)
+        //    {
+        //        acc.InsertAvatar(model.Email);
+        //    }
 
 
-            return Redirect("List");
-        }
+        //    return Redirect("List");
+        //}
 
 
 

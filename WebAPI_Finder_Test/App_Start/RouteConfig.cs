@@ -11,7 +11,7 @@ namespace WebAPI_Finder_Test
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
-           // routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            // routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
 
             routes.MapRoute(
@@ -21,11 +21,11 @@ namespace WebAPI_Finder_Test
             );
 
 
-          //  routes.MapRoute(
-          //    name: "User",
-          //    url: "user/{controller}",
-          //    defaults: new { controller = "Account"}
-          //);
+            routes.MapRoute(
+                name: "FormRoute",
+                url: "api/{controller}/{action}"
+                );
+
 
 
         }
