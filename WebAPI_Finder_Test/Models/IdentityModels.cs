@@ -71,9 +71,9 @@ namespace WebAPI_Finder_Test.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DtConnnect", throwIfV1Schema: false)
+            : base("AzureSkitel", throwIfV1Schema: false)
         {
-            this.Database.Log = (s => System.Diagnostics.Debug.WriteLine(s));
+            //this.Database.Log = (s => System.Diagnostics.Debug.WriteLine(s));
         }
 
         public virtual DbSet<Audio> AudioTracks { get; set; }
