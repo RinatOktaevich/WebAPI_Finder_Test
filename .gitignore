@@ -31,7 +31,7 @@ WebAPI_Finder_Test/App_Data/
 # Web publish log #
 ###################
 #Images#
-Images/
+#Images/
 ########
 *.Publish.xml
 #############
