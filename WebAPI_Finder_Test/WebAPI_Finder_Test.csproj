@@ -308,6 +308,10 @@
     <Compile Include="Migrations\201803131836337_add FullName to User.Designer.cs">
       <DependentUpon>201803131836337_add FullName to User.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804161718513_add %27ImageUrl%27 prop to Category.cs" />
+    <Compile Include="Migrations\201804161718513_add %27ImageUrl%27 prop to Category.Designer.cs">
+      <DependentUpon>201804161718513_add %27ImageUrl%27 prop to Category.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -451,6 +455,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803131836337_add FullName to User.resx">
       <DependentUpon>201803131836337_add FullName to User.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804161718513_add %27ImageUrl%27 prop to Category.resx">
+      <DependentUpon>201804161718513_add %27ImageUrl%27 prop to Category.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
