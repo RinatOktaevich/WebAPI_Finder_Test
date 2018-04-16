@@ -16,7 +16,7 @@ namespace WebAPI_Finder_Test.Models
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
-        
+
         public string FullName { get; set; }
 
         public string Firstname { get; set; }
@@ -71,9 +71,9 @@ namespace WebAPI_Finder_Test.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("AzureDb", throwIfV1Schema: false)
+            : base("AzureSkitel", throwIfV1Schema: false)
         {
-            this.Database.Log = (s => System.Diagnostics.Debug.WriteLine(s));
+            //this.Database.Log = (s => System.Diagnostics.Debug.WriteLine(s));
         }
 
         public virtual DbSet<Audio> AudioTracks { get; set; }
@@ -95,6 +95,6 @@ namespace WebAPI_Finder_Test.Models
             return new ApplicationDbContext();
         }
 
-      
+
     }
 }
