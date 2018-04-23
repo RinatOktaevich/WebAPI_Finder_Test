@@ -92,6 +92,7 @@ namespace WebAPI_Finder_Test.Controllers
 
 
         [HttpGet]
+        [AllowAnonymous]
         [Route("ToList")]
         public IHttpActionResult GetCategories()
         {
