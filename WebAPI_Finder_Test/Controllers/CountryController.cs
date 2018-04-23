@@ -61,7 +61,7 @@ namespace WebAPI_Finder_Test.Controllers
             return new HttpResponseMessage(HttpStatusCode.OK);
         }
 
-
+        [AllowAnonymous]
         [HttpGet]
         [Route("ToList")]
         public IHttpActionResult Get_Countries()
