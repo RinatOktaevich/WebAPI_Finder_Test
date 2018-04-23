@@ -96,7 +96,7 @@ namespace WebAPI_Finder_Test.Controllers
         [Route("ToList")]
         public IHttpActionResult GetCategories()
         {
-            var cats = db.Categories.Select(x => new {x.Id,x.Name }).ToList();
+            var cats = db.Categories.AsNoTracking().ToList();
             return Ok(cats);
         }
 
