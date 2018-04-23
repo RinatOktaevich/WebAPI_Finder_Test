@@ -66,10 +66,10 @@ namespace WebAPI_Finder_Test.Controllers
         [Route("ToList")]
         public IHttpActionResult Get_Countries()
         {
-            var res = db.Countries.ToList();
+            var res = db.Countries.AsNoTracking().Select(x => new { x.Id, x.Name }).ToList();
             return Ok(res);
         }
 
-
     }
+
 }
