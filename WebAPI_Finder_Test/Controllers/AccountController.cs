@@ -193,6 +193,7 @@ namespace WebAPI_Finder_Test.Controllersз
                 .Include(xr => xr.Categories)
                 .Include(xr => xr.City)
                 .Include(xr => xr.City.Country)
+                .Include(xr=>xr.SocNetworks)
                 .Where(u => u.UserName == email).ToList()[0];
 
             if (user == null)
@@ -220,6 +221,7 @@ namespace WebAPI_Finder_Test.Controllersз
                 .Include(xr => xr.Categories)
                 .Include(xr => xr.City)
                 .Include(xr => xr.City.Country)
+                .Include(xr=>xr.SocNetworks)
                 .Where(u => u.Login == login).ToList()[0];
 
 
@@ -240,6 +242,7 @@ namespace WebAPI_Finder_Test.Controllersз
                 .Include(xr => xr.Categories)
                 .Include(xr => xr.City)
                 .Include(xr => xr.City.Country)
+                .Include(xr=>xr.SocNetworks)
                 .ToList();
 
             return Ok(users);

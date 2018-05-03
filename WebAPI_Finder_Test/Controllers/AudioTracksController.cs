@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.WindowsAzure.Storage;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
@@ -12,6 +13,9 @@ using System.Web;
 using System.Web.Http;
 using WebAPI_Finder_Test.Models;
 using WebAPI_Finder_Test.Models.Helpers;
+using Microsoft.Azure;
+using Microsoft.WindowsAzure.Storage.Blob;
+using Microsoft.WindowsAzure.Storage.RetryPolicies;
 
 namespace WebAPI_Finder_Test.Controllers
 {
@@ -36,12 +40,63 @@ namespace WebAPI_Finder_Test.Controllers
                 {
                     return new HttpResponseMessage(HttpStatusCode.UnsupportedMediaType);
                 }
-                string realPath = Server.MapPath("/Data/" + user.Login + "/");
-                Helper.IsUserDirectoryExist(realPath);
-                Helper.CheckAudioDir(realPath);
+
+                #region Azure file saver
+                var file = HttpContext.Current.Request.Files[0];
+
+                if (file.ContentLength == 0)
+                {
+                    throw new HttpResponseException(HttpStatusCode.NoContent);
+                }
+
+                var azurePath = "C:/Users/Ринат/documents/visual studio 2015/Projects/CopyDataSkitelDBToAzure/CopyDataSkitelDBToAzure/Data/";
+
+                // Retrieve storage account information from connection string
+                CloudStorageAccount storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("StorageConnectionString"));
+
+                // Create a blob client for interacting with the blob service.
+                CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
 
-                soundtrack = Helper.SaveImage("/Data/" + user.Login + "/Audios/");
+                // Create a container for organizing blobs within the storage account.
+                Console.WriteLine("1. Creating Container");
+                CloudBlobContainer container = blobClient.GetContainerReference("data");
+
+                try
+                {
+                    BlobRequestOptions requestOptions = new BlobRequestOptions() { RetryPolicy = new NoRetry() };
+                    container.CreateIfNotExists(requestOptions, null);
+                }
+                catch (StorageException)
+                {
+                    throw;
+                }
+
+                var newFileName = Path.GetRandomFileName().Substring(0, 6) + Path.GetFileName(file.FileName);
+
+                // Upload a BlockBlob to the newly created container
+                Console.Write("2. Uploading BlockBlob ");
+                CloudBlockBlob blockBlob = container.GetBlockBlobReference(azurePath + user+"/Audios/"+newFileName);
+
+                string ext = Path.GetExtension(file.FileName);
+                blockBlob.Properties.ContentType = "image/" + ext;
+
+                blockBlob.UploadFromFile(file.FileName);
+
+
+                soundtrack = blockBlob.Uri.AbsoluteUri;
+
+                #endregion
+
+
+                #region Inside Server file saver
+                //string realPath = Server.MapPath("/Data/" + user.Login + "/");
+                //Helper.IsUserDirectoryExist(realPath);
+                //Helper.CheckAudioDir(realPath);
+
+                //soundtrack = Helper.SaveImage("/Data/" + user.Login + "/Audios/");
+                #endregion
+
             }
             catch (Exception)
             {
@@ -113,9 +168,9 @@ namespace WebAPI_Finder_Test.Controllers
         [AllowAnonymous]
         [HttpPost]
         [Route("AudioList")]
-        public IHttpActionResult GetAudios(string iduser,int categoryid)
+        public IHttpActionResult GetAudios(string iduser, int categoryid)
         {
-            var user = db.Users.Include(xr=>xr.AudioTracks).Where(xr=>xr.Id==iduser).ToList()[0];
+            var user = db.Users.Include(xr => xr.AudioTracks).Where(xr => xr.Id == iduser).ToList()[0];
             if (user == null)
             {
                 return BadRequest("User doesn`t found");
@@ -124,16 +179,16 @@ namespace WebAPI_Finder_Test.Controllers
 
 
 
-           var audios = user.AudioTracks.Where(xr => xr.CategoryId == categoryid).ToList();
+            var audios = user.AudioTracks.Where(xr => xr.CategoryId == categoryid).ToList();
 
             //foreach (var item in audios)
             //{
             //    item.Audios = user.AudioTracks.Where(xr => xr.CategoryId == item.Id).ToList();
             //}
 
-            
 
-          
+
+
 
             return Ok(audios);
         }
