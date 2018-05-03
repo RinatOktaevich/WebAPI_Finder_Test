@@ -329,6 +329,10 @@
     <Compile Include="Migrations\201805031143201_New SocNetworks.Designer.cs">
       <DependentUpon>201805031143201_New SocNetworks.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805032339477_Changed Url string length 128 to 300.cs" />
+    <Compile Include="Migrations\201805032339477_Changed Url string length 128 to 300.Designer.cs">
+      <DependentUpon>201805032339477_Changed Url string length 128 to 300.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -478,6 +482,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805031143201_New SocNetworks.resx">
       <DependentUpon>201805031143201_New SocNetworks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805032339477_Changed Url string length 128 to 300.resx">
+      <DependentUpon>201805032339477_Changed Url string length 128 to 300.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -16,7 +16,7 @@ namespace WebAPI_Finder_Test.Models
 
         [Required]
         [DataType(DataType.Url)]
-        [StringLength(128)]
+        [StringLength(300)]
         public string Url { get; set; }
 
         [Required]

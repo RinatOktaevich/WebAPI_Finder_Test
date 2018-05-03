@@ -76,16 +76,19 @@ namespace WebAPI_Finder_Test.Controllers
 
                 // Upload a BlockBlob to the newly created container
                 Console.Write("2. Uploading BlockBlob ");
-                CloudBlockBlob blockBlob = container.GetBlockBlobReference(azurePath + user+"/Audios/"+newFileName);
+                CloudBlockBlob blockBlob = container.GetBlockBlobReference(azurePath + user.Login + "/Audios/" + newFileName);
 
-                string ext = Path.GetExtension(file.FileName);
-                blockBlob.Properties.ContentType = "image/" + ext;
+                blockBlob.Properties.ContentType = file.ContentType;
 
-                blockBlob.UploadFromFile(file.FileName);
+                var location = AppDomain.CurrentDomain.BaseDirectory;
+                var fullFileName = location+"/" + file.FileName;
 
+                file.SaveAs(fullFileName);
 
+                blockBlob.UploadFromFile(fullFileName);
                 soundtrack = blockBlob.Uri.AbsoluteUri;
 
+                File.Delete(fullFileName);
                 #endregion
 
 
