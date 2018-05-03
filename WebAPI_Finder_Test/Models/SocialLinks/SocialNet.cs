@@ -13,6 +13,65 @@ namespace WebAPI_Finder_Test.Models.SocialLinks
     //Code:1    Message:User doesn`t exict
     //Code:2    Message:Url  isn`t valid
 
+    #region Deleted
+    //public class VkLink : SocialNet
+    //{
+    //    public VkLink(HttpRequestMessage _request) : base(_request)
+    //    {
+    //    }
+
+    //    protected override void DeleteValue()
+    //    {
+    //        soc.Vk = null;
+    //    }
+
+    //    protected override HttpResponseMessage SetValue(string value)
+    //    {
+    //        Regex reg = new Regex(@"https://vk.com/.{3,}");
+    //        if (reg.IsMatch(value))
+    //        {
+    //            soc.Vk = value;
+    //        }
+    //        else
+    //        {
+    //            return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Code = 2, Message = "Vk Url isn`t valid" });
+    //        }
+
+    //        return new HttpResponseMessage(HttpStatusCode.OK);
+    //    }
+    //}
+
+    //public class TwitterLink : SocialNet
+    //{
+    //    public TwitterLink(HttpRequestMessage _request) : base(_request)
+    //    {
+    //    }
+
+    //    protected override void DeleteValue()
+    //    {
+    //        soc.Twitter = null;
+    //    }
+
+    //    protected override HttpResponseMessage SetValue(string value)
+    //    {
+    //        Regex reg = new Regex(@"https://twitter.com/.{3,}");
+    //        if (reg.IsMatch(value))
+    //        {
+    //            soc.Twitter = value;
+    //        }
+    //        else
+    //        {
+    //            return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Code = 2, Message = "Twitter Url isn`t valid" });
+    //        }
+
+    //        return new HttpResponseMessage(HttpStatusCode.OK);
+    //    }
+
+    //}
+
+   
+
+    #endregion
 
     public abstract class SocialNet
     {
@@ -118,33 +177,6 @@ namespace WebAPI_Finder_Test.Models.SocialLinks
         }
     }
 
-    public class VkLink : SocialNet
-    {
-        public VkLink(HttpRequestMessage _request) : base(_request)
-        {
-        }
-
-        protected override void DeleteValue()
-        {
-            soc.Vk = null;
-        }
-
-        protected override HttpResponseMessage SetValue(string value)
-        {
-            Regex reg = new Regex(@"https://vk.com/.{3,}");
-            if (reg.IsMatch(value))
-            {
-                soc.Vk = value;
-            }
-            else
-            {
-                return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Code = 2, Message = "Vk Url isn`t valid" });
-            }
-
-            return new HttpResponseMessage(HttpStatusCode.OK);
-        }
-    }
-
     public class FacebookLink : SocialNet
     {
         public FacebookLink(HttpRequestMessage _request) : base(_request)
@@ -199,32 +231,62 @@ namespace WebAPI_Finder_Test.Models.SocialLinks
         }
     }
 
-    public class TwitterLink : SocialNet
+
+    //iTunes
+    public class iTunesLink : SocialNet
     {
-        public TwitterLink(HttpRequestMessage _request) : base(_request)
+        public iTunesLink(HttpRequestMessage _request) : base(_request)
         {
         }
 
         protected override void DeleteValue()
         {
-            soc.Twitter = null;
+            soc.iTunes = null;
         }
 
         protected override HttpResponseMessage SetValue(string value)
         {
-            Regex reg = new Regex(@"https://twitter.com/.{3,}");
+            Regex reg = new Regex(@"https://itunes.apple.com/.{3,}");
             if (reg.IsMatch(value))
             {
-                soc.Twitter = value;
+                soc.iTunes = value;
             }
             else
             {
-                return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Code = 2, Message = "Twitter Url isn`t valid" });
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Code = 2, Message = "iTunes Url isn`t valid" });
             }
 
             return new HttpResponseMessage(HttpStatusCode.OK);
         }
+    }
 
+
+    //SoundCloud
+    public class SoundCloudLink : SocialNet
+    {
+        public SoundCloudLink(HttpRequestMessage _request) : base(_request)
+        {
+        }
+
+        protected override void DeleteValue()
+        {
+            soc.SoundCloud = null;
+        }
+
+        protected override HttpResponseMessage SetValue(string value)
+        {
+            Regex reg = new Regex(@"https://soundcloud.com/.{3,}");
+            if (reg.IsMatch(value))
+            {
+                soc.SoundCloud = value;
+            }
+            else
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Code = 2, Message = "SoundCloud Url isn`t valid" });
+            }
+
+            return new HttpResponseMessage(HttpStatusCode.OK);
+        }
     }
 
 

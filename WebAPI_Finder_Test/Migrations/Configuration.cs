@@ -20,11 +20,7 @@ namespace WebAPI_Finder_Test.Migrations
 
         protected override void Seed(WebAPI_Finder_Test.Models.ApplicationDbContext context)
         {
-            //List<string> cats = new List<string>()
-            //{"",
-            //"",
-
-            //};
+          
 
 
         }

@@ -19,8 +19,8 @@ namespace WebAPI_Finder_Test.Models
         [DataType(DataType.Url)]
         public string Instagram { get; set; }
 
-        [DataType(DataType.Url)]
-        public string Vk { get; set; }
+        //[DataType(DataType.Url)]
+        //public string Vk { get; set; }
 
         [DataType(DataType.Url)]
         public string FaceBook { get; set; }
@@ -28,8 +28,16 @@ namespace WebAPI_Finder_Test.Models
         [DataType(DataType.Url)]
         public string YouTube { get; set; }
 
+        //[DataType(DataType.Url)]
+        //public string Twitter { get; set; }
+
+
         [DataType(DataType.Url)]
-        public string Twitter { get; set; }
+        public string iTunes { get; set; }
+
+        [DataType(DataType.Url)]
+        public string SoundCloud { get; set; }
+
 
     }
 }

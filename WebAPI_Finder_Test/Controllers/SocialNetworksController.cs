@@ -21,6 +21,7 @@ namespace WebAPI_Finder_Test.Controllers
     [RoutePrefix("api/SocialNetworks")]
     public class SocialNetworksController : ApiController
     {
+        //|////////////////////////////////////////////////////////////////////////////////////////////////Insta
         [HttpPost]
         [Route("Set/Instagram")]
         public async Task<HttpResponseMessage> Insta(string iduser, string value)
@@ -37,26 +38,7 @@ namespace WebAPI_Finder_Test.Controllers
             return await insta.Delete(iduser);
         }
 
-
-
-        [HttpPost]
-        [Route("Set/Vk")]
-        public async Task<HttpResponseMessage> Vk(string iduser, string value)
-        {
-            VkLink vk = new VkLink(Request);
-            return await vk.Insert(iduser, value);
-        }
-
-        [HttpPost]
-        [Route("Drop/Vk")]
-        public async Task<HttpResponseMessage> Vk(string iduser)
-        {
-            VkLink vk = new VkLink(Request);
-            return await vk.Delete(iduser);
-        }
-
-
-
+        //|///////////////////////////////////////////////////////////////////////////////////////////////facebook
         [HttpPost]
         [Route("Set/Facebook")]
         public async Task<HttpResponseMessage> Facebook(string iduser, string value)
@@ -73,8 +55,7 @@ namespace WebAPI_Finder_Test.Controllers
             return await fc.Delete(iduser);
         }
 
-
-
+        //|///////////////////////////////////////////////////////////////////////////////////////////////Youtube
         [HttpPost]
         [Route("Set/YouTube")]
         public async Task<HttpResponseMessage> YouTube(string iduser, string value)
@@ -91,24 +72,39 @@ namespace WebAPI_Finder_Test.Controllers
             return await youtube.Delete(iduser);
         }
 
-        
-
+        //|//////////////////////////////////////////////////////////////////////////////////////////////iTunes
         [HttpPost]
-        [Route("Set/Twitter")]
-        public async Task<HttpResponseMessage> Twitter(string iduser, string value)
+        [Route("Set/iTunes")]
+        public async Task<HttpResponseMessage> iTunes(string iduser, string value)
         {
-            TwitterLink twitter = new TwitterLink(Request);
-            return await twitter.Insert(iduser, value);
+            iTunesLink itunes = new iTunesLink(Request);
+            return await itunes.Insert(iduser, value);
         }
 
         [HttpPost]
-        [Route("Drop/Twitter")]
-        public async Task<HttpResponseMessage> Twitter(string iduser)
+        [Route("Drop/iTunes")]
+        public async Task<HttpResponseMessage> iTunes(string iduser)
         {
-            TwitterLink twitter = new TwitterLink(Request);
-            return await twitter.Delete(iduser);
+            iTunesLink itunes = new iTunesLink(Request);
+            return await itunes.Delete(iduser);
         }
 
+        //|///////////////////////////////////////////////////////////////////////////////////////////////SoundCloud
+        [HttpPost]
+        [Route("Set/SoundCloud")]
+        public async Task<HttpResponseMessage> SoundCloud(string iduser, string value)
+        {
+            SoundCloudLink soundcloud = new SoundCloudLink(Request);
+            return await soundcloud.Insert(iduser, value);
+        }
+
+        [HttpPost]
+        [Route("Drop/SoundCloud")]
+        public async Task<HttpResponseMessage> SoundCloud(string iduser)
+        {
+            SoundCloudLink soundcloud = new SoundCloudLink(Request);
+            return await soundcloud.Delete(iduser);
+        }
 
 
 
