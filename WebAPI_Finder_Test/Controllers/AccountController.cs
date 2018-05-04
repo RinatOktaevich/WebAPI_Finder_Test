@@ -91,7 +91,53 @@ namespace WebAPI_Finder_Test.Controllersз
             return Ok(users);
         }
 
+        [HttpPost]
+        [Route("ChangeFirstname")]
+        public async Task<HttpResponseMessage> ChangeFirstname(string iduser, string firstname)
+        {
+            var user = db.Users.Find(iduser);
+            if (user == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound, "User doesn`t exist");
+            }
 
+            if (firstname == String.Empty)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, "firstname is empty");
+            }
+
+            user.Firstname = firstname;
+
+            user.FullName = user.Firstname.ToLower() + " " + user.Lastname.ToLower();
+
+            await db.SaveChangesAsync();
+            return new HttpResponseMessage(HttpStatusCode.OK);
+        }
+
+        [Route("ChangeLastname")]
+        [HttpPost]
+        public async Task<HttpResponseMessage> ChangeLastname(string iduser, string lastname)
+        {
+            var user = db.Users.Find(iduser);
+            if (user == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound, "User doesn`t exist");
+            }
+
+            if (lastname == String.Empty)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, "firstname is empty");
+            }
+
+            user.Lastname = lastname;
+
+            user.FullName = user.Firstname.ToLower() + " " + user.Lastname.ToLower();
+
+            await db.SaveChangesAsync();
+            return new HttpResponseMessage(HttpStatusCode.OK);
+        }
+
+        [Route("SetAbout")]
         [HttpPost]
         public async Task<HttpResponseMessage> SetAbout(string iduser, string about)
         {
@@ -193,7 +239,7 @@ namespace WebAPI_Finder_Test.Controllersз
                 .Include(xr => xr.Categories)
                 .Include(xr => xr.City)
                 .Include(xr => xr.City.Country)
-                .Include(xr=>xr.SocNetworks)
+                .Include(xr => xr.SocNetworks)
                 .Where(u => u.UserName == email).ToList()[0];
 
             if (user == null)
@@ -221,7 +267,7 @@ namespace WebAPI_Finder_Test.Controllersз
                 .Include(xr => xr.Categories)
                 .Include(xr => xr.City)
                 .Include(xr => xr.City.Country)
-                .Include(xr=>xr.SocNetworks)
+                .Include(xr => xr.SocNetworks)
                 .Where(u => u.Login == login).ToList()[0];
 
 
@@ -242,7 +288,7 @@ namespace WebAPI_Finder_Test.Controllersз
                 .Include(xr => xr.Categories)
                 .Include(xr => xr.City)
                 .Include(xr => xr.City.Country)
-                .Include(xr=>xr.SocNetworks)
+                .Include(xr => xr.SocNetworks)
                 .ToList();
 
             return Ok(users);
@@ -264,13 +310,13 @@ namespace WebAPI_Finder_Test.Controllersз
                 }
 
                 string virtualPath = "/Data/" + user.Login + "/";
-                string realPath = Server.MapPath("/Data/" +user.Login + "/");
+                string realPath = Server.MapPath("/Data/" + user.Login + "/");
 
                 Helper.IsUserDirectoryExist(realPath);
-                
+
 
                 //This check and create ,if doesn`t exist ,required directories
-              //  Helper.CheckAudioDir(user.Login,Server);
+                //  Helper.CheckAudioDir(user.Login,Server);
 
 
                 //string realPath =Server.MapPath("/Data/" + user.Login+"/");
@@ -317,18 +363,18 @@ namespace WebAPI_Finder_Test.Controllersз
                 return BadRequest(ModelState);
             }
 
-           // var pass = UserManager.PasswordHasher.HashPassword(model.Password);
+            // var pass = UserManager.PasswordHasher.HashPassword(model.Password);
 
-            ApplicationUser user = new ApplicationUser() { UserName = model.Email, Email = model.Email, Firstname = model.Firstname, Lastname = model.Lastname, BirthDate = model.BirthDate, AvatarImage = "/Images/defaultImg.jpg", RegistrationDate = DateTime.Now, FullName = model.Firstname.ToLower() + " " + model.Lastname.ToLower(),CityId=model.CityId };
+            ApplicationUser user = new ApplicationUser() { UserName = model.Email, Email = model.Email, Firstname = model.Firstname, Lastname = model.Lastname, BirthDate = model.BirthDate, AvatarImage = "/Images/defaultImg.jpg", RegistrationDate = DateTime.Now, FullName = model.Firstname.ToLower() + " " + model.Lastname.ToLower(), CityId = model.CityId };
 
             //default avatar=/Images/defaultImg.jpg
 
             IdentityResult result = null;
             try
             {
-               
+
                 result = await UserManager.CreateAsync(user, model.Password);
-              //result=db.Users.Add(user);
+                //result=db.Users.Add(user);
             }
             catch (Exception)
             {
