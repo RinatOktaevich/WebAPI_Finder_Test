@@ -30,7 +30,7 @@ namespace WebAPI_Finder_Test.Controllers
         public async Task<HttpResponseMessage> AddTrack(string email, int idcat, string performer, string tittle)
         {
             string soundtrack;
-            var user = db.Users.First(u => u.UserName == email);
+            var user = db.Users.Include(xr => xr.Categories).First(u => u.UserName == email);
             var Server = HttpContext.Current.Server;
 
             try
@@ -48,47 +48,49 @@ namespace WebAPI_Finder_Test.Controllers
                 {
                     throw new HttpResponseException(HttpStatusCode.NoContent);
                 }
+                #region Native work with azure blob storage
+                //var azurePath = "C:/Users/Ринат/documents/visual studio 2015/Projects/CopyDataSkitelDBToAzure/CopyDataSkitelDBToAzure/Data/";
 
-                var azurePath = "C:/Users/Ринат/documents/visual studio 2015/Projects/CopyDataSkitelDBToAzure/CopyDataSkitelDBToAzure/Data/";
+                //// Retrieve storage account information from connection string
+                //CloudStorageAccount storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-                // Retrieve storage account information from connection string
-                CloudStorageAccount storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("StorageConnectionString"));
+                //// Create a blob client for interacting with the blob service.
+                //CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
-                // Create a blob client for interacting with the blob service.
-                CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+                //// Create a container for organizing blobs within the storage account.
+                //Console.WriteLine("1. Creating Container");
+                //CloudBlobContainer container = blobClient.GetContainerReference("data");
 
-
-                // Create a container for organizing blobs within the storage account.
-                Console.WriteLine("1. Creating Container");
-                CloudBlobContainer container = blobClient.GetContainerReference("data");
-
-                try
-                {
-                    BlobRequestOptions requestOptions = new BlobRequestOptions() { RetryPolicy = new NoRetry() };
-                    container.CreateIfNotExists(requestOptions, null);
-                }
-                catch (StorageException)
-                {
-                    throw;
-                }
+                //try
+                //{
+                //    BlobRequestOptions requestOptions = new BlobRequestOptions() { RetryPolicy = new NoRetry() };
+                //    container.CreateIfNotExists(requestOptions, null);
+                //}
+                //catch (StorageException)
+                //{
+                //    throw;
+                //}
+                #endregion
 
                 var newFileName = Path.GetRandomFileName().Substring(0, 6) + Path.GetFileName(file.FileName);
+                var blobName = user.Login + "/Audios/" + newFileName;
+                //azurePath + user.Login + "/Audios/" + newFileName
+                #region 2 Native work with azure blob storage
+                //// Upload a BlockBlob to the newly created container
+                //Console.Write("2. Uploading BlockBlob ");
+                //CloudBlockBlob blockBlob = container.GetBlockBlobReference(azurePath + user.Login + "/Audios/" + newFileName);
 
-                // Upload a BlockBlob to the newly created container
-                Console.Write("2. Uploading BlockBlob ");
-                CloudBlockBlob blockBlob = container.GetBlockBlobReference(azurePath + user.Login + "/Audios/" + newFileName);
+                //blockBlob.Properties.ContentType = file.ContentType;
 
-                blockBlob.Properties.ContentType = file.ContentType;
+                ////var location = AppDomain.CurrentDomain.BaseDirectory;
+                ////var fullFileName = location + "/" + file.FileName;
 
-                var location = AppDomain.CurrentDomain.BaseDirectory;
-                var fullFileName = location+"/" + file.FileName;
+                //blockBlob.UploadFromStream(file.InputStream);
 
-                file.SaveAs(fullFileName);
+                #endregion
 
-                blockBlob.UploadFromFile(fullFileName);
-                soundtrack = blockBlob.Uri.AbsoluteUri;
-
-                File.Delete(fullFileName);
+                AzureHelper azure = new AzureHelper("data");
+                soundtrack = azure.UploudToContainer(blobName, file);
                 #endregion
 
 
@@ -106,6 +108,14 @@ namespace WebAPI_Finder_Test.Controllers
 
                 return new HttpResponseMessage(HttpStatusCode.NoContent);
             }
+
+            if (!user.Categories.Any(xr => xr.Id == idcat))
+            {
+                Category Newcategory = db.Categories.Find(idcat);
+                user.Categories.Add(Newcategory);
+                db.SaveChanges();
+            }
+
 
 
             user.AudioTracks.Add(new Audio(_url: soundtrack, _pr: performer, _ttl: tittle, authLogin: user.Login, idcat: idcat));
@@ -136,7 +146,33 @@ namespace WebAPI_Finder_Test.Controllers
                 }
             }
 
-            File.Delete(HttpContext.Current.Server.MapPath(track.Url));
+            //File.Delete(HttpContext.Current.Server.MapPath(track.Url));
+
+            #region Azure files work
+
+
+
+
+
+
+
+
+
+
+
+
+            #endregion
+
+
+
+
+
+
+
+
+
+
+
             db.AudioTracks.Remove(track);
             await db.SaveChangesAsync();
 

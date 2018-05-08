@@ -22,6 +22,10 @@ using System.Net;
 using System.IO;
 using WebAPI_Finder_Test.Models.Helpers;
 using System.Web.Http.ModelBinding;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Blob;
+using Microsoft.Azure;
+using Microsoft.WindowsAzure.Storage.RetryPolicies;
 
 namespace WebAPI_Finder_Test.Controllersз
 {
@@ -298,9 +302,12 @@ namespace WebAPI_Finder_Test.Controllersз
         [Route("setAvatar")]
         public HttpResponseMessage InsertAvatar(string email)
         {
+            //Url that we save in db
             string image;
             var user = db.Users.First(u => u.UserName == email);
             var Server = HttpContext.Current.Server;
+            AzureHelper azure = new AzureHelper("data");
+
             try
             {
                 // Check if the request contains multipart/form-data.
@@ -309,15 +316,64 @@ namespace WebAPI_Finder_Test.Controllersз
                     return new HttpResponseMessage(HttpStatusCode.UnsupportedMediaType);
                 }
 
-                string virtualPath = "/Data/" + user.Login + "/";
-                string realPath = Server.MapPath("/Data/" + user.Login + "/");
 
-                Helper.IsUserDirectoryExist(realPath);
+                #region Azure Image saver
+                var file = HttpContext.Current.Request.Files[0];
 
+                if (file.ContentLength == 0)
+                {
+                    throw new HttpResponseException(HttpStatusCode.NoContent);
+                }
+
+
+                #region Native work with azure blob storage
+                //// Retrieve storage account information from connection string
+                //CloudStorageAccount storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("StorageConnectionString"));
+
+                //// Create a blob client for interacting with the blob service.
+                //CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+
+                //// Create a container for organizing blobs within the storage account.
+                ////1. Creating Container
+                //container = blobClient.GetContainerReference("data");
+
+                //try
+                //{
+                //    BlobRequestOptions requestOptions = new BlobRequestOptions() { RetryPolicy = new NoRetry() };
+                //    container.CreateIfNotExists(requestOptions, null);
+                //}
+                //catch (StorageException)
+                //{
+                //    throw;
+                //}
+                #endregion
+                var newFileName = Path.GetRandomFileName().Substring(0, 6) + Path.GetFileName(file.FileName);
+                var blobName = user.Login + "/" + newFileName;
+                image = azure.UploudToContainer(blobName, file);
+
+                #region 2 Native work with azure blob storage
+                // Upload a BlockBlob to the newly created container
+                //2. Uploading BlockBlob 
+                //CloudBlockBlob blockBlob = container.GetBlockBlobReference(azurePath + user.Login + "/" + newFileName);
+                //blockBlob.Properties.ContentType = file.ContentType;
+                //blockBlob.UploadFromStream(file.InputStream);
+                //image = blockBlob.Uri.AbsoluteUri;
+
+
+                //CloudBlobDirectory virtualPath = container.GetDirectoryReference(azurePath + user.Login);
+                //CloudBlockBlob oldBlockBlob = virtualPath.GetBlockBlobReference(avatarname);
+                //oldBlockBlob.DeleteIfExists(DeleteSnapshotsOption.IncludeSnapshots);
+                #endregion
+
+                #endregion
+                #region Server image saver
+                //string virtualPath = "/Data/" + user.Login + "/";
+                //string realPath = Server.MapPath("/Data/" + user.Login + "/");
+
+                //Helper.IsUserDirectoryExist(realPath);
 
                 //This check and create ,if doesn`t exist ,required directories
                 //  Helper.CheckAudioDir(user.Login,Server);
-
 
                 //string realPath =Server.MapPath("/Data/" + user.Login+"/");
                 //if(!Directory.Exists(realPath))
@@ -332,8 +388,8 @@ namespace WebAPI_Finder_Test.Controllersз
                 //var info2 = Directory.CreateDirectory(realPath + "Audios");
                 //var info3 = Directory.CreateDirectory(realPath + "Videos");
 
-
-                image = Helper.SaveImage(virtualPath);
+                //Helper.SaveImage(virtualPath);
+                #endregion
             }
             catch (Exception)
             {
@@ -342,7 +398,16 @@ namespace WebAPI_Finder_Test.Controllersз
 
             if (user.AvatarImage != null)
             {
-                File.Delete(HttpContext.Current.Server.MapPath(user.AvatarImage));
+                string avatarname = Path.GetFileName(user.AvatarImage);
+                azure.DeleteFromContainer(user.Login, avatarname);
+
+                #region Native work with azure blob storage
+                //string avatarname = Path.GetFileName(user.AvatarImage);
+                //CloudBlobDirectory virtualPath = container.GetDirectoryReference(azurePath + user.Login);
+                //CloudBlockBlob oldBlockBlob = virtualPath.GetBlockBlobReference(avatarname);
+                //oldBlockBlob.DeleteIfExists(DeleteSnapshotsOption.IncludeSnapshots);
+                #endregion
+                //File.Delete(HttpContext.Current.Server.MapPath(user.AvatarImage));
             }
             user.AvatarImage = image;
             db.Entry(user).State = System.Data.Entity.EntityState.Modified;
@@ -363,9 +428,9 @@ namespace WebAPI_Finder_Test.Controllersз
                 return BadRequest(ModelState);
             }
 
-            // var pass = UserManager.PasswordHasher.HashPassword(model.Password);
+            string defaultImgLink = "https://dataskitel.blob.core.windows.net/data/C:/Users/Ринат/documents/visual studio 2015/Projects/CopyDataSkitelDBToAzure/CopyDataSkitelDBToAzure/Images/defaultImg.jpg";
 
-            ApplicationUser user = new ApplicationUser() { UserName = model.Email, Email = model.Email, Firstname = model.Firstname, Lastname = model.Lastname, BirthDate = model.BirthDate, AvatarImage = "/Images/defaultImg.jpg", RegistrationDate = DateTime.Now, FullName = model.Firstname.ToLower() + " " + model.Lastname.ToLower(), CityId = model.CityId };
+            ApplicationUser user = new ApplicationUser() { UserName = model.Email, Email = model.Email, Firstname = model.Firstname, Lastname = model.Lastname, BirthDate = model.BirthDate, AvatarImage = defaultImgLink, RegistrationDate = DateTime.Now, FullName = model.Firstname.ToLower() + " " + model.Lastname.ToLower(), CityId = model.CityId };
 
             //default avatar=/Images/defaultImg.jpg
 
@@ -374,7 +439,6 @@ namespace WebAPI_Finder_Test.Controllersз
             {
 
                 result = await UserManager.CreateAsync(user, model.Password);
-                //result=db.Users.Add(user);
             }
             catch (Exception)
             {
@@ -389,14 +453,14 @@ namespace WebAPI_Finder_Test.Controllersз
             }
             user.Login = CreateLogin(model.Email, user.Id);
 
+            #region Creating directories for file system
+            //string userDirectory = HttpContext.Current.Server.MapPath("/Data/" + user.Login + "/");
 
-            string userDirectory = HttpContext.Current.Server.MapPath("/Data/" + user.Login + "/");
+            //var info = Directory.CreateDirectory(userDirectory);
 
-            var info = Directory.CreateDirectory(userDirectory);
-
-            var info2 = Directory.CreateDirectory(userDirectory + "Audios");
-            var info3 = Directory.CreateDirectory(userDirectory + "Videos");
-
+            //var info2 = Directory.CreateDirectory(userDirectory + "Audios");
+            //var info3 = Directory.CreateDirectory(userDirectory + "Videos");
+            #endregion
             UserManager.Update(user);
 
             return Ok();
