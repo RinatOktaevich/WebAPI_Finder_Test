@@ -415,6 +415,41 @@ namespace WebAPI_Finder_Test.Controllersз
             return new HttpResponseMessage(HttpStatusCode.OK);
         }
 
+        [HttpPost]
+        [Route("setPhoneNumber")]
+        public async  Task<HttpResponseMessage> InsertPhoneNumber(string iduser, string phoneNumber)
+        {
+            var user = db.Users.Find(iduser);
+            if (user == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+
+            Regex reg = new Regex(@"\d{12}",RegexOptions.Compiled);
+            if (!reg.IsMatch(phoneNumber))
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, "Incorrect phone number format");
+            }
+
+            user.PhoneNumber = phoneNumber;
+            await db.SaveChangesAsync();
+            return new HttpResponseMessage(HttpStatusCode.OK);
+        }
+
+        [HttpPost]
+        [Route("dropPhoneNumber")]
+        public async Task<HttpResponseMessage> DeletePhoneNumber(string iduser)
+        {
+            var user = db.Users.Find(iduser);
+            if (user == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            user.PhoneNumber = null;
+            await db.SaveChangesAsync();
+            return new HttpResponseMessage(HttpStatusCode.OK);
+        }
+
 
 
         #region Project Stuff

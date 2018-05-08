@@ -207,29 +207,16 @@ namespace WebAPI_Finder_Test.Controllers
         [AllowAnonymous]
         [HttpPost]
         [Route("AudioList")]
-        public IHttpActionResult GetAudios(string iduser, int categoryid)
+        public IHttpActionResult GetAudios(string iduser)
         {
-            var user = db.Users.Include(xr => xr.AudioTracks).Where(xr => xr.Id == iduser).ToList()[0];
+            var user = db.Users.Find(iduser);
             if (user == null)
             {
                 return BadRequest("User doesn`t found");
             }
 
 
-
-
-            var audios = user.AudioTracks.Where(xr => xr.CategoryId == categoryid).ToList();
-
-            //foreach (var item in audios)
-            //{
-            //    item.Audios = user.AudioTracks.Where(xr => xr.CategoryId == item.Id).ToList();
-            //}
-
-
-
-
-
-            return Ok(audios);
+            return Ok(user.AudioTracks);
         }
         #endregion
 
