@@ -214,7 +214,11 @@ namespace WebAPI_Finder_Test.Controllers
             {
                 return BadRequest("User doesn`t found");
             }
-
+            user.AudioTracks.ToList();
+            foreach (var item in user.AudioTracks)
+            {
+                item.CountLikes = db.Likes.Where(xr => xr.AudioId == item.Id).Count();
+            }
 
             return Ok(user.AudioTracks);
         }
@@ -250,7 +254,6 @@ namespace WebAPI_Finder_Test.Controllers
         #endregion
 
 
-
         /// <summary>
         /// 
         /// </summary>
@@ -269,37 +272,30 @@ namespace WebAPI_Finder_Test.Controllers
             }
 
             #region Changed
-            var audios = db.Categories.ToList();
+            var Audios = user.AudioTracks.ToList();
 
-            foreach (var item in audios)
+            //Run on audios in category concrete user and stamp like if it does
+            foreach (var item in Audios)
             {
-                item.Audios = user.AudioTracks.Where(xr => xr.CategoryId == item.Id).ToList();
-            }
-            //Run on category
-            foreach (var cat in audios)
-            {
+                var likes = db.Likes.Where(xr => xr.AudioId == item.Id).ToList();
 
+                IEnumerable<object> res = (from l in likes
+                                           where l.ApplicationUserId == idAuth
+                                           select new { l.ApplicationUserId, l.AudioId });
 
-                //Run on audios in category concrete user and stamp like if it does
-                foreach (var item in cat.Audios)
+                if (res.Count() != 0)
                 {
-                    var likes = db.Likes.Where(xr => xr.AudioId == item.Id).ToList();
-
-                    IEnumerable<object> res = (from l in likes
-                                               where l.ApplicationUserId == idAuth
-                                               select new { l.ApplicationUserId, l.AudioId });
-
-                    if (res.Count() != 0)
-                    {
-                        item.IsLicked = true;
-                    }
-                    else
-                    {
-                        item.IsLicked = false;
-                    }
-                    item.Likes = null;
+                    item.IsLicked = true;
                 }
+                else
+                {
+                    item.IsLicked = false;
+                }
+
+                item.CountLikes = likes.Count;
+                item.Likes = null;
             }
+
             #endregion
 
             #region Origin
@@ -325,7 +321,7 @@ namespace WebAPI_Finder_Test.Controllers
             //}
             #endregion
 
-            return Ok(audios);
+            return Ok(Audios);
         }
 
     }
